@@ -27,7 +27,7 @@
       <file leaf-file-name="scaffolding_commands.txt" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scaffolding_commands.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="306" selection-start="360" selection-end="360" vertical-scroll-proportion="0.050516646">
+            <state line="2" column="306" selection-start="54" selection-end="360" vertical-scroll-proportion="0.050516646">
               <folding />
             </state>
           </provider>
@@ -426,7 +426,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scaffolding_commands.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="306" selection-start="360" selection-end="360" vertical-scroll-proportion="0.050516646">
+        <state line="2" column="306" selection-start="54" selection-end="360" vertical-scroll-proportion="0.050516646">
           <folding />
         </state>
       </provider>

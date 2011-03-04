@@ -1,0 +1,35 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: MyString
+  first_name: MyString
+  last_name: MyString
+  personal_number: MyString
+  street_address: MyString
+  zip_code: MyString
+  living_area: MyString
+  active: false
+  home_phone: MyString
+  mobile_phone: MyString
+  email: MyString
+  goals: MyText
+  wants_reminders: false
+  reminder_time: 1
+  player_type_id: MyString
+
+two:
+  username: MyString
+  first_name: MyString
+  last_name: MyString
+  personal_number: MyString
+  street_address: MyString
+  zip_code: MyString
+  living_area: MyString
+  active: false
+  home_phone: MyString
+  mobile_phone: MyString
+  email: MyString
+  goals: MyText
+  wants_reminders: false
+  reminder_time: 1
+  player_type_id: MyString
