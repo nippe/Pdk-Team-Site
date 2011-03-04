@@ -1,4 +1,6 @@
 PdkTeamSite::Application.routes.draw do
+  resources :rvsps
+
   resources :rvsp_statuses
 
   resources :activities

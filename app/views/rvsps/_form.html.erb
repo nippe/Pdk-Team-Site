@@ -1,0 +1,33 @@
+<%= form_for(@rvsp) do |f| %>
+  <% if @rvsp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rvsp.errors.count, "error") %> prohibited this rvsp from being saved:</h2>
+
+      <ul>
+      <% @rvsp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :activity_id %><br />
+    <%= f.text_field :activity_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player_id %><br />
+    <%= f.text_field :player_id %>
+  </div>
+  <div class="field">
+    <%= f.label :rvsp_status_id %><br />
+    <%= f.text_field :rvsp_status_id %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_field :comment %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
