@@ -1,0 +1,2 @@
+module RvspStatusesHelper
+end
