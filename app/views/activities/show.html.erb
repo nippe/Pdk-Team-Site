@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start time:</b>
+  <%= @activity.start_time %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @activity.duration %>
+</p>
+
+<p>
+  <b>All day:</b>
+  <%= @activity.all_day %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @activity.type %>
+</p>
+
+<p>
+  <b>Correlation:</b>
+  <%= @activity.correlation_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>
