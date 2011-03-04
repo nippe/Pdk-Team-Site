@@ -5,7 +5,7 @@ class CreateActivities < ActiveRecord::Migration
       t.integer :duration
       t.boolean :all_day
       t.string :type
-      t.guid :correlation_id
+      t.string :correlation_id
 
       t.timestamps
     end

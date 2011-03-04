@@ -7,3 +7,4 @@ rails generate scaffold activity start_time:datetime duration:integer all_day:bo
 rails generate scaffold rvsp_status title:string
 
 rails generate scaffold RVSP activity_id:integer player_id:integer rvsp_status_id:integer comment:string
+
