@@ -1,4 +1,54 @@
+
+<script type="text/javascript">
+   $(document).ready(
+      function () {
+          $("div#address_title").click(
+            function () {
+                if ($("div#address").is(":hidden")) {
+                    $("div#address").slideDown("slow");
+                }
+                else {
+                    $("div#address").slideUp("slow", function () { });
+                }
+            });
+      }
+
+</script>
+
 <p id="notice"><%= notice %></p>
+
+
+
+<div id="player">
+  <div id="username">
+    <b>Username: </b> <%= @player.username %>
+  </div>
+
+  <div id="name">
+    <b>Name: </b> <%= @player.first_name %> <%= @player.last_name%>
+  </div>
+
+  <div id="address_title">Adress info (klicka här)</div>
+  <div id="address">
+
+    <p>
+      <b>Street address:</b>
+      <%= @player.street_address %>
+    </p>
+
+    <p>
+      <b>Zip code:</b>
+      <%= @player.zip_code %>
+    </p>
+
+    <p>
+      <b>Living area:</b>
+      <%= @player.living_area %>
+    </p>
+
+  </div>
+</div>
+
 
 <p>
   <b>Username:</b>
@@ -6,13 +56,8 @@
 </p>
 
 <p>
-  <b>First name:</b>
-  <%= @player.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @player.last_name %>
+  <b>Name:</b>
+  <%= @player.first_name %> <%= @player.last_name %>
 </p>
 
 <p>
