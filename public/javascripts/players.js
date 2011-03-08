@@ -8,6 +8,10 @@
 
 $(document).ready(
         function(){
-            alert("FOFOFOFOF");
+           $("div#address_title").click(
+                   function() {
+                       $("div#address").slideUp("slow");
+                       //alert("Clicked");
+                   });
         }
  );
