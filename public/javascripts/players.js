@@ -19,7 +19,8 @@ $(document).ready(
 
 $(document).ready(
         function() {
-            $("#date").datepicker($.datepicker.regional['sv']);
+            $("#date").datepicker({ firstDay: 1 });
+            //$("#date").datepicker($.datepicker.regional['sv']);
             //$("#date").datepicker();
         }
         );
