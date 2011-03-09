@@ -1,19 +1,28 @@
 <%= javascript_include_tag 'players' %>
+<%= stylesheet_link_tag 'player' %>
 
 <p id="notice"><%= notice %></p>
 
 
 
 <div id="player">
+   <div id="name">
+    <h1> <%= @player.first_name %> <%= @player.last_name%> </h1>
+  </div>
+
   <div id="username">
     <b>Username: </b> <%= @player.username %>
+    <br />
+    <input type="text" name="date" id="date" />
   </div>
 
-  <div id="name">
-    <b>Name: </b> <%= @player.first_name %> <%= @player.last_name%>
-  </div>
 
-  <div id="address_title">Adress info (klicka här)</div>
+
+  <div id="address_title">
+    <p id="clickable_address_header" class="blue_background">
+      <a href="#">Adress info (klicka här)</a>
+    </p>
+  </div>
   <div id="address">
 
     <p>

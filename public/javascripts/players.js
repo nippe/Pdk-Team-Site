@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 $(document).ready(
         function(){
            $("div#address_title").click(
@@ -15,3 +16,10 @@ $(document).ready(
                    });
         }
  );
+
+$(document).ready(
+        function() {
+            $("#date").datepicker($.datepicker.regional['sv']);
+            //$("#date").datepicker();
+        }
+        );
