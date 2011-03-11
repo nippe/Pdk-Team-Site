@@ -3,111 +3,102 @@
 
 <p id="notice"><%= notice %></p>
 
-
-
 <div id="player">
-   <div id="name">
-    <h1> <%= @player.first_name %> <%= @player.last_name%> </h1>
+  <div id="top_block">
+
+       <div id="picture">
+        <%= image_tag @player.picture_url, {:width => "130px"} %>
+       </div>
+       <div id="name">
+        <h1> <%= @player.first_name %> <%= @player.last_name%> </h1>
+       </div>
+
+      <div id="username">
+        <b>Username: </b> <%= @player.username %>
+      </div>
+
+    </div>
+
+  <div id="info_accordian">
+
+    <h3>Telefon</h3>
+    <div>
+      <p>
+          <b>Hem:</b>
+          <%= @player.home_phone %>
+        </p>
+
+        <p>
+          <b>Mobil:</b>
+          <%= @player.mobile_phone %>
+        </p>
+
+        <p>
+          <b>Arbete:</b>
+          <%= @player.work_phone %>
+        </p>
+    </div>
+
+
+    <h3>Adress info</h3>
+    <div>
+         <p>
+           <%= @player.street_address %>
+         </p>
+
+         <p>
+           <%= @player.zip_code %> <%= @player.living_area %>
+         </p>
+
+    </div>
+
+
+    <h3>Digital</h3>
+    <div>
+        <p>
+          <b>Email:</b>
+          <%= @player.email %>
+        </p>
+    </div>
+
+    <h3>&Ouml;vrigt</h3>
+    <div>
+        <p>
+          <b>Personal number:</b>
+          <%= @player.personal_number %>
+        </p>
+
+        <p>
+          <b>Goals:</b>
+          <%= @player.goals %>
+        </p>
+
+        <p>
+          <b>Wants reminders:</b>
+          <%= @player.wants_reminders %>
+        </p>
+        <p>
+          <b>Reminder time:</b>
+          <%= @player.reminder_time %>
+        </p>
+
+        <p>
+          <b>Player type:</b>
+          <%= @player.player_type_id %>
+        </p>
+    </div>
+
+
   </div>
 
-  <div id="username">
-    <b>Username: </b> <%= @player.username %>
-    <br />
-    <input type="text" name="date" id="date" />
-  </div>
 
 
 
-  <div id="address_title">
-    <p id="clickable_address_header" class="blue_background">
-      <a href="#">Adress info (klicka här)</a>
-    </p>
-  </div>
   <div id="address">
-
-    <p>
-      <b>Street address:</b>
-      <%= @player.street_address %>
-    </p>
-
-    <p>
-      <b>Zip code:</b>
-      <%= @player.zip_code %>
-    </p>
-
-    <p>
-      <b>Living area:</b>
-      <%= @player.living_area %>
-    </p>
 
   </div>
 </div>
 
-
-<p>
-  <b>Username:</b>
-  <%= @player.username %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @player.first_name %> <%= @player.last_name %>
-</p>
-
-<p>
-  <b>Personal number:</b>
-  <%= @player.personal_number %>
-</p>
-
-<p>
-  <b>Street address:</b>
-  <%= @player.street_address %>
-</p>
-
-<p>
-  <b>Zip code:</b>
-  <%= @player.zip_code %>
-</p>
-
-<p>
-  <b>Living area:</b>
-  <%= @player.living_area %>
-</p>
-
-<p>
-  <b>Active:</b>
-  <%= @player.active %>
-</p>
-
-<p>
-  <b>Home phone:</b>
-  <%= @player.home_phone %>
-</p>
-
-<p>
-  <b>Mobile phone:</b>
-  <%= @player.mobile_phone %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @player.email %>
-</p>
-
-<p>
-  <b>Goals:</b>
-  <%= @player.goals %>
-</p>
-
-<p>
-  <b>Wants reminders:</b>
-  <%= @player.wants_reminders %>
-</p>
-
-<p>
-  <b>Reminder time:</b>
-  <%= @player.reminder_time %>
-</p>
 
 <p>
   <b>Player type:</b>

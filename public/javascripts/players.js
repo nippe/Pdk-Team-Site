@@ -8,18 +8,8 @@
 
 
 $(document).ready(
-        function(){
-           $("div#address_title").click(
-                   function() {
-                       $("div#address").slideUp("slow");
-                       //alert("Clicked");
-                   });
-        }
- );
-
-$(document).ready(
         function() {
-            $("#date").datepicker({ firstDay: 1 });
+            $( "#info_accordian" ).accordion();
             //$("#date").datepicker($.datepicker.regional['sv']);
             //$("#date").datepicker();
         }

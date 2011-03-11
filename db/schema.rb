@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110304201538) do
+ActiveRecord::Schema.define(:version => 20110311125908) do
 
   create_table "activities", :force => true do |t|
     t.datetime "start_time"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20110304201538) do
     t.string   "player_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "work_phone"
+    t.string   "picture_url"
   end
 
   create_table "rvsp_statuses", :force => true do |t|
