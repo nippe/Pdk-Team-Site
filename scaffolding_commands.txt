@@ -9,4 +9,6 @@ rails generate scaffold rvsp_status title:string
 
 rails generate scaffold RVSP activity_id:integer player_id:integer rvsp_status_id:integer comment:string
 
-rails generate scaffold wall_post body:text user_id:integer 
+rails g scaffold wall title:string description:text user_id:integer
+
+raisl g scaffold post body:text user_id:integer
