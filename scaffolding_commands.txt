@@ -1,13 +1,17 @@
 REM rails generate scaffold player_type title:string
 REM Adding a change
 
-rails generate scaffold player username:string first_name:string last_name:string personal_number:string street_address:string zip_code:string living_area:string active:boolean home_phone:string mobile_phone:string email:string goals:text wants_reminders:boolean reminder_time:integer player_type_id:string
+rails g scaffold user login:string email:string crypted_password:string password_salt:string persistence_token:string first_name:string last_name:string personal_number:string street_address:string zip_code:string living_area:string active:boolean home_phone:string mobile_phone:string goals:text wants_reminders:boolean reminder_time:integer player_type_id:string login_count:integer failed_login_count:integer last_request_at:datetime current_login_at:datetime last_login_at:datetime current_login_ip:string last_login_ip:string
 
-rails generate scaffold activity start_time:datetime duration:integer all_day:boolean type:string correlation_id:guid
+rails g model user_session
 
-rails generate scaffold rvsp_status title:string
+rails g scaffold_controller user_session login:string password:string
 
-rails generate scaffold RVSP activity_id:integer player_id:integer rvsp_status_id:integer comment:string
+rails g scaffold activity start_time:datetime duration:integer all_day:boolean type:string correlation_id:guid
+
+rails g scaffold rvsp_status title:string
+
+rails g scaffold RVSP activity_id:integer player_id:integer rvsp_status_id:integer comment:string
 
 rails g scaffold wall title:string description:text user_id:integer
 

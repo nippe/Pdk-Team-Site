@@ -1,12 +1,10 @@
 PdkTeamSite::Application.routes.draw do
-  resources :rvsps
+  resources :users, :user_sessions
 
-  resources :rvsp_statuses
+  match 'login' => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
 
-  resources :activities
-
-  resources :players
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -10,20 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110311125908) do
+ActiveRecord::Schema.define(:version => 20110314201212) do
 
-  create_table "activities", :force => true do |t|
-    t.datetime "start_time"
-    t.integer  "duration"
-    t.boolean  "all_day"
-    t.string   "type"
-    t.string   "correlation_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "players", :force => true do |t|
-    t.string   "username"
+  create_table "users", :force => true do |t|
+    t.string   "login"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "personal_number"
@@ -33,28 +27,17 @@ ActiveRecord::Schema.define(:version => 20110311125908) do
     t.boolean  "active"
     t.string   "home_phone"
     t.string   "mobile_phone"
-    t.string   "email"
     t.text     "goals"
     t.boolean  "wants_reminders"
     t.integer  "reminder_time"
     t.string   "player_type_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "work_phone"
-    t.string   "picture_url"
-  end
-
-  create_table "rvsp_statuses", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "rvsps", :force => true do |t|
-    t.integer  "activity_id"
-    t.integer  "player_id"
-    t.integer  "rvsp_status_id"
-    t.string   "comment"
+    t.integer  "login_count"
+    t.integer  "failed_login_count"
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

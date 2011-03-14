@@ -1,0 +1,55 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  login: MyString
+  email: MyString
+  crypted_password: MyString
+  password_salt: MyString
+  persistence_token: MyString
+  first_name: MyString
+  last_name: MyString
+  personal_number: MyString
+  street_address: MyString
+  zip_code: MyString
+  living_area: MyString
+  active: false
+  home_phone: MyString
+  mobile_phone: MyString
+  goals: MyText
+  wants_reminders: false
+  reminder_time: 1
+  player_type_id: MyString
+  login_count: 1
+  failed_login_count: 1
+  last_request_at: 2011-03-14 21:12:12
+  current_login_at: 2011-03-14 21:12:12
+  last_login_at: 2011-03-14 21:12:12
+  current_login_ip: MyString
+  last_login_ip: MyString
+
+two:
+  login: MyString
+  email: MyString
+  crypted_password: MyString
+  password_salt: MyString
+  persistence_token: MyString
+  first_name: MyString
+  last_name: MyString
+  personal_number: MyString
+  street_address: MyString
+  zip_code: MyString
+  living_area: MyString
+  active: false
+  home_phone: MyString
+  mobile_phone: MyString
+  goals: MyText
+  wants_reminders: false
+  reminder_time: 1
+  player_type_id: MyString
+  login_count: 1
+  failed_login_count: 1
+  last_request_at: 2011-03-14 21:12:12
+  current_login_at: 2011-03-14 21:12:12
+  last_login_at: 2011-03-14 21:12:12
+  current_login_ip: MyString
+  last_login_ip: MyString

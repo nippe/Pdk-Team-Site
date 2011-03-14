@@ -11,6 +11,10 @@
     <body>
 
         <div id="main">
+          <div id="user_panel">
+            <%= link_to "Registrera", new_user_path %>
+            <%= link_to 'Login', :login %>
+          </div>
 
             <%= yield %>
 
