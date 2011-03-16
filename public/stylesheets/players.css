@@ -1,5 +1,31 @@
-.blue_background
-{
-    background: blue;
-    color: white;
+@charset
+"utf-8"
+;
+ /*Chill Web Designs - Screen Style Sheet */
+
+ /*Author : Christopher Hill */
+
+ /*Email : chris@chillwebdesigns.co.uk */
+
+
+ /*Reset */
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, address, img, b, u, i, ol, ul, li,
+form, label {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
 }
+
+body {
+    line-height: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+

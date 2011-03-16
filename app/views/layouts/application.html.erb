@@ -1,23 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Pdk Team Site</title>
-      <%= stylesheet_link_tag :all %>
-      <%= csrf_meta_tag %>
-      <%= javascript_include_tag 'jquery-1.5.1.min', 'application' %>
-      <%= stylesheet_link_tag 'themes/dot-luv/jquery-ui-1.8.10.custom' %>
-      <%= javascript_include_tag 'jquery-ui-1.8.10.custom.min' %>
-    </head>
-    <body>
+<head>
+  <title>Pdk Team Site</title>
+  <%= stylesheet_link_tag 'screen' %>
+  <%= csrf_meta_tag %>
+  <%= javascript_include_tag 'jquery-1.5.1.min', 'application' %>
+  <%= stylesheet_link_tag 'themes/dot-luv/jquery-ui-1.8.10.custom' %>
+  <%= javascript_include_tag 'jquery-ui-1.8.10.custom.min' %>
 
-        <div id="main">
-          <div id="user_panel">
-            <%= link_to "Registrera", new_user_path %>
-            <%= link_to 'Login', :login %>
-          </div>
+</head>
+<body>
 
-            <%= yield %>
+<div id="main">
 
-        </div>
-    </body>
+
+  
+  <div class="container">
+  <div id="top-right">
+      <% if current_user %>
+          [<%= current_user.first_name %> <%= current_user.last_name%>]
+          <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+          <%= link_to "Logout", :logout %>
+      <% else %>
+          <%= link_to "Registrera", new_user_path %> |
+          <%= link_to 'Login', :login %>
+      <% end %>
+    </div>
+
+  
+    <div id="menu">
+      <a href="/" title="PDK Team Site"><img src="images/logo_proposal2.png" alt="Chill Web Designs Logo" title="Chill Web Designs"/></a>
+      <ul>
+        <li><a href="/" title="Home">Home</a></li>
+        <li><a href="/users" title="Spelare">Spelare</a></li>
+        <li><a href="/activites" title="Aktiviteter">Aktiviteter</a></li>
+        <li><a href="/forums" title="Forum" class="active">Forum</a></li>
+        <!--
+        <li><a href="http://tools.chillwebdesigns.co.uk/" title="Online Tools">Online Tools</a></li>
+        <li><a href="contact.html" title="Contact">Contact</a></li>
+        -->
+      </ul>
+
+    </div>
+    <div class="line"></div>
+
+
+
+
+
+    <%= yield %>
+
+  </div>
+ </div>
+</body>
 </html>
