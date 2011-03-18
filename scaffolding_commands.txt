@@ -1,4 +1,5 @@
 REM rails generate scaffold player_type title:string
+REM Adding a change
 
 rails generate scaffold player username:string first_name:string last_name:string personal_number:string street_address:string zip_code:string living_area:string active:boolean home_phone:string mobile_phone:string email:string goals:text wants_reminders:boolean reminder_time:integer player_type_id:string
 
