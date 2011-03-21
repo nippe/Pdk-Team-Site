@@ -1,4 +1,7 @@
 class UserSessionsController < ApplicationController
+
+  skip_before_filter :require_user
+
   # GET /user_sessions
   # GET /user_sessions.xml
 #  def index
