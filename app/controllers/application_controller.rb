@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
+  before_filter :require_user
+  helper_method :current_user
   protect_from_forgery
 
-  before_filter :require_user
-  
-  helper_method :current_user
 
   private
 

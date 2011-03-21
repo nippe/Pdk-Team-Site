@@ -1,6 +1,6 @@
 class UserSessionsController < ApplicationController
 
-  skip_before_filter :require_user
+  skip_before_filter :require_user, :only => [:new, :create]  # Only allow unauthenticated actions for new and create (that is login and register)
 
   # GET /user_sessions
   # GET /user_sessions.xml
