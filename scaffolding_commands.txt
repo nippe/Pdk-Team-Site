@@ -13,6 +13,6 @@ rails g scaffold rvsp_status title:string
 
 rails g scaffold RVSP activity_id:integer player_id:integer rvsp_status_id:integer comment:string
 
-rails g scaffold wall title:string description:text user_id:integer
+rails g scaffold forum title:string description:text user_id:integer
 
-raisl g scaffold post body:text user_id:integer
+rails g scaffold forum_post body:text user_id:integer
