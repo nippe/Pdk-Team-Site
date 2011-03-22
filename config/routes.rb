@@ -1,6 +1,9 @@
 PdkTeamSite::Application.routes.draw do
+  resources :wall_posts
+
   resources :users, :user_sessions
 
+  match 'forum' => 'wall_posts#index', :as => :forum
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
 
