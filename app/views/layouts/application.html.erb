@@ -18,7 +18,7 @@
   <div class="container">
   <div id="top-right">
       <% if current_user %>
-          [<%= current_user.first_name %> <%= current_user.last_name%>]
+          [<%= current_user.full_name %>]
           <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
           <%= link_to "Logout", :logout %>
       <% else %>
@@ -34,7 +34,7 @@
         <li><a href="/" title="Home">Home</a></li>
         <li><a href="/users" title="Spelare">Spelare</a></li>
         <li><a href="/activites" title="Aktiviteter">Aktiviteter</a></li>
-        <li><a href="/forums" title="Forum" class="active">Forum</a></li>
+        <li><a href="/forum" title="Forum" class="active">Forum</a></li>
         <!--
         <li><a href="http://tools.chillwebdesigns.co.uk/" title="Online Tools">Online Tools</a></li>
         <li><a href="contact.html" title="Contact">Contact</a></li>

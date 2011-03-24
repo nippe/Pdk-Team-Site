@@ -2,7 +2,10 @@ class WallPostsController < ApplicationController
   # GET /wall_posts
   # GET /wall_posts.xml
   def index
-    @wall_posts = WallPost.all
+    @wall_posts = WallPost.find(:all, :order => "created_at DESC")
+    #@wall_posts = WallPost.all
+
+    #@wall_posts.sort_by {|wall_post| - wall_post.created_at.to_i}
 
     respond_to do |format|
       format.html # index.html.erb

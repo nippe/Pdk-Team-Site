@@ -1,4 +1,15 @@
-<h1>Listing wall_posts</h1>
+<h1>Forum</h1>
+
+<div id="forum-container">
+  <% @wall_posts.each do |wall_post| %>
+      <div class="post-div">
+        <p class="post-header"><%= wall_post.user.first_name %> says...</p>
+        <p class="post-date"><%= wall_post.created_at %></p>
+
+        <p><%= wall_post.body %></p>
+      </div>
+  <% end %>
+</div>
 
 <table>
   <tr>
@@ -9,17 +20,17 @@
     <th></th>
   </tr>
 
-<% @wall_posts.each do |wall_post| %>
-  <tr>
-    <td><%= wall_post.body %></td>
-    <td><%= wall_post.user_id %></td>
-    <td><%= link_to 'Show', wall_post %></td>
-    <td><%= link_to 'Edit', edit_wall_post_path(wall_post) %></td>
-    <td><%= link_to 'Destroy', wall_post, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% @wall_posts.each do |wall_post| %>
+      <tr>
+        <td><%= wall_post.body %></td>
+        <td><%= wall_post.user.full_name %></td>
+        <td><%= link_to 'Show', wall_post %></td>
+        <td><%= link_to 'Edit', edit_wall_post_path(wall_post) %></td>
+        <td><%= link_to 'Destroy', wall_post, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
 <%= link_to 'New Wall post', new_wall_post_path %>
