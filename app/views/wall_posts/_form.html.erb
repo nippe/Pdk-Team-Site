@@ -1,0 +1,22 @@
+<%= form_for(@wall_post) do |f| %>
+  <% if @wall_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wall_post.errors.count, "error") %> prohibited this wall_post from being saved:</h2>
+
+      <ul>
+      <% @wall_post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
