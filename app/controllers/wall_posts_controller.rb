@@ -45,6 +45,7 @@ class WallPostsController < ApplicationController
   # POST /wall_posts.xml
   def create
     @wall_post = WallPost.new(params[:wall_post])
+    @wall_post.user_id = current_user.id
 
     respond_to do |format|
       if @wall_post.save
