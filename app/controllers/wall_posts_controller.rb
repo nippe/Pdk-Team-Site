@@ -49,7 +49,7 @@ class WallPostsController < ApplicationController
 
     respond_to do |format|
       if @wall_post.save
-        format.html { redirect_to(@wall_post, :notice => 'Wall post was successfully created.') }
+        format.html { redirect_to(wall_posts_path, :notice => 'Wall post was successfully created.') }
         format.xml  { render :xml => @wall_post, :status => :created, :location => @wall_post }
       else
         format.html { render :action => "new" }
