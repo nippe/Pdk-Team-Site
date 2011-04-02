@@ -1,10 +1,16 @@
 <h1>Forum</h1>
 
+<div id="forum-new-post-link">
+    <%= link_to 'New Wall post', new_wall_post_path %>
+</div>
+
+<br />
 <div id="forum-container">
   <% @wall_posts.each do |wall_post| %>
-      <div class="post-div">
-        <p class="post-header"><%= wall_post.user.first_name %> says...</p>
-        <p class="post-date"><%= wall_post.created_at %></p>
+      <div class="post-container">
+        <span class="post-date"><%= wall_post.created_at %></span> 
+        <span class="post-header">Sa <%= wall_post.user.first_name %> att: </span>
+
 
         <p><%= wall_post.body %></p>
       </div>
@@ -13,6 +19,3 @@
 
 
 
-<br/>
-
-<%= link_to 'New Wall post', new_wall_post_path %>
