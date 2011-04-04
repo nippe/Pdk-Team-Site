@@ -1,4 +1,6 @@
 PdkTeamSite::Application.routes.draw do
+  resources :activities
+
   resources :wall_posts
 
   resources :users, :user_sessions
