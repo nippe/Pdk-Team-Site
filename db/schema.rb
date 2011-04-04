@@ -12,21 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110322131441) do
 
-  create_table "forum_posts", :force => true do |t|
-    t.integer  "forum_id"
-    t.text     "body"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "forums", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "email"

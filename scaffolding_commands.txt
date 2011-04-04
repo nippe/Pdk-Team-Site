@@ -9,7 +9,7 @@ rails g scaffold_controller user_session login:string password:string
 
 rails g scaffold activity start_time:datetime duration:integer all_day:boolean type:string correlation_id:guid
 
-rails g model controller rvsp_status title:string (körde: rails generate model rsvp_status title:string)
+rails g model controller rvsp_status title:string (körde: rails generate model rvsp_status title:string)
 
 rails g scaffold RVSP activity_id:integer player_id:integer rvsp_status_id:integer comment:string
 
