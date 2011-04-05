@@ -1,4 +1,7 @@
 PdkTeamSite::Application.routes.draw do
+  # temporary root until I have a start page
+  root :to => 'wall_posts#index'
+
   resources :activities
 
   resources :wall_posts
@@ -9,7 +12,9 @@ PdkTeamSite::Application.routes.draw do
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
 
-  
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

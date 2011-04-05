@@ -24,8 +24,8 @@
     <%= f.check_box :all_day %>
   </div>
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :activity_type %><br />
+    <%= f.collection_select :activity_type_id, @activity_types, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :correlation_id %><br />

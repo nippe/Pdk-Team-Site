@@ -1,5 +1,5 @@
 class ActivityType < ActiveRecord::Base
-  belongs_to :activity
+  has_many :activities
 
   validates_presence_of :name
 end

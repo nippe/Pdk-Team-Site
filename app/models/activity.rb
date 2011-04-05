@@ -1,5 +1,5 @@
 class Activity < ActiveRecord::Base
-  has_one :activity_type
-  has_many :rvsp
+  belongs_to :activity_type
+  has_many :rvsps
   #has_many :users, :through =>  :rvsp_users
 end

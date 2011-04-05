@@ -25,6 +25,8 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.xml
   def new
     @activity = Activity.new
+    @activity_types = ActivityType.all
+    
 
     respond_to do |format|
       format.html # new.html.erb

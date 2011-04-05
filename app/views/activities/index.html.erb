@@ -17,7 +17,7 @@
     <td><%= activity.start_time %></td>
     <td><%= activity.duration %></td>
     <td><%= activity.all_day %></td>
-    <td><%= activity.type %></td>
+    <td><%= activity.activity_type.name %></td>
     <td><%= activity.correlation_id %></td>
     <td><%= link_to 'Show', activity %></td>
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>

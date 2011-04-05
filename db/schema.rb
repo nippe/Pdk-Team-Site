@@ -10,7 +10,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110322131441) do
+ActiveRecord::Schema.define(:version => 20110402090444) do
+
+  create_table "activities", :force => true do |t|
+    t.string   "title"
+    t.datetime "start_time"
+    t.decimal  "duration",         :precision => 3, :scale => 1
+    t.boolean  "all_day"
+    t.integer  "activity_type_id"
+    t.string   "correlation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "activity_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rvsp_statuses", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rvsps", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.integer  "rvsp_status_id"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login"
