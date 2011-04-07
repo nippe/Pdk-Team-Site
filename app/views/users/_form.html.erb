@@ -68,7 +68,7 @@
     <%= f.text_area :goals %>
   </div>
   <div class="field">
-    <%= f.label :wants_reminders %><br />
+    <%= f.label :wants_reminders %> 
     <%= f.check_box :wants_reminders %>
   </div>
   <div class="field">
@@ -79,6 +79,11 @@
     <%= f.label :player_type_id %><br />
     <%= f.text_field :player_type_id %>
   </div>
+
+    <div>
+      <%= f.label :approved %>
+      <%= f.check_box :approved%>
+    </div>
 
   <div class="actions">
     <%= f.submit %>
