@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  skip_before_filter :require_user, :only => [:new, :create]  # Only allow unauthenticated actions for new and create (that is login and register)
+  
   # GET /users
   # GET /users.xml
   def index
