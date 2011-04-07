@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110402090444) do
+ActiveRecord::Schema.define(:version => 20110407153239) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20110402090444) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "approved",           :default => false
   end
 
   create_table "wall_posts", :force => true do |t|
