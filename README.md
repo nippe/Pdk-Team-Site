@@ -11,7 +11,10 @@ This is an attempt at creating a site for a sports team where the team members c
 
 ### Installation
 
-Coming soon ...
+Clone the repository
+
+####
+git clone git@github.com:nippe/Pdk-Team-Site.git
 
 ### Disclamer
 This is my first ever Ruby and Rails project so things might be totally wrong... Please tell me if you catch something
