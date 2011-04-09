@@ -13,8 +13,7 @@ This is an attempt at creating a site for a sports team where the team members c
 
 Clone the repository
 
-####
-git clone git@github.com:nippe/Pdk-Team-Site.git
+$ git clone git@github.com:nippe/Pdk-Team-Site.git
 
 ### Disclamer
 This is my first ever Ruby and Rails project so things might be totally wrong... Please tell me if you catch something
