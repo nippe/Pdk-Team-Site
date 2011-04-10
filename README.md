@@ -15,20 +15,19 @@ This is an attempt at creating a site for a sports team where the team members c
 
 #### Clone the repository
 
-$ git clone git@github.com:nippe/Pdk-Team-Site.git
-        $ git clone git@github.com:nippe/Pdk-Team-Site.git
+        git clone git@github.com:nippe/Pdk-Team-Site.git
 
 #### cd into the created dir
-$ cd Pdk-Team-Site
+        cd Pdk-Team-Site
 
 #### Install bundle
-$ bundle install
+        bundle install
 
 #### Run migrations
-$ rake db:migrate
+        rake db:migrate
 
 #### Start server
-$ rails server
+        rails server
 
 
 
