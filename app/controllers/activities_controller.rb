@@ -7,6 +7,7 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @activities }
+      format.json { render :json => @activities }
     end
   end
 
@@ -26,7 +27,7 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
     @activity_types = ActivityType.all
-    
+
 
     respond_to do |format|
       format.html # new.html.erb
