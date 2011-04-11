@@ -7,8 +7,10 @@ This is an attempt at creating a site for a sports team where the team members c
 
 
 ### Dependencies
+* It's a rails 3 app and therefore dependent on Ruby 1.9.2
 * AuthLogic for authentication - https://github.com/binarylogic/authlogic
 * jquery-rails for registering jQuery instead of Prototype - original location: https://github.com/indirect/jquery-rails but I use a patched version hwo worked on my machine: https://github.com/pgericson/jquery-rails
+* Thinking about using acl9 for roles support...
 
 
 ### Installation
