@@ -83,4 +83,19 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  # %4ying approve logic
+  # GET /users/1/approve
+  def approve
+    @user = User.find(params[:id])
+    @user.approved=true
+
+    respond_to do |format|
+      format.html{ redirect_to(:users, :notice => 'User was successfully APPROVED.') }
+
+    end
+
+  end
+
 end
