@@ -13,6 +13,8 @@ gem 'authlogic'
 #gem 'jquery-rails'
 gem 'jquery-rails', :git => 'git://github.com/pgericson/jquery-rails.git'
 
+gem "acl9"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

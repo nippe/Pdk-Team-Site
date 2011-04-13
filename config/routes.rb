@@ -6,7 +6,13 @@ PdkTeamSite::Application.routes.draw do
 
   resources :wall_posts
 
-  resources :users, :user_sessions
+  resources :users do
+    member do
+      get 'approve'
+    end
+  end
+
+  resources :user_sessions
 
   match 'forum' => 'wall_posts#index', :as => :forum
   match 'login' => 'user_sessions#new', :as => :login

@@ -83,4 +83,23 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  # %4ying approve logic
+  # GET /users/1/approve
+  def approve
+    @user = User.find(params[:id])
+    @user.approved=true
+    @user.noshow=''   # Circumbenting my own "clever" spamfilter...
+
+
+    respond_to do |format|
+      if @user.save
+       format.html{ redirect_to(:users, :notice => 'User was successfully APPROVED.') }
+      else
+        format.html { render :action => "new" }
+      end
+    end
+  end
+
 end

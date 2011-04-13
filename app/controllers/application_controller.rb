@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  rescue_from 'Acl9::AccessDenied', :with => :access_denied
+
   before_filter :require_user
   helper_method :current_user
   protect_from_forgery
@@ -23,6 +25,15 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "You must be logged in to access this page"
       redirect_to :login
       return false
+    end
+  end
+
+  def access_denied
+    if current_user
+      render :template => 'home/access_denied'
+    else
+      flash[:notice] = 'Access denied. Try to log in first.'
+      redirect_to :login
     end
   end
 

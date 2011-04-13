@@ -1,5 +1,6 @@
 <h1>Listing users</h1>
 <p id="notice"><%= notice %></p>
+
 <table>
   <tr>
     <th>Username</th>
@@ -11,11 +12,19 @@
 
 <% @users.each do |user| %>
     <tr>
-      <td><%= user.login %></td>
-      <td><%= user.email %></td>
+      <td><%=user.login %></td>
+      <td><%=  mail_to user.email %></td>
       <td><%= link_to 'Visa', user %></td>
       <td><%= link_to 'Ändra', edit_user_path(user) %></td>
       <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td>
+        <%if user.approved?%>
+            Godkänd
+        <%else %>
+            <%= link_to 'Approve!', approve_user_path(user)%>
+        <%end%>
+
+      </td>
     </tr>
 <% end %>
 </table>

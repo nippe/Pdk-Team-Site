@@ -1,4 +1,8 @@
 class WallPostsController < ApplicationController
+  access_control do
+     allow logged_in
+  end
+
   # GET /wall_posts
   # GET /wall_posts.xml
   def index
