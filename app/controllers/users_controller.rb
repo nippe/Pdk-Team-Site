@@ -90,12 +90,16 @@ class UsersController < ApplicationController
   def approve
     @user = User.find(params[:id])
     @user.approved=true
+    @user.noshow=''   # Circumbenting my own "clever" spamfilter...
+
 
     respond_to do |format|
-      format.html{ redirect_to(:users, :notice => 'User was successfully APPROVED.') }
-
+      if @user.save
+       format.html{ redirect_to(:users, :notice => 'User was successfully APPROVED.') }
+      else
+        format.html { render :action => "new" }
+      end
     end
-
   end
 
 end

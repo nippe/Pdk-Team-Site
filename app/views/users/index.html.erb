@@ -1,5 +1,6 @@
 <h1>Listing users</h1>
 <p id="notice"><%= notice %></p>
+
 <table>
   <tr>
     <th>Username</th>
@@ -20,7 +21,7 @@
         <%if user.approved?%>
             Godkänd
         <%else %>
-            <%= link_to approve_user_path(user)%>
+            <%= link_to 'Approve!', approve_user_path(user)%>
         <%end%>
 
       </td>
