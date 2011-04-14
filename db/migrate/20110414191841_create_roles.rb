@@ -8,7 +8,7 @@ class CreateRoles < ActiveRecord::Migration
     end
 
     create_table :roles_users, :id => false, :force => true do |t|
-      t.references  :users
+      t.references  :user
       t.references  :role
       t.timestamps
     end
