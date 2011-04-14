@@ -1,6 +1,6 @@
 class WallPostsController < ApplicationController
   access_control do
-     allow logged_in
+     allow :logged_in, :players
   end
 
   # GET /wall_posts

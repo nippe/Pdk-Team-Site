@@ -21,7 +21,11 @@
         <%if user.approved?%>
             Godkänd
         <%else %>
-            <%= link_to 'Approve!', approve_user_path(user)%>
+            <%if current_user.has_role? :admin%>
+                <%= link_to 'Approve!', approve_user_path(user)%>
+            <%else%>
+                Inte godkänd
+            <%end%>
         <%end%>
 
       </td>
