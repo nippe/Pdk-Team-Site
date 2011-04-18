@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
 
   skip_before_filter :require_user, :only => [:new, :create]  # Only allow unauthenticated actions for new and create (that is login and register)
-  
+
+  access_control do
+    allow :all, :to => [:new, :create]
+    allow :players, :to => [:index, :show]
+    allow :admins
+  end
+
+
   # GET /users
   # GET /users.xml
   def index
@@ -38,6 +45,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    #@roles = Role.all
   end
 
   # POST /users

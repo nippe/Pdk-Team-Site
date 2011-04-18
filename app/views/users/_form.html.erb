@@ -1,100 +1,122 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :login %><br />
-    <%= f.text_field :login %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
     <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :personal_number %><br />
-    <%= f.text_field :personal_number %>
-  </div>
-  <div class="field">
-    <%= f.label :street_address %><br />
-    <%= f.text_field :street_address %>
-  </div>
-  <div class="field">
-    <%= f.label :zip_code %><br />
-    <%= f.text_field :zip_code %>
-  </div>
-  <div class="field">
-    <%= f.label :living_area %><br />
-    <%= f.text_field :living_area %>
-  </div>
-  <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
-  </div>
-  <div class="field">
-    <%= f.label :home_phone %><br />
-    <%= f.text_field :home_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile_phone %><br />
-    <%= f.text_field :mobile_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :goals %><br />
-    <%= f.text_area :goals %>
-  </div>
-  <div class="field">
-    <%= f.label :wants_reminders %> 
-    <%= f.check_box :wants_reminders %>
-  </div>
-  <div class="field">
-    <%= f.label :reminder_time %><br />
-    <%= f.text_field :reminder_time %>
-  </div>
-  <div class="field">
-    <%= f.label :player_type_id %><br />
-    <%= f.text_field :player_type_id %>
-  </div>
+      <%= f.label :login %>
+      <br/>
+      <%= f.text_field :login %>
+    </div>
+    <div class="field">
+      <%= f.label :email %>
+      <br/>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password %>
+      <br/>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <br/>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="field">
+      <%= f.label :first_name %>
+      <br/>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %>
+      <br/>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+      <%= f.label :personal_number %>
+      <br/>
+      <%= f.text_field :personal_number %>
+    </div>
+    <div class="field">
+      <%= f.label :street_address %>
+      <br/>
+      <%= f.text_field :street_address %>
+    </div>
+    <div class="field">
+      <%= f.label :zip_code %>
+      <br/>
+      <%= f.text_field :zip_code %>
+    </div>
+    <div class="field">
+      <%= f.label :living_area %>
+      <br/>
+      <%= f.text_field :living_area %>
+    </div>
+    <div class="field">
+      <%= f.label :active %>
+      <br/>
+      <%= f.check_box :active %>
+    </div>
+    <div class="field">
+      <%= f.label :home_phone %>
+      <br/>
+      <%= f.text_field :home_phone %>
+    </div>
+    <div class="field">
+      <%= f.label :mobile_phone %>
+      <br/>
+      <%= f.text_field :mobile_phone %>
+    </div>
+    <div class="field">
+      <%= f.label :goals %>
+      <br/>
+      <%= f.text_area :goals %>
+    </div>
+    <div class="field">
+      <%= f.label :wants_reminders %>
+      <%= f.check_box :wants_reminders %>
+    </div>
+    <div class="field">
+      <%= f.label :reminder_time %>
+      <br/>
+      <%= f.text_field :reminder_time %>
+    </div>
+    <div class="field">
+      <%= f.label :player_type_id %>
+      <br/>
+      <%= f.text_field :player_type_id %>
+    </div>
 
     <%# Hiding it form the registration form%>
-    <%if current_user%>
-        <% # TODO: Only accesable for admins %>
+    <% if current_user.has_role? :admin %>
+        <% # TODO: Only accesable for admins  %>
 
-      <div>
-      <%= f.label :approved %>
-      <%= f.check_box :approved%>
-    </div>
-    <%end%>
+        <div>
+          <%= f.label :approved %>
+          <%= f.check_box :approved %>
+        </div>
+
+        <div>
+          <% roles_array = Role.all.map { |role| [role.name, role.id]} %>
+          <%= f.label :roles %>
+           <%= f.select :roles, options_for_select(roles_array), :multiple => true, :size => 3 %>
+        </div>
+    <% end %>
     <div style="width: 1px; height: 1px; overflow: hidden;">
       Please leave following field blank:
       <%= f.text_area :noshow %>
 
     </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
