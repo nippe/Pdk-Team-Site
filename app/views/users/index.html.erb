@@ -8,6 +8,8 @@
     <th></th>
     <th></th>
     <th></th>
+    <th>Godkännandestatus</th>
+    <th>Roller</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -21,13 +23,19 @@
         <%if user.approved?%>
             Godkänd
         <%else %>
-            <%if current_user.has_role? :admin%>
+            <%if current_user.has_role? :admin %>
                 <%= link_to 'Approve!', approve_user_path(user)%>
             <%else%>
                 Inte godkänd
             <%end%>
         <%end%>
 
+      </td>
+
+      <td>
+        <% user.roles.each {|r| %>
+            <%= r.name %>
+        <% } %>
       </td>
     </tr>
 <% end %>
