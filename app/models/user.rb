@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   acts_as_authentic
   acts_as_authorization_subject :association_name => :roles
   
-  has_many :rvsp
+  has_many :rvsps
+
   validates_uniqueness_of :login
   validates_uniqueness_of :email
 

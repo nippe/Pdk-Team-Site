@@ -1,0 +1,35 @@
+
+
+user_controller
+---------------
+
+  # PUT /users/1
+  # PUT /users/1.xml
+  
+   role_ids = params[:roles]
+    logger.info role_ids
+    @roles_to_assign = Role.find_all_by_id(role_ids)  # Role.find_all_by_id(params[:roles])
+    params[:user].delete(:roles)
+
+    #Remove all roles from user
+    #@user.has_no_roles!
+
+    #Add selected roles to user
+    @roles_to_assign.each do |r|
+      @user.has_role! r
+    end
+
+    @user.save
+    
+    
+    _form
+    _----
+    
+    <div>
+          <% roles_array = Role.all.map { |role| [role.name, role.id]} %>
+          <%= f.label :roles %>
+           <%= f.select :roles, options_for_select(roles_array), {:include_blank => false}, {:multiple => true, :size => 3 } %>
+        </div>
+
+
+
