@@ -1,4 +1,4 @@
-### About a
+### About
 This is an attempt at creating a site for a sports team where the team members can log in and:
 * Read and post on a wall
 * See upcoming events (games, workouts, ...)
