@@ -1,4 +1,4 @@
-### About
+### About a
 This is an attempt at creating a site for a sports team where the team members can log in and:
 * Read and post on a wall
 * See upcoming events (games, workouts, ...)
@@ -10,7 +10,7 @@ This is an attempt at creating a site for a sports team where the team members c
 * It's a rails 3 app and therefore dependent on Ruby 1.9.2
 * AuthLogic for authentication - https://github.com/binarylogic/authlogic
 * jquery-rails for registering jQuery instead of Prototype - original location: https://github.com/indirect/jquery-rails but I use a patched version hwo worked on my machine: https://github.com/pgericson/jquery-rails
-* Thinking about using acl9 for roles support...
+* acl9 for roles support, https://github.com/be9/acl9
 
 
 ### Installation
@@ -30,6 +30,16 @@ This is an attempt at creating a site for a sports team where the team members c
 
 #### Start server
         rails server
+
+#### Create a user
+This will be baked into a migration later on, but for now its manual. Hit the site and register a user. Start the rails consloe and do the following:
+        > rails console
+        > user = User.first
+        > user.noshow = ""
+        > user.approved=true
+        > user.save
+        > user.has_role! :admin
+
 
 
 
