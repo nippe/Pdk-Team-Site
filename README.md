@@ -33,12 +33,15 @@ This is an attempt at creating a site for a sports team where the team members c
 
 #### Create a user
 This will be baked into a migration later on, but for now its manual. Hit the site and register a user. Start the rails consloe and do the following:
+
         > rails console
         > user = User.first
         > user.noshow = ""
         > user.approved=true
         > user.save
         > user.has_role! :admin
+
+        
 
 
 
