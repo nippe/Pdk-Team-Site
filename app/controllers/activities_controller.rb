@@ -38,6 +38,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/1/edit
   def edit
     @activity = Activity.find(params[:id])
+    @activity_types = ActivityType.all
   end
 
   # POST /activities
