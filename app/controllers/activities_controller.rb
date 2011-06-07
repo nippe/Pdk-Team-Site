@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.xml
   def index
-    @activities = Activity.all
+    @activities = Activity.where("start_time >= ?", Date.today).order("start_time ASC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,6 +48,15 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
+
+        User.all().each do |user|
+          rvsp = @activity.rvsps.new()
+          rvsp.user_id = user.id
+          rvsp.rvsp_status_id = 4 #TODO: Maybe use enum instead - find out how in Ruby
+          rvsp.save()
+        end
+
+
         format.html { redirect_to(@activity, :notice => 'Activity was successfully created.') }
         format.xml  { render :xml => @activity, :status => :created, :location => @activity }
       else

@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  time:
+    formats:
+      workout_start_time: "%Y%m%d %H:%M"

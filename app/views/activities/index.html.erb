@@ -7,6 +7,7 @@
     <th>All day</th>
     <th>Type</th>
     <th>Correlation</th>
+    <th>RSVP</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,11 +15,12 @@
 
 <% @activities.each do |activity| %>
   <tr>
-    <td><%= activity.start_time %></td>
+    <td><nobr><%= activity.start_time.strftime("%Y-%m-%d %H:%M") %></nobr></td>
     <td><%= activity.duration %></td>
     <td><%= activity.all_day %></td>
     <td><%= activity.activity_type.name %></td>
     <td><%= activity.correlation_id %></td>
+    <td>[<%= activity.attending.count %> / <%= activity.maybe_coming.count %> / <%= activity.not_coming.count %> / <%= activity.no_answer.count %>]</td>
     <td><%= link_to 'Show', activity %></td>
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
     <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>
