@@ -49,6 +49,8 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       if @activity.save
 
+        #TODO: Only add RVSPs for the people invited (not implemented yet)
+        
         User.all().each do |user|
           rvsp = @activity.rvsps.new()
           rvsp.user_id = user.id

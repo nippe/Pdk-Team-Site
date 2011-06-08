@@ -1,4 +1,7 @@
-<h1>Listing activities</h1>
+<h1>Händelser</h1>
+
+
+
 
 <table>
   <tr>
@@ -18,9 +21,9 @@
     <td><nobr><%= activity.start_time.strftime("%Y-%m-%d %H:%M") %></nobr></td>
     <td><%= activity.duration %></td>
     <td><%= activity.all_day %></td>
-    <td><%= activity.activity_type.name %></td>
+    <td><%= activity.activity_type.name  %></td>
     <td><%= activity.correlation_id %></td>
-    <td>[<%= activity.attending.count %> / <%= activity.maybe_coming.count %> / <%= activity.not_coming.count %> / <%= activity.no_answer.count %>]</td>
+    <td><%= image_tag 'indicators/shiny_round_Green.png'%> <%= activity.attending.count %> <%= image_tag 'indicators/shiny_round_yellow.png'%> <%= activity.maybe_coming.count %> <%= image_tag 'indicators/shiny_round_Red.png'%> <%= activity.not_coming.count %> <%= image_tag 'indicators/shiny_round_gray.png'%> <%= activity.no_answer.count %></td>
     <td><%= link_to 'Show', activity %></td>
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
     <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>
