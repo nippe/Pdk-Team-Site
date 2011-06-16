@@ -24,7 +24,7 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="event-calendar" version="0" bound="GREATER_OR_EQUAL" lib="evnet_calendar" git="false" path="false" doRequire="true" />
+        <dependency name="event-calendar" version="0" bound="GREATER_OR_EQUAL" lib="event_calendar" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
     </requirement>
