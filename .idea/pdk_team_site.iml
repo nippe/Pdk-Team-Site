@@ -24,7 +24,13 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="jquery-rails" version="0" bound="GREATER_OR_EQUAL" git="true" path="false" doRequire="true" />
+        <dependency name="event-calendar" version="0" bound="GREATER_OR_EQUAL" lib="evnet_calendar" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="jquery-rails" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
     </requirement>

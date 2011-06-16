@@ -15,6 +15,9 @@ gem 'jquery-rails'#, :git => 'git://github.com/pgericson/jquery-rails.git'
 
 gem "acl9"
 
+gem 'event-calendar', :require => 'evnet_calendar'
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
