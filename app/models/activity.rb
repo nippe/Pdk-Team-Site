@@ -3,6 +3,7 @@ class Activity < ActiveRecord::Base
   has_many :rvsps
   #has_many :users, :through =>  :rvsp_users
 
+  has_event_calendar
 
   def attending
      rvsps.where("activity_id = ? AND rvsp_status_id = ?", self.id, 1 )
@@ -19,5 +20,12 @@ class Activity < ActiveRecord::Base
   def no_answer
     rvsps.where("activity_id = ? AND rvsp_status_id = ?", self.id, 4 )
   end
-  
+
+  def duration
+    1
+  end
+
+  def name
+    activity_type.name
+  end
 end

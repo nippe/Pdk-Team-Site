@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.xml
   def index
-    @activities = Activity.where("start_time >= ?", Date.today).order("start_time ASC")
+    @activities = Activity.where("start_at >= ?", Date.today).order("start_at ASC")
 
     respond_to do |format|
       format.html # index.html.erb

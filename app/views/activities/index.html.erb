@@ -18,7 +18,7 @@
 
 <% @activities.each do |activity| %>
   <tr>
-    <td><nobr><%= activity.start_time.strftime("%H:%M %Y-%m-%d") %></nobr></td>
+    <td><nobr><%= activity.start_at.strftime("%H:%M %Y-%m-%d") %></nobr></td>
     <td><%= activity.duration %></td>
     <td><%= activity.all_day %></td>
     <td><%= activity.activity_type.name  %></td>

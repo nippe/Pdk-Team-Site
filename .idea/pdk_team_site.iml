@@ -102,6 +102,12 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] rake (v0.9.2, C:/Ruby192/lib/ruby/gems/1.9.1/gems/rake-0.9.2)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] activemodel (v3.0.9, C:/Ruby192/lib/ruby/gems/1.9.1/gems/activemodel-3.0.9)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] railties (v3.0.9, C:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.9)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rails (v3.0.9, C:/Ruby192/lib/ruby/gems/1.9.1/gems/rails-3.0.9)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activerecord (v3.0.9, C:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.9)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activeresource (v3.0.9, C:/Ruby192/lib/ruby/gems/1.9.1/gems/activeresource-3.0.9)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.10, C:/Ruby192/lib/ruby/gems/1.9.1/gems/arel-2.0.10)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] actionmailer (v3.0.9, C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionmailer-3.0.9)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] event-calendar (v2.3.3, C:/Ruby192/lib/ruby/gems/1.9.1/gems/event-calendar-2.3.3)" level="application" />
   </component>
 </module>
 

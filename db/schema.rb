@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(:version => 20110616205704) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
-    t.datetime "start_time"
-    t.decimal  "duration",         :precision => 3, :scale => 1
-    t.boolean  "all_day"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean  "all_day",          :default => false
     t.integer  "activity_type_id"
     t.string   "correlation_id"
     t.datetime "created_at"
