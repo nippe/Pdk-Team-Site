@@ -23,7 +23,48 @@
     <td><%= activity.all_day %></td>
     <td><%= activity.activity_type.name  %></td>
     <td><%= activity.correlation_id %></td>
-    <td><%= image_tag 'indicators/shiny_round_Green.png'%> <%= activity.attending.count %> <%= image_tag 'indicators/shiny_round_yellow.png', :alt => 'Kanske'%> <%= activity.maybe_coming.count %> <%= image_tag 'indicators/shiny_round_Red.png'%> <%= activity.not_coming.count %> <%= image_tag 'indicators/shiny_round_gray.png'%> <%= activity.no_answer.count %></td>
+    <td>
+      <% if activity.is_user_attending?(current_user) %>
+        <b>
+      <% else %>
+         <a href="<%= "/activities/#{activity.id}/rvsps/attend/#{current_user.id}"  %>">
+      <% end %>
+      <%= image_tag 'indicators/shiny_round_Green.png'%> <%= activity.attending.count %>
+      <% if activity.is_user_attending?(current_user) %>
+        </b>
+      <% else %>
+        </a>
+      <% end %>
+
+
+      <% if activity.is_user_maybe_attending?(current_user)%>
+        <b>
+      <% else %>
+         <a href="<%= "/activities/#{activity.id}/rvsps/maybe/#{current_user.id}"  %>">
+      <% end %>
+      <%= image_tag 'indicators/shiny_round_yellow.png', :alt => 'Kanske'%> <%= activity.maybe_coming.count %>
+      <% if activity.is_user_maybe_attending?(current_user) %>
+        </b>
+      <% else %>
+        </a>
+      <% end %>
+
+
+      <% if activity.is_user_not_attending?(current_user) %>
+        <b>
+      <% else %>
+         <a href="<%= "/activities/#{activity.id}/rvsps/not/#{current_user.id}"  %>">
+      <% end %>
+      <%= image_tag 'indicators/shiny_round_Red.png'%> <%= activity.not_coming.count %>
+      <% if activity.is_user_not_attending?(current_user) %>
+        </b>
+      <% else %>
+        </a>
+      <% end %>
+
+
+      <%= image_tag 'indicators/shiny_round_gray.png'%> <%= activity.no_answer.count %>
+    </td>
     <td><%= link_to 'Show', activity %></td>
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
     <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>

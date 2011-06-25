@@ -1,4 +1,13 @@
 PdkTeamSite::Application.routes.draw do
+  get "rvsps/index"
+
+  get "rvsps/attend"
+
+  get "rvsps/maybe"
+
+  get "rvsps/not"
+
+
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   # Didn't get the polymorphic_link in calendar_helper.rb to work so I solved it like this
@@ -7,7 +16,20 @@ PdkTeamSite::Application.routes.draw do
   # temporary root until I have a start page
   root :to => 'wall_posts#index'
 
-  resources :activities
+
+  # Trying to hook up rvsps "under" activities
+  match "profile" => "users#show"
+  match '/activities/:activity_id/rvsps/attend/:user_id' => 'rvsps#attend'
+  match '/activities/:activity_id/rvsps/maybe/:user_id' => 'rvsps#maybe'
+  match '/activities/:activity_id/rvsps/not/:user_id' => 'rvsps#not'
+  match '/activities/:activity_id/rvsps/index/' => 'rvsps#index' 
+  #match '/:controller/:activity_id/rvsps/:action/:user_id' => 'rvsps#index' # mappar tydligen bara mot show action->/:controller/:activity_id/rvsps/:action/:user_id(.:format) {:controller=>"rvsps", :action=>"index"} -> http://localhost:3000/activities/2/rvsps/index/2
+  #match '/:controller/:activity_id/rvsps/:action/:user_id' => 'rvsps#index'
+  #match '/activities(/:activity_id)/rvsps(/:action)'
+  resources :activities do
+    resources :rvsps
+  end
+
   resources :wall_posts
 
   resources :users do
