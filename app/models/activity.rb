@@ -43,5 +43,9 @@ class Activity < ActiveRecord::Base
     self.rvsps.find_by_user_id(user.id).rvsp_status_id == 2
   end
 
+  def display_date
+    self.start_at.today?
+  end
+
 
 end

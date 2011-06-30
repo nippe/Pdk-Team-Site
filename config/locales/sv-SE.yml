@@ -22,3 +22,5 @@ sv:
           default: "%a, %e %b %Y %H:%M:%S %z"
           long: "%e %B %Y %H:%M"
           short: "%e %b %H:%M"
+          activitydate: "%Y-%m-%d"
+          activitytime: "%H:%M"

@@ -1,10 +1,8 @@
-<h1>Händelser</h1>
+<h1>Aktiviteter</h1>
 
-
-
-
-<table>
+<table width="100%">
   <tr>
+    <th></th>
     <th>Start time</th>
     <th>Duration</th>
     <th>All day</th>
@@ -12,14 +10,21 @@
     <th>Correlation</th>
     <th>RSVP</th>
     <th></th>
-    <th></th>
+    <th></th>o
     <th></th>
   </tr>
 
 <% @activities.each do |activity| %>
   <tr>
-    <td><nobr><%= activity.start_at.strftime("%H:%M %Y-%m-%d") %></nobr></td>
-    <td><%= activity.duration %></td>
+    <td class="activity-type">
+      <% if activity.activity_type.id == 1%>
+        <%= image_tag 'indicators/activity-workout.png', :alt => 'Träning'  %>
+      <% elsif activity.activity_type.id == 2 %>
+          <%= image_tag 'indicators/activity-game.png', :alt => 'Träning'  %>
+      <% end %>
+    </td>
+    <td class="activity-time"><nobr><strong><%= activity.start_at.strftime("%H:%M") %></strong> <%= activity.display_date  %> <%= activity.start_at.strftime("%Y-%m-%d") %></nobr></td>
+    <td><%= ((activity.end_at - activity.start_at) / 3600).round(1)  %></td>
     <td><%= activity.all_day %></td>
     <td><%= activity.activity_type.name  %></td>
     <td><%= activity.correlation_id %></td>
@@ -36,7 +41,7 @@
         </a>
       <% end %>
 
-
+        &nbsp;
       <% if activity.is_user_maybe_attending?(current_user)%>
         <b>
       <% else %>
@@ -49,7 +54,7 @@
         </a>
       <% end %>
 
-
+        &nbsp;
       <% if activity.is_user_not_attending?(current_user) %>
         <b>
       <% else %>
@@ -63,7 +68,7 @@
       <% end %>
 
 
-      <%= image_tag 'indicators/shiny_round_gray.png'%> <%= activity.no_answer.count %>
+      &nbsp;<%= image_tag 'indicators/shiny_round_gray.png'%> <%= activity.no_answer.count %>
     </td>
     <td><%= link_to 'Show', activity %></td>
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
