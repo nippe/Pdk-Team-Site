@@ -1,4 +1,7 @@
 class Activity < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+  #require "mathn"
+  
   belongs_to :activity_type
   has_many :rvsps
   #has_many :users, :through =>  :rvsp_users
@@ -19,6 +22,10 @@ class Activity < ActiveRecord::Base
 
   def no_answer
     rvsps.where("activity_id = ? AND rvsp_status_id = ?", self.id, 4 )
+  end
+
+  def all_invitations
+    rvsps.where("activity_id = ?", self.id)
   end
 
   #TODO: Add calculation for duration
@@ -44,7 +51,14 @@ class Activity < ActiveRecord::Base
   end
 
   def display_date
-    self.start_at.today?
+    if self.start_at.today?
+      "Idag"
+    elsif self.start_at.day == Time.now.tomorrow.day
+      "I morgon"
+    else
+      self.start_at.strftime("%Y-%m-%d")
+    end
+
   end
 
 
