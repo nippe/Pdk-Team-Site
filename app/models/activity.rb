@@ -61,5 +61,17 @@ class Activity < ActiveRecord::Base
 
   end
 
+  def user_status(user)
+    if is_user_attending?(user)
+      "Kommer"
+    elsif is_user_maybe_attending?(user)
+      "Kanske kommer"
+    elsif is_user_not_attending?(user)
+      "Kommer inte"
+    else
+      "har inte svarat"
+    end
+  end
+
 
 end

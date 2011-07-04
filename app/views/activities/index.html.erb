@@ -1,5 +1,17 @@
 <%= javascript_include_tag 'activities-ui' %>
-
+<%
+             def color_class(activity)
+                 if activity.is_user_attending?(current_user)
+                     "background-green"
+                 elsif activity.is_user_maybe_attending?(current_user)
+                     "background-yellow"
+                 elsif activity.is_user_not_attending?(current_user)
+                     "background-red"
+                 else
+                     "background-grey"
+                 end
+             end
+          %>
 <h1>Aktiviteter</h1>
 
 <table width="100%" class="activites-table">
@@ -43,48 +55,15 @@
         </td>
 
         <td>
-          <% if activity.is_user_attending?(current_user) %>
-              <b>
-          <% else %>
-              <a href="<%= "/activities/#{activity.id}/rvsps/attend/#{current_user.id}" %>">
-          <% end %>
-          <%= image_tag 'indicators/shiny_round_Green.png', :border => 'none' %> <%= activity.attending.count %>
-          <% if activity.is_user_attending?(current_user) %>
-              </b>
-          <% else %>
-              </a>
-          <% end %>
 
-          &nbsp;
-          <% if activity.is_user_maybe_attending?(current_user) %>
-              <b>
-          <% else %>
-              <a href="<%= "/activities/#{activity.id}/rvsps/maybe/#{current_user.id}" %>">
-          <% end %>
-          <%= image_tag 'indicators/shiny_round_yellow.png', :alt => 'Kanske', :border => 'none' %> <%= activity.maybe_coming.count %>
-          <% if activity.is_user_maybe_attending?(current_user) %>
-              </b>
-          <% else %>
-              </a>
-          <% end %>
-
-          &nbsp;
-          <% if activity.is_user_not_attending?(current_user) %>
-              <b>
-          <% else %>
-              <a href="<%= "/activities/#{activity.id}/rvsps/not/#{current_user.id}" %>">
-          <% end %>
-          <%= image_tag 'indicators/shiny_round_Red.png', :border => 'none' %> <%= activity.not_coming.count %>
-          <% if activity.is_user_not_attending?(current_user) %>
-              </b>
-          <% else %>
-              </a>
-          <% end %>
-
-
-          &nbsp;
-          <%= image_tag 'indicators/shiny_round_gray.png', :border => 'none' %>
-          <%= activity.no_answer.count %>
+          <select id="rvsp-<%= activity.id.to_s %>" class="rvsp-dropdown <%= color_class(activity) %>">
+            <option value="1" <%= 'SELECTED' if activity.is_user_attending?(current_user) %>>Kommer</option>
+            <option value="2" <%= 'SELECTED' if activity.is_user_maybe_attending?(current_user) %>>Kanske</option>
+            <option value="3" <%= 'SELECTED' if activity.is_user_not_attending?(current_user) %>>Kommer inte</option>
+            <option value="4" DISABLED <%= 'SELECTED' if !activity.is_user_attending?(current_user) && !activity.is_user_maybe_attending?(current_user) && !activity.is_user_not_attending?(current_user) %>>Ej
+              svarat
+            </option>
+          </select>
         </td>
 
         <td>

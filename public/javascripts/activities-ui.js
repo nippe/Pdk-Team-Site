@@ -24,3 +24,23 @@ $(document).ready(
                     );
         }
         );
+
+
+
+$(document).ready(
+    function() {
+        $(".rvsp-dropdown").change(
+            function() {
+                if($(this).val() == 1) {
+                    $(this).removeClass('background-yellow').removeClass('background-red').removeClass('background-grey').addClass('background-green');
+                }
+                else if($(this).val() == 2){
+                    $(this).removeClass('background-green').removeClass('background-red').removeClass('background-grey').addClass('background-yellow');
+                }
+                else{
+                    $(this).removeClass('background-green').removeClass('background-yellow').removeClass('background-grey').addClass('background-red');
+                }
+            }
+        );
+    }
+);
