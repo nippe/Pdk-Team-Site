@@ -1,4 +1,7 @@
 <%= javascript_include_tag 'activities-ui' %>
+
+<%= javascript_tag "var userId = " + current_user.id.to_s + ";" %>
+
 <%
              def color_class(activity)
                  if activity.is_user_attending?(current_user)
@@ -27,7 +30,7 @@
   </tr>
 
   <% @activities.each do |activity| %>
-      <tr>
+      <tr class="row-for-activity-<%= activity.id.to_s  %>">
         <td class="activity-type">
           <% if activity.activity_type.id == 1 %>
               <%= image_tag 'indicators/activity-workout.png', :alt => 'Träning' %>
@@ -68,10 +71,10 @@
 
         <td>
           <div id="bars-<%= activity.id.to_s %>" class="bars-container">
-            <%= image_tag 'indicators/green-bar.png', :height => ((activity.attending.count.to_f / activity.all_invitations.count.to_f) * 14).round, :class => "bar-decoration" %>
-            <%= image_tag 'indicators/yellow-bar.png', :height => (activity.maybe_coming.count.to_f / activity.all_invitations.count.to_f * 14).round, :class => "bar-decoration" %>
-            <%= image_tag 'indicators/red-bar.png', :height => (activity.not_coming.count.to_f / activity.all_invitations.count.to_f * 14).round, :class => "bar-decoration" %>
-            <%= image_tag 'indicators/grey-bar.png', :height => (activity.no_answer.count.to_f / activity.all_invitations.count.to_f * 14).round, :class => "bar-decoration" %>
+            <%= image_tag 'indicators/green-bar.png', :height => ((activity.attending.count.to_f / activity.all_invitations.count.to_f) * 14).round, :class => "bar-decoration nav-green-bar" %>
+            <%= image_tag 'indicators/yellow-bar.png', :height => (activity.maybe_coming.count.to_f / activity.all_invitations.count.to_f * 14).round, :class => "bar-decoration nav-yellow-bar" %>
+            <%= image_tag 'indicators/red-bar.png', :height => (activity.not_coming.count.to_f / activity.all_invitations.count.to_f * 14).round, :class => "bar-decoration nav-red-bar" %>
+            <%= image_tag 'indicators/grey-bar.png', :height => (activity.no_answer.count.to_f / activity.all_invitations.count.to_f * 14).round, :class => "bar-decoration nav-grey-bar" %>
             <%= image_tag 'indicators/arrow_state_blue_expanded.png', :align => 'right', :class => 'arrow-collapsed' %>
             <div style="display: none;">
               <br/>
