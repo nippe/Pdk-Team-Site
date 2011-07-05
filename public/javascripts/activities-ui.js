@@ -58,7 +58,7 @@ $(document).ready(
                                 function(json) {
                                     var barMaxHeight = 14;
                                     var totalCount = json.activity_summary.attending + json.activity_summary.maybe + json.activity_summary.not_comming + json.activity_summary.no_answer;
-                                    var greenHeight = Math.round(((json.activity_summary.attending / totalCount) * barMaxHeight));
+                                    var greenHeight = Math.round(((json.activity_summary.attending / totalCount) * 14));
                                     rvspElementRef.parent().parent().find('.nav-green-bar').eq(0).attr('height', greenHeight);
 
                                     var yellowHeight = Math.round((json.activity_summary.maybe / totalCount) * barMaxHeight);
@@ -86,3 +86,5 @@ $(document).ready(
                     );
         }
         );
+    }
+);
