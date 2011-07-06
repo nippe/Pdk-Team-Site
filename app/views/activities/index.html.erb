@@ -78,13 +78,13 @@
             <%= image_tag 'indicators/arrow_state_blue_expanded.png', :align => 'right', :class => 'arrow-collapsed' %>
             <div class="activity-attendance-detail" style="display: none;">
               <br/>
-              <img src="/images/indicators/add_small.png" alt=""/> <%= activity.attending.count.to_s %>
+              <img src="/images/indicators/add_small.png" alt=""/> <strong><%= activity.attending.count.to_s %></strong>
               kommer<br/>
-              <img alt="Kanske" border="none" src="/images/indicators/warning_triangle_small.png"/> <%= activity.maybe_coming.count.to_s %>
+              <img alt="Kanske" border="none" src="/images/indicators/warning_triangle_small.png"/> <strong><%= activity.maybe_coming.count.to_s %></strong>
               kanske<br/>
-              <img alt="Shiny_round_red" border="none" src="/images/indicators/remove_minus_sign_small.png"/> <%= activity.not_coming.count.to_s %>
+              <img alt="Shiny_round_red" border="none" src="/images/indicators/remove_minus_sign_small.png"/> <strong><%= activity.not_coming.count.to_s %></strong>
               kommer inte<br/>
-              <img alt="Shiny_round_gray" border="none" src="/images/indicators/error_small.png"/> <%= activity.no_answer.count.to_s %>
+              <img alt="Shiny_round_gray" border="none" src="/images/indicators/error_small.png"/> <strong><%= activity.no_answer.count.to_s %></strong>
               inte svarat
             </div>
           </div>
