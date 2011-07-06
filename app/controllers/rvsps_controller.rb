@@ -28,24 +28,36 @@ class RvspsController < ApplicationController
     end
   end
 
+
   def maybe
     rvsp = Rvsp.find_by_activity_id_and_user_id(params[:activity_id], params[:user_id])
     rvsp.rvsp_status_id = 3
+    activity = Activity.find_by_id(params[:activity_id])
 
     respond_to do |format|
       if rvsp.save
-        format.json { render :json => rvsp.activity, :json => rvsp.activity.rvsps } #TODO: Fix so this returns a summary of rvsps for the activity
+        format.json { render :json => generate_json(activity) }
         format.html { redirect_to(activities_path, :notice => "Du er anmld till trningen") }
+      else
+         format.json { render :json => @rvsp.errors, :status => :unprocessable_entity }
       end
     end
   end
 
+  
+
   def not
     rvsp = Rvsp.find_by_activity_id_and_user_id(params[:activity_id], params[:user_id])
     rvsp.rvsp_status_id = 2
+    activity = Activity.find_by_id(params[:activity_id])
 
-    if rvsp.save
-      redirect_to(:activities, :notice => "Du er anmld till trningen")
+    respond_to do |format|
+      if rvsp.save
+        format.json { render :json => generate_json(activity) }
+        format.html{ redirect_to(:activities, :notice => "Du er anmld till trningen")}
+      else
+        format.json { render :json => @rvsp.errors, :status => :unprocessable_entity }        
+      end
     end
   end
 

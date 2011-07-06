@@ -70,6 +70,16 @@ $(document).ready(
                                     var greyHeight = Math.round((json.activity_summary.no_answer / totalCount) * barMaxHeight);
                                     rvspElementRef.parent().parent().find('.nav-grey-bar').eq(0).attr('height', greyHeight);
 
+                                    rvspElementRef.parent().parent().find('.activity-attendance-detail').eq(0).html("<br \/>" +
+                                        "<img src=\"\/images\/indicators\/shiny_round_green.png\" alt=\"\"\/> " +
+                                        json.activity_summary.attending + " kommer<br\/>" +
+                                        "<img alt=\"Kanske\" border=\"none\" src=\"\/images\/indicators\/shiny_round_yellow.png\"\/> " +
+                                        json.activity_summary.maybe + " kanske<br\/>" +
+                                        "<img alt=\"Shiny_round_red\" border=\"none\" src=\"\/images\/indicators\/shiny_round_Red.png\"\/> " +
+                                        json.activity_summary.not_comming+ " kommer inte<br\/>" +
+                                        "<img alt=\"Shiny_round_gray\" border=\"none\" src=\"\/images\/indicators\/shiny_round_gray.png\"\/> " +
+                                        json.activity_summary.no_answer + " inte svarat");
+
                                 }
                                 );
                     }
