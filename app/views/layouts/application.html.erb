@@ -29,13 +29,14 @@
 
   
     <div id="menu">
+      <%=	request.path  %>
       <a href="/" title="PDK Team Site"><img src="/images/logo.png" alt="PDK Team Site" title="PDK Team Site"/></a>
       <ul>
-        <li><a href="/" title="Home">Home</a></li>
-        <li><a href="/users" title="Spelare">Spelare</a></li>
-        <li><a href="/activities" title="Aktiviteter">Aktiviteter</a></li>
-        <li><a href="/forum" title="Forum" class="active">Forum</a></li>
-        <li><a href="/calendar" title="Kalender">Kalender</a></li>
+        <li><a href="/" title="Home"  class="<%= 'active' if request.path.eql?('/') %>">Home</a></li>
+        <li><a href="/users" title="Spelare" class="<%= 'active' if request.path.eql?('/users') %>">Spelare</a></li>
+        <li><a href="/activities" title="Aktiviteter"  class="<%= 'active' if request.path.eql?('/activities') %>">Aktiviteter</a></li>
+        <li><a href="/forum" title="Forum" class="<%= 'active' if request.path.eql?('/forum') %>">Forum</a></li>
+        <li><a href="/calendar" title="Kalender" class="<%= 'active' if request.path.eql?('/calendar') %>">Kalender</a></li>
         <!--
         <li><a href="http://tools.chillwebdesigns.co.uk/" title="Online Tools">Online Tools</a></li>
         <li><a href="contact.html" title="Contact">Contact</a></li>
