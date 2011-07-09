@@ -95,30 +95,26 @@
       <br/>
       <%= f.text_field :player_type_id %>
     </div>
-
-    <%# Hiding it form the registration form%>
-    <% if current_user.has_role? :admin %>
-        <% # TODO: Only accesable for admins  %>
-
-        <div>
-          <%= f.label :approved %>
-          <%= f.check_box :approved %>
-        </div>
-
-
-
-        <div class="field">
-          Roles
-          <% for role in Role.find(:all) %>
+    <% if current_user then %>
+        <%# Hiding it form the registration form%>
+        <% if current_user.has_role? :admin %>
+            <% # TODO: Only accesable for admins  %>
             <div>
-               <%= check_box_tag "user[role_ids][]", role.id, @user.has_role?( role.name ) %>
-               <%= role.name %>
+              <%= f.label :approved %>
+              <%= f.check_box :approved %>
             </div>
-
-          <% end %>
-        </div>
-
+            <div class="field">
+              Roles
+              <% for role in Role.find(:all) %>
+                <div>
+                   <%= check_box_tag "user[role_ids][]", role.id, @user.has_role?( role.name ) %>
+                   <%= role.name %>
+                </div>
+              <% end %>
+            </div>
+        <% end %>
     <% end %>
+
     <div style="width: 1px; height: 1px; overflow: hidden;">
       Please leave following field blank:
       <%= f.text_area :noshow %>

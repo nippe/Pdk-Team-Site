@@ -4,7 +4,7 @@
   <title>Pdk Team Site</title>
   <%= stylesheet_link_tag 'screen' %>
   <%= csrf_meta_tag %>
-  <%= javascript_include_tag 'jquery-1.5.1.min', 'application' %>
+  <%= javascript_include_tag 'jquery.min', 'application' %>
   <%= stylesheet_link_tag 'themes/dot-luv/jquery-ui-1.8.10.custom' %>
   <%= javascript_include_tag 'jquery-ui-1.8.10.custom.min' %>
 
@@ -29,14 +29,13 @@
 
   
     <div id="menu">
-      <%=	request.path  %>
       <a href="/" title="PDK Team Site"><img src="/images/logo.png" alt="PDK Team Site" title="PDK Team Site"/></a>
       <ul>
         <li><a href="/" title="Home"  class="<%= 'active' if request.path.eql?('/') %>">Home</a></li>
         <li><a href="/users" title="Spelare" class="<%= 'active' if request.path.eql?('/users') %>">Spelare</a></li>
         <li><a href="/activities" title="Aktiviteter"  class="<%= 'active' if request.path.eql?('/activities') %>">Aktiviteter</a></li>
         <li><a href="/forum" title="Forum" class="<%= 'active' if request.path.eql?('/forum') %>">Forum</a></li>
-        <li><a href="/calendar" title="Kalender" class="<%= 'active' if request.path.eql?('/calendar') %>">Kalender</a></li>
+        <li><a href="/calendar" title="Kalender" class="<%= 'active' if request.path.eql?('/calendar') or request.path.eql?('/events') %>">Kalender</a></li>
         <!--
         <li><a href="http://tools.chillwebdesigns.co.uk/" title="Online Tools">Online Tools</a></li>
         <li><a href="contact.html" title="Contact">Contact</a></li>

@@ -1,0 +1,114 @@
+body, html{
+    font-family: Arial;
+    color: #666;
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    border: none;
+    border-width: 0px;
+}
+
+/*  For more correct prototyping */
+div#content {
+    width: 910px;
+}
+h2 {
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+div#start-date {
+    float: left;
+    padding-right: 40px;
+}
+
+div#end-date {
+    float: left;
+    padding-left: 40px;
+}
+
+div#activity-type-area{
+    float: left;
+    padding-left: 40px;
+}
+
+
+
+.date-input {
+    background-image: url("../images/indicators/calendar_month.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+
+/* TODO: Fix this, it impares the dropdown from being 150 px wide.. Don't know why*/
+div#repeat-section div {
+    float: left;
+}
+
+
+
+.collapse-arrow {
+    background-image: url("../images/indicators/arrow_state_blue_collapsed.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+.expand-arrow {
+    background-image: url("../images/indicators/arrow_state_blue_expanded.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+div#repeat-section {
+    padding: 8px;
+}
+
+
+.select-wox-width-150 {
+    width: 150px;
+}
+
+.collapsible-container {
+    border-color: gray;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    width: 98%;
+    float: left;
+    padding: 2px;
+    margin-bottom: 20px;
+}
+
+.collapsible-sub-header {
+    background-color: #e6e6fa;
+    border-color: gray;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 4px;
+}
+
+div#players-left-col {
+   float: left;
+    width: 288px;
+    padding-left: 3px;
+    margin-right: 2px;
+}
+
+
+div#players-center-col {
+    float: left;
+    width: 290px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+div#players-right-col {
+    float: left;
+    width: 288px;
+    padding-left: 3px;
+    margin-left: 3px;
+}

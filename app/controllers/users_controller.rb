@@ -2,11 +2,12 @@ class UsersController < ApplicationController
 
   skip_before_filter :require_user, :only => [:new, :create]  # Only allow unauthenticated actions for new and create (that is login and register)
 
-  access_control do
-    allow :all, :to => [:new, :create]
-    allow :players, :to => [:index, :show]
-    allow :admins
-  end
+#TODO: Why can't I have this code in place'
+#  access_control do
+#    allow :all, :to => [:new, :create]
+#    allow :players, :to => [:index, :show]
+#    allow :admins
+#  end
 
 
   # GET /users

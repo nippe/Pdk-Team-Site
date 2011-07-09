@@ -39,15 +39,15 @@ class Activity < ActiveRecord::Base
   end
 
   def is_user_attending?(user)
-    self.rvsps.find_by_user_id(user.id).rvsp_status_id == 1
+    self.rvsps.find_by_user_id(user.id).rvsp_status_id == 1 if is_user_invited?(user)
   end
 
   def is_user_maybe_attending?(user)
-    self.rvsps.find_by_user_id(user.id).rvsp_status_id == 3
+    self.rvsps.find_by_user_id(user.id).rvsp_status_id == 3 if is_user_invited?(user)
   end
 
   def is_user_not_attending?(user)
-    self.rvsps.find_by_user_id(user.id).rvsp_status_id == 2
+    self.rvsps.find_by_user_id(user.id).rvsp_status_id == 2 if is_user_invited?(user)
   end
 
   def display_date
@@ -73,5 +73,8 @@ class Activity < ActiveRecord::Base
     end
   end
 
+  def is_user_invited?(user)
+    self.rvsps.find_by_user_id(user.id)
+  end
 
 end

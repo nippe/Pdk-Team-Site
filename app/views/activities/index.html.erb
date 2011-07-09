@@ -4,14 +4,16 @@
 
 <%
              def color_class(activity)
-                 if activity.is_user_attending?(current_user)
-                     "background-green"
-                 elsif activity.is_user_maybe_attending?(current_user)
-                     "background-yellow"
-                 elsif activity.is_user_not_attending?(current_user)
-                     "background-red"
-                 else
-                     "background-grey"
+                 if activity.is_user_invited?(current_user) then
+                     if activity.is_user_attending?(current_user)
+                         "background-green"
+                     elsif activity.is_user_maybe_attending?(current_user)
+                         "background-yellow"
+                     elsif activity.is_user_not_attending?(current_user)
+                         "background-red"
+                     else
+                         "background-grey"
+                     end
                  end
              end
           %>
@@ -30,7 +32,7 @@
   </tr>
 
   <% @activities.each do |activity| %>
-      <tr class="row-for-activity-<%= activity.id.to_s  %>">
+      <tr class="row-for-activity-<%= activity.id.to_s  %> <%=	 cycle 'activity-list-even-row', '' %>">
         <td class="activity-type">
           <% if activity.activity_type.id == 1 %>
               <%= image_tag 'indicators/activity-workout.png', :alt => 'Träning' %>
@@ -59,7 +61,7 @@
 
         <td>
 
-          <select id="rvsp-<%= activity.id.to_s %>" class="rvsp-dropdown <%= color_class(activity) %>">
+          <select id="rvsp-<%= activity.id.to_s %>" class="rvsp-dropdown <%= color_class(activity) %>" <%= 'disabled' if !activity.is_user_invited?(current_user) %>>
             <option value="1" <%= 'SELECTED' if activity.is_user_attending?(current_user) %>>Kommer</option>
             <option value="2" <%= 'SELECTED' if activity.is_user_maybe_attending?(current_user) %>>Kanske</option>
             <option value="3" <%= 'SELECTED' if activity.is_user_not_attending?(current_user) %>>Kommer inte</option>
@@ -78,13 +80,13 @@
             <%= image_tag 'indicators/arrow_state_blue_expanded.png', :align => 'right', :class => 'arrow-collapsed' %>
             <div class="activity-attendance-detail" style="display: none;">
               <br/>
-              <img src="/images/indicators/add_small.png" alt=""/> <%= activity.attending.count.to_s %>
+              <img src="/images/indicators/add_small.png" alt=""/> <strong><%= activity.attending.count.to_s %></strong>
               kommer<br/>
-              <img alt="Kanske" border="none" src="/images/indicators/warning_triangle_small.png"/> <%= activity.maybe_coming.count.to_s %>
+              <img alt="Kanske" border="none" src="/images/indicators/warning_triangle_small.png"/> <strong><%= activity.maybe_coming.count.to_s %></strong>
               kanske<br/>
-              <img alt="Shiny_round_red" border="none" src="/images/indicators/remove_minus_sign_small.png"/> <%= activity.not_coming.count.to_s %>
+              <img alt="Shiny_round_red" border="none" src="/images/indicators/remove_minus_sign_small.png"/> <strong><%= activity.not_coming.count.to_s %></strong>
               kommer inte<br/>
-              <img alt="Shiny_round_gray" border="none" src="/images/indicators/error_small.png"/> <%= activity.no_answer.count.to_s %>
+              <img alt="Shiny_round_gray" border="none" src="/images/indicators/error_small.png"/> <strong><%= activity.no_answer.count.to_s %></strong>
               inte svarat
             </div>
           </div>

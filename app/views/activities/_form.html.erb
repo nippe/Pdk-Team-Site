@@ -1,3 +1,6 @@
+<%= stylesheet_link_tag 'anytime', 'dd' %>
+<%= javascript_include_tag 'anytime', 'jquery.highlightFade', 'jquery.dd', 'new-activity' %>
+
 <%= form_for(@activity) do |f| %>
   <% if @activity.errors.any? %>
     <div id="error_explanation">
@@ -11,23 +14,54 @@
     </div>
   <% end %>
 
+    <div id="dates-container" class="collapsible-container">
+        <div id="dates-header" class="collapse-arrow collapsible-sub-header">
+            <h2>Grundinformation</h2>
+        </div>
+
+        <div id="baseinfo-area" class="collapsible-region">
+            <div>
+                <p>
+                    <%= f.check_box :all_day %>
+                    <%= f.label :all_day, 'Heldag' %><br />
+                </p>
+            </div>
+
+
+            <div id="start-date">
+                <%= f.label :start_at, 'Börjar' %>
+                <br/>
+                <%= f.text_field :start_at, :class => 'date-input' %>
+            </div>
+
+            <div id="end-date">
+                <%= f.label :end_at, 'Slutar' %>
+                <br/>
+                <%= f.text_field :end_at, :class => 'date-input' %>
+            </div>
+
+            <div id="activity-type-area">
+                <%= f.label :activity_type, 'Typ av aktivitet' %>
+                <br />
+                <select id="activity_activity_type" style="width: 150px;">
+                  <% @activity_types.each do |t| %>
+                    <option value="<%= t.id %>" title="<%= t.image_path %>" <%= 'selected' if t == @activity.activity_type %>><%= t.name %></option>
+                  <% end  %>
+                </select>
+
+            
+            </div>
+
+
+        </div>
+    </div>
+
+    
+
   <div class="field">
-    <%= f.label :start_at %><br />
-    <%= f.datetime_select :start_at %>
+
   </div>
-    <div class="field">
-    <%= f.label :end_at %><br />
-    <%= f.datetime_select :end_at %>
-  </div>
- 
-  <div class="field">
-    <%= f.label :all_day %><br />
-    <%= f.check_box :all_day %>
-  </div>
-  <div class="field">
-    <%= f.label :activity_type %><br />
-    <%= f.collection_select :activity_type_id, @activity_types, :id, :name %>
-  </div>
+  
   <div class="field">
     <%= f.label :correlation_id %><br />
     <%= f.text_field :correlation_id %>
