@@ -6,5 +6,14 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-ActivityType.create(:name => "Träning")
-ActivityType.create(:name => "Match")
+ActivityType.create(:name => "Träning", :image_path => "/image/indicators/activity-workout.png")
+ActivityType.create(:name => "Match", :image_path => "/image/indicators/activity-game.png")
+ActivityType.create(:name => "Annan", :image_path => "/image/indicators/calendar_month.png")
+
+Role.create(:name => "Admin")
+Role.create(:name => "Player")
+Role.create(:name => "Guest")
+
+
+
+#User.create()

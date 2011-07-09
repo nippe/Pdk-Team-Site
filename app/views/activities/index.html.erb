@@ -4,14 +4,16 @@
 
 <%
              def color_class(activity)
-                 if activity.is_user_attending?(current_user)
-                     "background-green"
-                 elsif activity.is_user_maybe_attending?(current_user)
-                     "background-yellow"
-                 elsif activity.is_user_not_attending?(current_user)
-                     "background-red"
-                 else
-                     "background-grey"
+                 if activity.is_user_invited?(current_user) then
+                     if activity.is_user_attending?(current_user)
+                         "background-green"
+                     elsif activity.is_user_maybe_attending?(current_user)
+                         "background-yellow"
+                     elsif activity.is_user_not_attending?(current_user)
+                         "background-red"
+                     else
+                         "background-grey"
+                     end
                  end
              end
           %>
@@ -30,7 +32,7 @@
   </tr>
 
   <% @activities.each do |activity| %>
-      <tr class="row-for-activity-<%= activity.id.to_s  %>">
+      <tr class="row-for-activity-<%= activity.id.to_s  %> <%=	 cycle 'activity-list-even-row', '' %>">
         <td class="activity-type">
           <% if activity.activity_type.id == 1 %>
               <%= image_tag 'indicators/activity-workout.png', :alt => 'Träning' %>
@@ -59,7 +61,7 @@
 
         <td>
 
-          <select id="rvsp-<%= activity.id.to_s %>" class="rvsp-dropdown <%= color_class(activity) %>">
+          <select id="rvsp-<%= activity.id.to_s %>" class="rvsp-dropdown <%= color_class(activity) %>" <%= 'disabled' if !activity.is_user_invited?(current_user) %>>
             <option value="1" <%= 'SELECTED' if activity.is_user_attending?(current_user) %>>Kommer</option>
             <option value="2" <%= 'SELECTED' if activity.is_user_maybe_attending?(current_user) %>>Kanske</option>
             <option value="3" <%= 'SELECTED' if activity.is_user_not_attending?(current_user) %>>Kommer inte</option>
