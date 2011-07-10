@@ -27,6 +27,7 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
     @activity_types = ActivityType.all
+    @users = User.all
 
 
     respond_to do |format|
@@ -35,6 +36,7 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  
   # GET /activities/1/edit
   def edit
     @activity = Activity.find(params[:id])

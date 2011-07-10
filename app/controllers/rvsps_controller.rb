@@ -36,8 +36,8 @@ class RvspsController < ApplicationController
 
     respond_to do |format|
       if rvsp.save
-        format.json { render :json => rvsp.activity, :json => rvsp.activity.rvsps } #TODO: Fix so this returns a summary of rvsps for the activity
-        format.html { redirect_to(activities_path, :notice => "Du er anmld till trningen") }
+        format.json { render :json => generate_json(activity) }
+        format.html { redirect_to(activities_path, :notice => "Du kommer kanske till aktiviteten") }
       else
          format.json { render :json => @rvsp.errors, :status => :unprocessable_entity }
       end

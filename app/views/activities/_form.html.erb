@@ -2,71 +2,139 @@
 <%= javascript_include_tag 'anytime', 'jquery.highlightFade', 'jquery.dd', 'new-activity' %>
 
 <%= form_for(@activity) do |f| %>
-  <% if @activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+    <% if @activity.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
 
-      <ul>
-      <% @activity.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% @activity.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
     <div id="dates-container" class="collapsible-container">
-        <div id="dates-header" class="collapse-arrow collapsible-sub-header">
-            <h2>Grundinformation</h2>
+      <div id="dates-header" class="collapse-arrow collapsible-sub-header">
+        <h2>Grundinformation</h2>
+      </div>
+
+      <div id="baseinfo-area" class="collapsible-region">
+        <div>
+          <p>
+            <%= f.check_box :all_day %>
+            <%= f.label :all_day, 'Heldag' %><br/>
+          </p>
         </div>
 
-        <div id="baseinfo-area" class="collapsible-region">
-            <div>
-                <p>
-                    <%= f.check_box :all_day %>
-                    <%= f.label :all_day, 'Heldag' %><br />
-                </p>
-            </div>
 
-
-            <div id="start-date">
-                <%= f.label :start_at, 'Börjar' %>
-                <br/>
-                <%= f.text_field :start_at, :class => 'date-input' %>
-            </div>
-
-            <div id="end-date">
-                <%= f.label :end_at, 'Slutar' %>
-                <br/>
-                <%= f.text_field :end_at, :class => 'date-input' %>
-            </div>
-
-            <div id="activity-type-area">
-                <%= f.label :activity_type, 'Typ av aktivitet' %>
-                <br />
-                <select id="activity_activity_type" style="width: 150px;">
-                  <% @activity_types.each do |t| %>
-                    <option value="<%= t.id %>" title="<%= t.image_path %>" <%= 'selected' if t == @activity.activity_type %>><%= t.name %></option>
-                  <% end  %>
-                </select>
-
-            
-            </div>
-
-
+        <div id="start-date">
+          <%= f.label :start_at, 'Börjar' %>
+          <br/>
+          <%= f.text_field :start_at, :class => 'date-input' %>
         </div>
+
+        <div id="end-date">
+          <%= f.label :end_at, 'Slutar' %>
+          <br/>
+          <%= f.text_field :end_at, :class => 'date-input' %>
+        </div>
+
+        <div id="activity-type-area">
+          <%= f.label :activity_type, 'Typ av aktivitet' %>
+
+          <br/>
+          <select id="activity_activity_type_id" name="activity[activity_type_id]" style="width: 150px;">
+            <% @activity_types.each do |t| %>
+                <option value="<%= t.id %>" title="<%= t.image_path %>" <%= 'selected' if t == @activity.activity_type %>><%= t.name %></option>
+            <% end %>
+          </select>
+        </div>
+
+      </div>
     </div>
 
-    
 
-  <div class="field">
+    <div id="repeat-container" class="collapsible-container">
+      <div id="repeat-header" class="expand-arrow collapsible-sub-header">
+        <h2>Återkommande</h2>
+      </div>
 
-  </div>
-  
-  <div class="field">
-    <%= f.label :correlation_id %><br />
-    <%= f.text_field :correlation_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <div id="repeat-section" style="display: none;" class="collapsible-region">
+        <div>
+          Upprepas
+          <br/>
+          <select id="repeat_activity_basis" style="width: 150px;">
+            <option value="weekly">Veckovis</option>
+            <option value="monthly">Månadsvis</option>
+            <option value="yearly">Årsvis</option>
+          </select>
+        </div>
+
+        <div>
+          T o m
+          <br/>
+          <input type="text" id="repeat_activity_enddate" class="date-input"/>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="players-container" class="collapsible-container">
+      <div id="players-header" class="collapse-arrow collapsible-sub-header">
+        <h2>Inbjudna</h2>
+      </div>
+
+      <div id="players-section" class="collapsible-region">
+        <br/>
+
+        <div id="players-top-bar">
+          <a href="#" id="href-select-all">Select all</a> |
+          <a href="#" id="href-select-players">Players</a> |
+          <a href="#" id="href-select-guests">Guests</a> |
+          <a href="#" id="href-clear-all">Clear</a>
+        </div>
+        <br/>
+
+        <div id="players-list-container">
+          <div id="players-left-col">
+            <% col_counter = 0 %>
+            <% user_counter = 0 %>
+            <% @users.each do |user| %>
+                <div>
+                  <input type="checkbox" value="sdfas" class=" <%= 'player-chk' if user.has_role?(:player) %> <%= 'guest-chk' if user.has_role?(:guest) %>"/> <%= user.full_name %>
+                </div>
+                <% if (user_counter % (@users.count/3)) == 0 %>
+                    <% if col_counter != 0 %>
+                        <% if col_counter == 1 %>
+                            </div>
+                            <div id="players-center-col">
+                        <% elsif col_counter == 2 %>
+                            </div>
+                            <div id="players-right-col">
+                        <% end %>
+
+                    <% end %>
+                    <% col_counter += 1 %>
+                <% end %>
+                <% user_counter += 1 %>
+            <% end %>
+            </div>
+            </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
 <% end %>

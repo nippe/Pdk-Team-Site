@@ -34,11 +34,7 @@
   <% @activities.each do |activity| %>
       <tr class="row-for-activity-<%= activity.id.to_s  %> <%=	 cycle 'activity-list-even-row', '' %>">
         <td class="activity-type">
-          <% if activity.activity_type.id == 1 %>
-              <%= image_tag 'indicators/activity-workout.png', :alt => 'Träning' %>
-          <% elsif activity.activity_type.id == 2 %>
-              <%= image_tag 'indicators/activity-game.png', :alt => 'Träning' %>
-          <% end %>
+          <%= image_tag activity.activity_type.image_path, :alt => activity.activity_type.name %>
         </td>
 
         <td class="activity-time">
