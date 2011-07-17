@@ -103,7 +103,13 @@
             <% user_counter = 0 %>
             <% @users.each do |user| %>
                 <div>
-                  <input type="checkbox" value="sdfas" class=" <%= 'player-chk' if user.has_role?(:player) %> <%= 'guest-chk' if user.has_role?(:guest) %>"/> <%= user.full_name %>
+                  <input id="activity_rvsps_user_ids_"
+                         name="activity[rvsps_user_id][]"
+                         type="checkbox"
+                         <%= "checked=\"checked\"" if @activity.is_user_invited?(user) %>
+                         value="<%= user.id %>"
+                         class=" <%= 'player-chk' if user.has_role?(:player) %> <%= 'guest-chk' if user.has_role?(:guest) %>"/> <%= user.full_name %>
+
                 </div>
                 <% if (user_counter % (@users.count/3)) == 0 %>
                     <% if col_counter != 0 %>

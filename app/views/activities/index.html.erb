@@ -3,20 +3,52 @@
 <%= javascript_tag "var userId = " + current_user.id.to_s + ";" %>
 
 <%
-             def color_class(activity)
-                 if activity.is_user_invited?(current_user) then
-                     if activity.is_user_attending?(current_user)
-                         "background-green"
-                     elsif activity.is_user_maybe_attending?(current_user)
-                         "background-yellow"
-                     elsif activity.is_user_not_attending?(current_user)
-                         "background-red"
-                     else
-                         "background-grey"
-                     end
-                 end
-             end
-          %>
+   def color_class(activity)
+       if activity.is_user_invited?(current_user) then
+           if activity.is_user_attending?(current_user)
+               "background-green"
+           elsif activity.is_user_maybe_attending?(current_user)
+               "background-yellow"
+           elsif activity.is_user_not_attending?(current_user)
+               "background-red"
+           else
+               "background-grey"
+           end
+       end
+   end
+
+   def attending_ratio(activity)
+       if activity.all_invitations.count == 0
+           0
+       else
+           (activity.attending.count.to_f / activity.all_invitations.count.to_f)
+       end
+   end
+
+   def maybe_ratio(activity)
+       if activity.all_invitations.count == 0
+           0
+       else
+           activity.maybe_coming.count.to_f / activity.all_invitations.count.to_f
+       end
+   end
+   def not_comming_ratio(activity)
+       if activity.all_invitations.count == 0
+           0
+       else
+           activity.not_coming.count.to_f / activity.all_invitations.count.to_f
+       end
+   end
+   def no_answer_ratio(activity)
+       if activity.all_invitations.count == 0
+           0
+       else
+           activity.no_answer.count.to_f / activity.all_invitations.count.to_f
+       end
+   end
+
+
+%>
 <h1>Aktiviteter</h1>
 
 <table width="100%" class="activites-table">
@@ -31,8 +63,10 @@
     <th></th>
   </tr>
 
-  <% @activities.each do |activity| %>
-      <tr class="row-for-activity-<%= activity.id.to_s  %> <%=	 cycle 'activity-list-even-row', '' %>">
+  <%
+
+     @activities.each do |activity| %>
+      <tr class="row-for-activity-<%= activity.id.to_s %> <%= cycle 'activity-list-even-row', '' %>">
         <td class="activity-type">
           <%= image_tag activity.activity_type.image_path, :alt => activity.activity_type.name %>
         </td>
@@ -69,20 +103,23 @@
 
         <td>
           <div id="bars-<%= activity.id.to_s %>" class="bars-container">
-            <%= image_tag 'indicators/green-bar.png', :height => ((activity.attending.count.to_f / activity.all_invitations.count.to_f) * 14).round, :class => "bar-decoration nav-green-bar" %>
-            <%= image_tag 'indicators/yellow-bar.png', :height => (activity.maybe_coming.count.to_f / activity.all_invitations.count.to_f * 14).round, :class => "bar-decoration nav-yellow-bar" %>
-            <%= image_tag 'indicators/red-bar.png', :height => (activity.not_coming.count.to_f / activity.all_invitations.count.to_f * 14).round, :class => "bar-decoration nav-red-bar" %>
-            <%= image_tag 'indicators/grey-bar.png', :height => (activity.no_answer.count.to_f / activity.all_invitations.count.to_f * 14).round, :class => "bar-decoration nav-grey-bar" %>
+            <%= image_tag 'indicators/green-bar.png', :height => (attending_ratio(activity) * 14).round, :class => "bar-decoration nav-green-bar" %>
+            <%= image_tag 'indicators/yellow-bar.png', :height => (maybe_ratio(activity) * 14).round, :class => "bar-decoration nav-yellow-bar" %>
+            <%= image_tag 'indicators/red-bar.png', :height => (not_comming_ratio(activity) * 14).round, :class => "bar-decoration nav-red-bar" %>
+            <%= image_tag 'indicators/grey-bar.png', :height => (no_answer_ratio(activity) * 14).round, :class => "bar-decoration nav-grey-bar" %>
             <%= image_tag 'indicators/arrow_state_blue_expanded.png', :align => 'right', :class => 'arrow-collapsed' %>
             <div class="activity-attendance-detail" style="display: none;">
               <br/>
               <img src="/images/indicators/add_small.png" alt=""/> <strong><%= activity.attending.count.to_s %></strong>
               kommer<br/>
-              <img alt="Kanske" border="none" src="/images/indicators/warning_triangle_small.png"/> <strong><%= activity.maybe_coming.count.to_s %></strong>
+              <img alt="Kanske" border="none" src="/images/indicators/warning_triangle_small.png"/>
+              <strong><%= activity.maybe_coming.count.to_s %></strong>
               kanske<br/>
-              <img alt="Shiny_round_red" border="none" src="/images/indicators/remove_minus_sign_small.png"/> <strong><%= activity.not_coming.count.to_s %></strong>
+              <img alt="Shiny_round_red" border="none" src="/images/indicators/remove_minus_sign_small.png"/>
+              <strong><%= activity.not_coming.count.to_s %></strong>
               kommer inte<br/>
-              <img alt="Shiny_round_gray" border="none" src="/images/indicators/error_small.png"/> <strong><%= activity.no_answer.count.to_s %></strong>
+              <img alt="Shiny_round_gray" border="none" src="/images/indicators/error_small.png"/>
+              <strong><%= activity.no_answer.count.to_s %></strong>
               inte svarat
             </div>
           </div>

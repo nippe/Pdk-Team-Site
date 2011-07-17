@@ -34,6 +34,7 @@ class Activity < ActiveRecord::Base
   end
 
   # for event_calendar (TODO: should there be a separate name)
+  
   def name
     activity_type.name
   end
