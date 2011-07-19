@@ -1,22 +1,17 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
-
-
 gem 'authlogic'
-
-#gem 'jquery-rails'
 gem 'jquery-rails'#, :git => 'git://github.com/pgericson/jquery-rails.git'
-
 gem "acl9"
-
 gem 'event-calendar', :require => 'event_calendar'
 
+
+group :development do
+  gem 'rails-footnotes', '>= 3.7'
+  gem 'ruby-debug'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

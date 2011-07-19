@@ -19,6 +19,7 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @activity }
+      format.json { render :json => @activity }
     end
   end
 
@@ -33,6 +34,7 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @activity }
+      format.json { render :json => @activity }
     end
   end
 
@@ -44,14 +46,6 @@ class ActivitiesController < ApplicationController
     @users = User.all
   end
 
-  def add_rvsps_to_activity(invited_user_ids)
-    invited_user_ids.each do |user_id|
-      rvsp = @activity.rvsps.new()
-      rvsp.user_id = user_id
-      rvsp.rvsp_status_id = 4 #TODO: Maybe use enum instead - find out how in Ruby
-      rvsp.save()
-    end
-  end
 
     # POST /activities
     # POST /activities.xml
@@ -60,7 +54,7 @@ class ActivitiesController < ApplicationController
       invited_user_ids = params[:activity][:rvsps_user_id]
       params[:activity].delete(:rvsps_user_id)
     end
-    
+
     @activity = Activity.new(params[:activity])
 
     respond_to do |format|
@@ -83,6 +77,32 @@ class ActivitiesController < ApplicationController
     # PUT /activities/1.xml
   def update
     @activity = Activity.find(params[:id])
+
+    if params[:activity].has_key(:rvsps_user_id)
+      puts params[:activity][:rvsps_user_id]
+      invited_user_ids = params[:activity][:rvsps_user_id]
+
+      #if !invited_user_ids.nil?
+        invited_user_ids.each do |user_id|
+          user = User.find(user_id)
+
+          if !@activity.is_user_invited?(user)
+            rvsp = @activity.rvsps.new()
+            rvsp.user = user
+            rvsp.rvsp_status_id = 4 #TODO: Maybe use enum instead - find out how in Ruby
+            rvsp.save()
+          #elsif 
+
+          end
+        end
+     # end
+    else
+      puts "shit"
+    end
+
+
+
+
 
     respond_to do |format|
       if @activity.update_attributes(params[:activity])
@@ -107,5 +127,14 @@ class ActivitiesController < ApplicationController
     end
   end
 
+
+  def add_rvsps_to_activity(invited_user_ids)
+     invited_user_ids.each do |user_id|
+       rvsp = @activity.rvsps.new()
+       rvsp.user_id = user_id
+       rvsp.rvsp_status_id = 4 #TODO: Maybe use enum instead - find out how in Ruby
+       rvsp.save()
+     end
+   end
 
 end
