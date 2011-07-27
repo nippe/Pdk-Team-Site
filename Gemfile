@@ -10,7 +10,7 @@ gem 'event-calendar', :require => 'event_calendar'
 
 group :development do
   gem 'rails-footnotes', '>= 3.7'
-  gem 'ruby-debug'
+  #gem 'rails-debug'
 end
 
 # Use unicorn as the web server
