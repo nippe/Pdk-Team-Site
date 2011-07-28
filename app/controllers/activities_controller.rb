@@ -78,11 +78,12 @@ class ActivitiesController < ApplicationController
   def update
     @activity = Activity.find(params[:id])
 
-    if params[:activity].has_key(:rvsps_user_id)
-      puts params[:activity][:rvsps_user_id]
+    if params[:activity].has_key?(:rvsps_user_id)
+      #puts params[:activity][:rvsps_user_id]
       invited_user_ids = params[:activity][:rvsps_user_id]
+      params[:activity].delete(:rvsps_user_id)
 
-      #if !invited_user_ids.nil?
+      if !invited_user_ids.nil?
         invited_user_ids.each do |user_id|
           user = User.find(user_id)
 
@@ -91,15 +92,14 @@ class ActivitiesController < ApplicationController
             rvsp.user = user
             rvsp.rvsp_status_id = 4 #TODO: Maybe use enum instead - find out how in Ruby
             rvsp.save()
-          #elsif 
-
           end
-        end
-     # end
-    else
-      puts "shit"
-    end
 
+        end
+      end
+    else
+#      puts "shit"
+    end
+# Kan det ha att göra med att den går till events/7 istället för activites/7 ??? Tror inte det men kolla upp...
 
 
 
