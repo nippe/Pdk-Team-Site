@@ -94,10 +94,13 @@ class ActivitiesController < ApplicationController
             rvsp.save()
           end
 
+          # Get all rvsps user_id's
+          #for each if it does NOT exist in invited_user_ids -> remove the rvsp.
+
         end
       end
     else
-#      puts "shit"
+      @activity.rvsps.delete_all()
     end
 # Kan det ha att göra med att den går till events/7 istället för activites/7 ??? Tror inte det men kolla upp...
 
