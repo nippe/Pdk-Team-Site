@@ -35,18 +35,19 @@ $(document).ready(
                     function() {
                         rvspElementRef = $(this);
 
-                        //alert($(this).parent().parent().find('.nav-green-bar').eq(0).attr('height', '20'));
+                        // Remove all styling
+                        $(this).removeClass('background-yellow').removeClass('background-red').removeClass('background-grey').removeClass('background-green');
 
                         if ($(this).val() == 1) {
-                            $(this).removeClass('background-yellow').removeClass('background-red').removeClass('background-grey').addClass('background-green');
+                            $(this).addClass('background-green');
                             action = 'attend';
                         }
                         else if ($(this).val() == 2) {
-                            $(this).removeClass('background-green').removeClass('background-red').removeClass('background-grey').addClass('background-yellow');
+                            $(this).addClass('background-yellow');
                             action = 'maybe';
                         }
                         else {
-                            $(this).removeClass('background-green').removeClass('background-yellow').removeClass('background-grey').addClass('background-red');
+                            $(this).addClass('background-red');
                             action = 'not';
                         }
 
