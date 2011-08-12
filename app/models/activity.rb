@@ -51,6 +51,7 @@ class Activity < ActiveRecord::Base
     self.rvsps.find_by_user_id(user.id).rvsp_status_id == 2 if is_user_invited?(user)
   end
 
+
   def display_date
     if self.start_at.today?
       "Idag"

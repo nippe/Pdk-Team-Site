@@ -11,8 +11,8 @@ class ActivitiesController < ApplicationController
     end
   end
 
-    # GET /activities/1
-    # GET /activities/1.xml
+  # GET /activities/1
+  # GET /activities/1.xml
   def show
     @activity = Activity.find(params[:id])
 
@@ -23,12 +23,12 @@ class ActivitiesController < ApplicationController
     end
   end
 
-    # GET /activities/new
-    # GET /activities/new.xml
+  # GET /activities/new
+  # GET /activities/new.xml
   def new
-    @activity = Activity.new
+    @activity       = Activity.new
     @activity_types = ActivityType.all
-    @users = User.all
+    @users          = User.all
 
 
     respond_to do |format|
@@ -39,16 +39,16 @@ class ActivitiesController < ApplicationController
   end
 
 
-    # GET /activities/1/edit
+  # GET /activities/1/edit
   def edit
-    @activity = Activity.find(params[:id])
+    @activity       = Activity.find(params[:id])
     @activity_types = ActivityType.all
-    @users = User.all
+    @users          = User.all
   end
 
 
-    # POST /activities
-    # POST /activities.xml
+  # POST /activities
+  # POST /activities.xml
   def create
     if params[:activity].has_key?(:rvsps_user_id)
       invited_user_ids = params[:activity][:rvsps_user_id]
@@ -73,13 +73,12 @@ class ActivitiesController < ApplicationController
     end
   end
 
-    # PUT /activities/1
-    # PUT /activities/1.xml
+  # PUT /activities/1
+  # PUT /activities/1.xml
   def update
     @activity = Activity.find(params[:id])
 
     if params[:activity].has_key?(:rvsps_user_id)
-      #puts params[:activity][:rvsps_user_id]
       invited_user_ids = params[:activity][:rvsps_user_id]
       params[:activity].delete(:rvsps_user_id)
 
@@ -88,23 +87,25 @@ class ActivitiesController < ApplicationController
           user = User.find(user_id)
 
           if !@activity.is_user_invited?(user)
-            rvsp = @activity.rvsps.new()
-            rvsp.user = user
+            rvsp                = @activity.rvsps.new()
+            rvsp.user           = user
             rvsp.rvsp_status_id = 4 #TODO: Maybe use enum instead - find out how in Ruby
             rvsp.save()
           end
-
-          # Get all rvsps user_id's
-          #for each if it does NOT exist in invited_user_ids -> remove the rvsp.
-
         end
+
+        rvsps_for_activity = @activity.rvsps.all()
+        rvsps_for_activity.each do |current_rvsp|
+
+          if !invited_user_ids.include?(current_rvsp.user_id.to_s)
+            current_rvsp.delete()
+          end
+        end
+
       end
     else
       @activity.rvsps.delete_all()
     end
-# Kan det ha att göra med att den går till events/7 istället för activites/7 ??? Tror inte det men kolla upp...
-
-
 
 
     respond_to do |format|
@@ -118,8 +119,8 @@ class ActivitiesController < ApplicationController
     end
   end
 
-    # DELETE /activities/1
-    # DELETE /activities/1.xml
+  # DELETE /activities/1
+  # DELETE /activities/1.xml
   def destroy
     @activity = Activity.find(params[:id])
     @activity.destroy
@@ -132,12 +133,12 @@ class ActivitiesController < ApplicationController
 
 
   def add_rvsps_to_activity(invited_user_ids)
-     invited_user_ids.each do |user_id|
-       rvsp = @activity.rvsps.new()
-       rvsp.user_id = user_id
-       rvsp.rvsp_status_id = 4 #TODO: Maybe use enum instead - find out how in Ruby
-       rvsp.save()
-     end
-   end
+    invited_user_ids.each do |user_id|
+      rvsp                = @activity.rvsps.new()
+      rvsp.user_id        = user_id
+      rvsp.rvsp_status_id = 4 #TODO: Maybe use enum instead - find out how in Ruby
+      rvsp.save()
+    end
+  end
 
 end
