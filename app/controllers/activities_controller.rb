@@ -70,6 +70,9 @@ class ActivitiesController < ApplicationController
         format.html { render :action => "new" }
         format.xml { render :xml => @activity.errors, :status => :unprocessable_entity }
       end
+
+      #if params[:]
+
     end
   end
 

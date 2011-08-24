@@ -67,15 +67,15 @@
     <orderEntry type="library" scope="PROVIDED" name="activeresource (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.3, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack-mount (v0.6.14, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-footnotes (v3.7.4, Ruby SDK 1.9.2-p136) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-mount (v0.6.14, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailer (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="event-calendar (v2.3.3, Ruby SDK 1.9.2-p136) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.5.7, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="acl9 (v0.12.0, Ruby SDK 1.9.2-p136) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.5.7, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.6.6, Ruby SDK 1.9.2-p136) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.1, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.14.6, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
@@ -90,12 +90,12 @@
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.16, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="abstract (v1.0.0, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.5.0, Ruby SDK 1.9.2-p136) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="railties (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v2.0.10, Ruby SDK 1.9.2-p136) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="railties (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />
-    <I18N_FOLDERS number="1" string0="$MODULE_DIR$/config/locales" />
+    <I18N_FOLDERS number="3" string0="$MODULE_DIR$/config/locales" string1="$MODULE_DIR$/config/locales" string2="$MODULE_DIR$/config/locales" />
   </component>
 </module>
 
