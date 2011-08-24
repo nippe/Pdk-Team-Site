@@ -63,19 +63,6 @@ $(document).ready(
             }
         );
 
-        // Gerneric hookup of collapsible regions
-        $('.collapsible-sub-header').click(
-            function() {
-                $(this).parent().children('.collapsible-region').toggle('slow');
-
-                 if( $(this).attr('class').indexOf('collapse') >= 0 ) {
-                    $(this).removeClass('collapse-arrow').addClass('expand-arrow');
-                }
-                else {
-                    $(this).removeClass('expand-arrow').addClass('collapse-arrow');
-                }
-            }
-        );
 
         $('select').msDropDown({mainCSS:'dd'});
 

@@ -8,11 +8,14 @@
 
 ActivityType.create(:name => "Träning", :image_path => "/image/indicators/activity-workout.png")
 ActivityType.create(:name => "Match", :image_path => "/image/indicators/activity-game.png")
-ActivityType.create(:name => "Annan", :image_path => "/image/indicators/calendar_month.png")
+ActivityType.create(:name => "Annan aktivitet", :image_path => "/image/indicators/calendar_month.png")
 
 Role.create(:name => "Admin")
 Role.create(:name => "Player")
 Role.create(:name => "Guest")
+
+
+#User.create(:)
 
 
 
