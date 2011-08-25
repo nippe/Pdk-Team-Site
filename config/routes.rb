@@ -12,6 +12,8 @@ PdkTeamSite::Application.routes.draw do
 
   # Didn't get the polymorphic_link in calendar_helper.rb to work so I solved it like this
 #  match '/events(/:id)' => 'activities#show', :as => :activity, :constraints => {:id => /\d*/}
+  match '/events/:id' => 'activities#show'
+
 
   # temporary root until I have a start page
   root :to => 'wall_posts#index'
