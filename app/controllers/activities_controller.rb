@@ -23,6 +23,7 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  
   # GET /activities/new
   # GET /activities/new.xml
   def new

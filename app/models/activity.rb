@@ -36,7 +36,11 @@ class Activity < ActiveRecord::Base
   # for event_calendar (TODO: should there be a separate name)
   
   def name
-    activity_type.name
+    if title.nil?
+      activity_type.name
+    else
+      title
+    end
   end
 
   def is_user_attending?(user)

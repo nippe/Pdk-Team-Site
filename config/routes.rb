@@ -25,9 +25,7 @@ PdkTeamSite::Application.routes.draw do
   match '/activities/:activity_id/rvsps/maybe/:user_id' => 'rvsps#maybe'
   match '/activities/:activity_id/rvsps/not/:user_id' => 'rvsps#not'
   match '/activities/:activity_id/rvsps/index/' => 'rvsps#index' 
-  #match '/:controller/:activity_id/rvsps/:action/:user_id' => 'rvsps#index' # mappar tydligen bara mot show action->/:controller/:activity_id/rvsps/:action/:user_id(.:format) {:controller=>"rvsps", :action=>"index"} -> http://localhost:3000/activities/2/rvsps/index/2
-  #match '/:controller/:activity_id/rvsps/:action/:user_id' => 'rvsps#index'
-  #match '/activities(/:activity_id)/rvsps(/:action)'
+
   resources :activities do
     resources :rvsps
   end

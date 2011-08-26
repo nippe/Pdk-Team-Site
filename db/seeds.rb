@@ -6,17 +6,16 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-ActivityType.create(:name => "Träning", :image_path => "/image/indicators/activity-workout.png")
-ActivityType.create(:name => "Match", :image_path => "/image/indicators/activity-game.png")
-ActivityType.create(:name => "Annan aktivitet", :image_path => "/image/indicators/calendar_month.png")
+ActivityType.delete_all
+ActivityType.create(:name => 'TrÃ¤ning', :image_path => '/images/indicators/activity-workout.png')
+ActivityType.create(:name => 'Match', :image_path => '/images/indicators/activity-game.png')
+ActivityType.create(:name => 'Annan aktivitet', :image_path => '/images/indicators/calendar_month.png')
 
-Role.create(:name => "Admin")
-Role.create(:name => "Player")
-Role.create(:name => "Guest")
+Role.delete_all
+Role.create(:name => 'Admin')
+Role.create(:name => 'Player')
+Role.create(:name => 'Guest')
 
+Activity.delete_all
+Activity.create(:title => 'Fake activity', :start_at => Time.now + 1.month, :all_day => true, :activity_type_id => 1)
 
-#User.create(:)
-
-
-
-#User.create()

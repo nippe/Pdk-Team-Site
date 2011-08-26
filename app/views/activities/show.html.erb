@@ -109,50 +109,37 @@
     </div>
 
     <div id="attendance-area" class="collapsible-region">
-        <h2>Vänstrar</h2>
-        <ul>
-          <% @activity.rvsps.each do |rvsp| %>
-              <li>
-                <%= rvsp.user.full_name %> - <%= rvsp.rvsp_status_id %>
-              </li>
+        <div>
+         <ul>
+          <%
+          current_rvsp_status = ""
+          end_it = false
+          %>
+          <% @activity.rvsps.order('rvsp_status_id').each do |rvsp| %>
+              <%
+              if current_rvsp_status != rvsp.rvsp_status.title
+                current_rvsp_status = rvsp.rvsp_status.title
+                 end_it = true
+              %>
+               </ul>
+               </div>
+               <div class="player-attendance-list">
+                    <h2><%= current_rvsp_status %></h2>
+                    <ul>
+              <% end %>
+
+                  <li class="<%= 'attending-player' if rvsp.rvsp_status_id == 1 %>">
+                    <%= rvsp.user.full_name %> - <%= rvsp.rvsp_status.title %>
+                  </li>
+
+
+
           <% end %>
         </ul>
-
-
     </div>
 </div>
+</div>
 
-
-
-
-
-
-
-
-<p>
-  <b>Start time:</b>
-  <%= @activity.start_at %>
-</p>
-
-<p>
-  <b>Duration:</b>
-  <%= @activity.duration %>
-</p>
-
-<p>
-  <b>All day:</b>
-  <%= @activity.all_day %>
-</p>
-
-<p>
-  <b>Type:</b>
-  <%= @activity.activity_type.name %>
-</p>
-
-<p>
-  <b>Correlation:</b>
-  <%= @activity.correlation_id %>
-</p>
 
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |

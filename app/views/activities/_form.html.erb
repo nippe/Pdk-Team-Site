@@ -111,7 +111,7 @@
                          class=" <%= 'player-chk' if user.has_role?(:player) %> <%= 'guest-chk' if user.has_role?(:guest) %>"/> <%= user.full_name %>
 
                 </div>
-                <% if (user_counter % (@users.count/3)) == 0 %>
+                <% if @users.count >= 3 and (user_counter % (@users.count/3)) == 0 %>
                     <% if col_counter != 0 %>
                         <% if col_counter == 1 %>
                             </div>
