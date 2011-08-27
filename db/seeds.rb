@@ -11,6 +11,12 @@ ActivityType.create(:name => 'TrÃ¤ning', :image_path => '/images/indicators/ac
 ActivityType.create(:name => 'Match', :image_path => '/images/indicators/activity-game.png')
 ActivityType.create(:name => 'Annan aktivitet', :image_path => '/images/indicators/calendar_month.png')
 
+RvspStatus.delete_all
+RvspStatus.create(:title => 'Kommer')
+RvspStatus.create(:title => 'Kommer inte')
+RvspStatus.create(:title => 'Kanske')
+RvspStatus.create(:title => 'Inte svarat')
+
 Role.delete_all
 Role.create(:name => 'admin')
 Role.create(:name => 'player')
