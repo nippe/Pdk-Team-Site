@@ -66,7 +66,7 @@
 
     <div id="attendee-info-wrapper">
 
-        <select id="rvsp-12" class="rvsp-dropdown background-green" style="width: 140px;">
+        <select id="rvsp-<%= @activity.id %>" class="rvsp-dropdown background-green" style="width: 140px;">
             <option value="1" selected="SELECTED">Kommer</option>
             <option value="2">Kanske</option>
             <option value="3">Kommer inte</option>
@@ -77,7 +77,7 @@
         <br/>
 
 
-        <div id="bars-12" class="bars-container-wide" style="width: 130px;">
+        <div id="bars-<%= @activity.id %>" class="bars-container-wide" style="width: 130px;">
             <% bar_heigt = 28 %>
             <%= image_tag 'indicators/green-bar.png', :height => (attending_ratio(@activity) * bar_heigt).round, :class => "bar-decoration-wide nav-green-bar" %>
             <%= image_tag 'indicators/yellow-bar.png', :height => (maybe_ratio(@activity) * bar_heigt).round, :class => "bar-decoration-wide nav-yellow-bar" %>
