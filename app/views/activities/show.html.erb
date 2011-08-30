@@ -67,10 +67,12 @@
     <div id="attendee-info-wrapper">
 
         <select id="rvsp-<%= @activity.id %>" class="rvsp-dropdown background-green" style="width: 140px;">
-            <option value="1" selected="SELECTED">Kommer</option>
-            <option value="2">Kanske</option>
-            <option value="3">Kommer inte</option>
-            <option value="4" disabled="DISABLED">Ejsvarat</option>
+            <option value="1" <%= 'SELECTED' if @activity.is_user_attending?(current_user) %>>Kommer</option>
+            <option value="2" <%= 'SELECTED' if @activity.is_user_maybe_attending?(current_user) %>>Kanske</option>
+            <option value="3" <%= 'SELECTED' if @activity.is_user_not_attending?(current_user) %>>Kommer inte</option>
+            <option value="4" DISABLED <%= 'SELECTED' if !@activity.is_user_attending?(current_user) && !@activity.is_user_maybe_attending?(current_user) && !@activity.is_user_not_attending?(current_user) %>>Ej
+              svarat
+            </option>
         </select>
 
         <br/>
@@ -98,7 +100,7 @@
     </div>
 
     <div id="activity-map-wrapper">
-        <iframe height="175" width="175" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=h%C3%B6gdalshallen&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=55.586984,81.474609&amp;vpsrc=0&amp;ie=UTF8&amp;hq=h%C3%B6gdalshallen&amp;hnear=&amp;radius=15000&amp;ll=59.264063,18.042734&amp;spn=0.071946,0.071946&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=h%C3%B6gdalshallen&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=55.586984,81.474609&amp;vpsrc=0&amp;ie=UTF8&amp;hq=h%C3%B6gdalshallen&amp;hnear=&amp;radius=15000&amp;ll=59.264063,18.042734&amp;spn=0.071946,0.071946" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+      <%=  raw(google_map_url_for_location('Högdalen')) %>
     </div>
 
 </div>

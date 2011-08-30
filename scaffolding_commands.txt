@@ -18,3 +18,5 @@ REM rails g scaffold forum title:string description:text user_id:integer
 REM rails g scaffold forum_post body:text user_id:integer
 
 rails g scaffold wall_posts body:text user_id:integer
+
+rails g scaffold location title:text 

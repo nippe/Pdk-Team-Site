@@ -11,6 +11,7 @@ This is an attempt at creating a site for a sports team where the team members c
 * AuthLogic for authentication - https://github.com/binarylogic/authlogic
 * jquery-rails for registering jQuery instead of Prototype - original location: https://github.com/indirect/jquery-rails but I use a patched version hwo worked on my machine: https://github.com/pgericson/jquery-rails
 * acl9 for roles support, https://github.com/be9/acl9
+* event-calendar
 
 
 ### Installation
@@ -27,6 +28,7 @@ This is an attempt at creating a site for a sports team where the team members c
 
 #### Run migrations
         rake db:migrate
+        rake db:seed
 
 #### Start server
         rails server
@@ -36,7 +38,6 @@ This will be baked into a migration later on, but for now its manual. Hit the si
 
         > rails console
         > user = User.first
-        > user.noshow = ""
         > user.approved=true
         > user.save
         > user.has_role! :admin
