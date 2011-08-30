@@ -12,6 +12,8 @@ This is an attempt at creating a site for a sports team where the team members c
 * jquery-rails for registering jQuery instead of Prototype - original location: https://github.com/indirect/jquery-rails but I use a patched version hwo worked on my machine: https://github.com/pgericson/jquery-rails
 * acl9 for roles support, https://github.com/be9/acl9
 * event-calendar
+* Sanitize - https://github.com/rgrove/sanitize/
+* TinyMCE - https://github.com/kete/tiny_mce
 
 
 ### Installation

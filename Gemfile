@@ -6,7 +6,8 @@ gem 'authlogic'
 gem 'jquery-rails'#, :git => 'git://github.com/pgericson/jquery-rails.git'
 gem "acl9"
 gem 'event-calendar', :require => 'event_calendar'
-
+gem 'tiny_mce'
+gem 'sanitize'
 
 group :development do
   gem 'rails-footnotes', '>= 3.7'

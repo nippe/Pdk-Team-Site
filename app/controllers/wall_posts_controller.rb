@@ -3,6 +3,9 @@ class WallPostsController < ApplicationController
      allow :logged_in, :players
   end
 
+
+  uses_tiny_mce
+
   # GET /wall_posts
   # GET /wall_posts.xml
   def index

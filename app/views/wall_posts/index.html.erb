@@ -12,7 +12,7 @@
         <span class="post-header">Sa <%= wall_post.user.first_name %> att: </span>
 
 
-        <p><%= wall_post.body %></p>
+        <p><%= raw(Sanitize.clean(wall_post.body, Sanitize::Config::BASIC)) %></p>
       </div>
   <% end %>
 </div>
