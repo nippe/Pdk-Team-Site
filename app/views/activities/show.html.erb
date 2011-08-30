@@ -66,7 +66,7 @@
 
     <div id="attendee-info-wrapper">
 
-        <select id="rvsp-<%= @activity.id %>" class="rvsp-dropdown background-green" style="width: 140px;">
+        <select id="rvsp-<%= @activity.id %>" class="rvsp-dropdown <%= color_class(@activity) %>" <%= 'disabled' if !@activity.is_user_invited?(current_user) %> style="width: 140px;">
             <option value="1" <%= 'SELECTED' if @activity.is_user_attending?(current_user) %>>Kommer</option>
             <option value="2" <%= 'SELECTED' if @activity.is_user_maybe_attending?(current_user) %>>Kanske</option>
             <option value="3" <%= 'SELECTED' if @activity.is_user_not_attending?(current_user) %>>Kommer inte</option>
