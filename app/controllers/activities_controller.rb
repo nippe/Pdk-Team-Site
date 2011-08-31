@@ -51,9 +51,29 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.xml
   def create
+
+    is_repeating = false
+    repeat_interval = ""
+    repeat_end_date = Time.now()
+
     if params[:activity].has_key?(:rvsps_user_id)
       invited_user_ids = params[:activity][:rvsps_user_id]
       params[:activity].delete(:rvsps_user_id)
+    end
+
+    if params[:activity].has_key?(:repeat_interval)
+      repeat_interval = params[:activity][:repeat_interval]
+      params[:activity].delete(:repeat_interval)
+    end
+
+    if params[:activity].has_key?(:repeat_end_date)
+      repeat_end_date = params[:activity][:repeat_end_date]
+      params[:activity].delete(:repeat_end_date)
+    end
+
+    if params[:activity].has_key?(:activity_repeat)
+      is_repeating = true
+      params[:activity].delete(:activity_repeat)
     end
 
     @activity = Activity.new(params[:activity])
@@ -63,6 +83,13 @@ class ActivitiesController < ApplicationController
 
         if !invited_user_ids.nil?
           add_rvsps_to_activity(invited_user_ids)
+        end
+
+        if is_repeating
+          @activity.correlation_id = params[:id].to_i
+          @activity.save
+
+          
         end
 
         format.html { redirect_to(@activity, :notice => "Activity was successfully created. Antalet inbjudna: #{invited_user_ids.count}") }

@@ -62,9 +62,14 @@
 
       <div id="repeat-section" style="display: none;" class="collapsible-region">
         <div>
+          <br />
+          <input type="checkbox" id="activity_repeat" name="activity[activity_repeat]"/> <label id="lbl_activity_repeat" for="activity_repeat">Återkommande aktivitet</label>
+        </div>
+        <div class="spacing-20-right">&nbsp;</div>
+        <div>
           Upprepas
           <br/>
-          <select id="repeat_activity_basis" style="width: 150px;">
+          <select id="activity_repeat_interval" name="activity[repeat_interval]" style="width: 150px;">
             <option value="weekly">Veckovis</option>
             <option value="monthly">Månadsvis</option>
             <option value="yearly">Årsvis</option>
@@ -74,7 +79,7 @@
         <div>
           T o m
           <br/>
-          <input type="text" id="repeat_activity_enddate" class="date-input"/>
+          <input type="text" id="activity_repeat_end_date" name="activity[repeat_end_date]" class="date-input"/>
         </div>
       </div>
 

@@ -96,6 +96,21 @@ $(document).ready(
     }
 );
 
+// TODO: Disable repeat interval and end date html form elements
+//$(document).ready(
+//        function(){
+//            $("#activity_repeat").click(
+//                    function(){
+//                        if($(this).prop('checked') === true){
+//                            alert("checked");
+//                            $('#activity_repeat_basis').disabled = true;
+//
+//                        }
+//                    }
+//            );
+//        }
+//);
+
 
 /*
  if ($(this).children('.arrow-collapsed').attr('src').indexOf('expanded') > 0) {
