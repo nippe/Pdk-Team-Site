@@ -1,12 +1,8 @@
 PdkTeamSite::Application.routes.draw do
   get "rvsps/index"
-
   get "rvsps/attend"
-
   get "rvsps/maybe"
-
   get "rvsps/not"
-
 
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
