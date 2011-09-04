@@ -12,6 +12,7 @@ gem 'sanitize'
 group :development do
   gem 'rails-footnotes', '>= 3.7'
   #gem 'rails-debug'
+  gem 'pry'
 end
 
 # Use unicorn as the web server
