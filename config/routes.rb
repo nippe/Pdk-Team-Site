@@ -6,14 +6,10 @@ PdkTeamSite::Application.routes.draw do
 
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
-  # Didn't get the polymorphic_link in calendar_helper.rb to work so I solved it like this
-#  match '/events(/:id)' => 'activities#show', :as => :activity, :constraints => {:id => /\d*/}
   match '/events/:id' => 'activities#show'
-
 
   # temporary root until I have a start page
   root :to => 'wall_posts#index'
-
 
   # Trying to hook up rvsps "under" activities
   match "profile" => "users#show"
@@ -22,23 +18,23 @@ PdkTeamSite::Application.routes.draw do
   match '/activities/:activity_id/rvsps/not/:user_id' => 'rvsps#not'
   match '/activities/:activity_id/rvsps/index/' => 'rvsps#index' 
 
+
+  match 'forum' => 'wall_posts#index', :as => :forum
+  match 'login' => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
+
+  resources :wall_posts
+  resources :user_sessions
+
   resources :activities do
     resources :rvsps
   end
-
-  resources :wall_posts
 
   resources :users do
     member do
       get 'approve'
     end
   end
-
-  resources :user_sessions
-
-  match 'forum' => 'wall_posts#index', :as => :forum
-  match 'login' => 'user_sessions#new', :as => :login
-  match 'logout' => 'user_sessions#destroy', :as => :logout
 
 
 
