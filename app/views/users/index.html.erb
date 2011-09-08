@@ -41,57 +41,58 @@
   <% end %>
 </table>
 
-<div id="players-wrapper">
 
-  <% @users.each do |user| %>
 
-      <div class="player-container">
-        <div class="player-base-info-container">
-          <div class="player-picture" style="background: #f5f5f5;">
-            <%= image_tag 'player-pics/nippe.jpg' %>
-          </div>
-          <div class="player-base-info">
-            <h2><%= user.full_name %></h2>
-            <br/>
-            E-post: <%=	mail_to(user.email) %> 
-            <br/>
-            Mobil: <a href="callto:<%= user.mobile_phone %>"><%= user.mobile_phone %></a>
-            <br/>
-            <label for="nippe_active">Aktiv:</label> <input id="nippe_active" name="nippe_active"
-                                                            type="checkbox"
-                                                            checked="checked"/>
-            <br/>
-            Position: <%= user.player_type_id %>
-            <div style="text-align: right; width: 95%;">
-               <% if user.approved? %>
-              Godkänd
-          <% else %>
-              <% if current_user.has_role? :admin %>
-                  <%= link_to 'Approve!', approve_user_path(user) %>
-              <% else %>
-                  Inte godkänd
-              <% end %>
-          <% end %>
+<div id="players-container">
+        <div id="players-listing-wrapper">
+
+
+
+            <div id="player-list-left-col">
+                <% col_counter = 0 %>
+            <% user_counter = 0 %>
+            <% @users.each do |user| %>
+                  
+                <div class="player-small-box">
+                   <strong><%= user.full_name %></strong><br />
+                   <a href="callto:<%= user.mobile_phone %>"><%= user.mobile_phone %></a><br />
+                   <%= mail_to( user.email )%>
+                </div>
+
+                  <% if @users.count >= 3 and (user_counter % (@users.count/3)) == 0 %>
+                    <% if col_counter != 0 %>
+                        <% if col_counter == 1 %>
+                            </div>
+                            <div id="player-list-center-col">
+                        <% elsif col_counter == 2 %>
+                            </div>
+                            <div id="player-list-right-col">
+                        <% end %>
+
+                    <% end %>
+                    <% col_counter += 1 %>
+                <% end %>
+                <% user_counter += 1 %>
+            <% end %>
+
+               
+
             </div>
-          </div>
+
+          
+
+
+
 
         </div>
 
-        <!--<div class="player-more-info">-->
-        <!--<a href="#">Mer info <img src="images/indicators/arrow_state_blue_expanded.png" border="0" alt=""/></a>-->
-        <!--</div>-->
 
-        <!--<div class="player-extra-info-collapsable">-->
-        <!--dölfjöl <br />-->
-        <!--yhgfdsgfd <br />-->
-        <!--gfdsfgds <br />-->
-        <!--fgdsa <br />-->
-        <!--</div>-->
-
-      </div>
+    </div>
 
 
-  <% end %>
+
+
+
 
 </div>
 <!--
