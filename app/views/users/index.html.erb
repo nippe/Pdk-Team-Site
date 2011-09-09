@@ -44,50 +44,56 @@
 
 
 <div id="players-container">
-        <div id="players-listing-wrapper">
+  <div id="players-listing-wrapper">
 
 
+    <div id="player-list-left-col">
+      <% col_counter = 0 %>
+      <% user_counter = 0 %>
+      <% @users.each do |user| %>
 
-            <div id="player-list-left-col">
-                <% col_counter = 0 %>
-            <% user_counter = 0 %>
-            <% @users.each do |user| %>
-                  
-                <div class="player-small-box">
-                   <strong><%= user.full_name %></strong><br />
-                   <a href="callto:<%= user.mobile_phone %>"><%= user.mobile_phone %></a><br />
-                   <%= mail_to( user.email )%>
-                </div>
-
-                  <% if @users.count >= 3 and (user_counter % (@users.count/3)) == 0 %>
-                    <% if col_counter != 0 %>
-                        <% if col_counter == 1 %>
-                            </div>
-                            <div id="player-list-center-col">
-                        <% elsif col_counter == 2 %>
-                            </div>
-                            <div id="player-list-right-col">
-                        <% end %>
-
-                    <% end %>
-                    <% col_counter += 1 %>
-                <% end %>
-                <% user_counter += 1 %>
-            <% end %>
-
-               
-
+          <div class="player-small-box">
+            <div align="right" class="player-small-box-right">
+              <% if !user.approved? then %>
+                  <% if current_user.has_role? :admin  %>
+                      <%= link_to image_tag('indicators/accept.png', :border => 0), approve_user_path(user) %>
+                  <% end %>
+              <% end %>
+              <br/>
+              <%= user.player_type_id %><br/>
+              Aktiv
             </div>
 
-          
+            <strong><span class="<%= 'player-not-approved-name' if !user.approved? %>"><%= user.full_name %></span></strong><br/>
+            <a href="callto:<%= user.mobile_phone %>"><%= user.mobile_phone %></a><br/>
+            <%= mail_to(user.email) %>
+          </div>
+
+          <% if @users.count >= 3 and (user_counter % (@users.count/3)) == 0 %>
+              <% if col_counter != 0 %>
+                  <% if col_counter == 1 %>
+                      </div>
+                      <div id="player-list-center-col">
+                  <% elsif col_counter == 2 %>
+                      </div>
+                      <div id="player-list-right-col">
+                  <% end %>
+
+              <% end %>
+              <% col_counter += 1 %>
+          <% end %>
+          <% user_counter += 1 %>
+      <% end %>
 
 
 
+      </div>
 
-        </div>
+
+      </div>
 
 
-    </div>
+</div>
 
 
 
