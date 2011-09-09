@@ -1,45 +1,45 @@
 <h1>Listing users</h1>
 <p id="notice"><%= notice %></p>
 
-<table>
-  <tr>
-    <th>Username</th>
-    <th>E-mail</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th>Godkännandestatus</th>
-    <th>Roller</th>
-  </tr>
+<!--<table>-->
+  <!--<tr>-->
+    <!--<th>Username</th>-->
+    <!--<th>E-mail</th>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+    <!--<th>Godkännandestatus</th>-->
+    <!--<th>Roller</th>-->
+  <!--</tr>-->
 
   <% @users.each do |user| %>
-      <tr>
-        <td><%= user.login %></td>
-        <td><%= mail_to user.email %></td>
-        <td><%= link_to 'Visa', user %></td>
-        <td><%= link_to 'Ändra', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-        <td>
+      <!--<tr>-->
+        <!--<td><%= user.login %></td>-->
+        <!--<td><%= mail_to user.email %></td>-->
+        <!--<td><%= link_to 'Visa', user %></td>-->
+        <!--<td><%= link_to 'Ändra', edit_user_path(user) %></td>-->
+        <!--<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>-->
+        <!--<td>-->
           <% if user.approved? %>
-              Godkänd
+              <!--Godkänd-->
           <% else %>
               <% if current_user.has_role? :admin %>
-                  <%= link_to 'Approve!', approve_user_path(user) %>
+                  <!--<%= link_to 'Approve!', approve_user_path(user) %>-->
               <% else %>
-                  Inte godkänd
+                  <!--Inte godkänd-->
               <% end %>
           <% end %>
 
-        </td>
+        <!--</td>-->
 
-        <td>
+        <!--<td>-->
           <% user.roles.each { |r| %>
-              <%= r.name %>
+              <!--<%= r.name %>-->
           <% } %>
-        </td>
-      </tr>
+        <!--</td>-->
+      <!--</tr>-->
   <% end %>
-</table>
+<!--</table>-->
 
 
 
@@ -52,19 +52,30 @@
       <% user_counter = 0 %>
       <% @users.each do |user| %>
 
-          <div class="player-small-box">
+          <div class="player-small-box<%= ' palyer-active-background' if user.active? %>">
             <div align="right" class="player-small-box-right">
-              <% if !user.approved? then %>
-                  <% if current_user.has_role? :admin  %>
+               <% if current_user.has_role? :admin then %>
+                  <% if !user.approved? then %>
                       <%= link_to image_tag('indicators/accept.png', :border => 0), approve_user_path(user) %>
                   <% end %>
-              <% end %>
+
+                  <%= link_to image_tag('indicators/bin_closed.png', :border => 0), user_path(user), :method => :delete %>
+               <% end %>
               <br/>
               <%= user.player_type_id %><br/>
               Aktiv
             </div>
 
-            <strong><span class="<%= 'player-not-approved-name' if !user.approved? %>"><%= user.full_name %></span></strong><br/>
+            <strong>
+                <span class="<%= 'player-not-approved-name' if !user.approved? %>">
+                    <%= link_to user.full_name, user %>
+                </span>
+              <%= image_tag( 'indicators/rosette.png', :align => 'top', :alt => 'Is admin') if user.has_role? :admin %>
+              <%= image_tag( 'indicators/user.png', :align => 'top', :alt => 'Spelare') if user.has_role? :player %>
+              <%= '[GÄST]' if user.has_role? :guest %>
+            </strong>
+            <br/>
+
             <a href="callto:<%= user.mobile_phone %>"><%= user.mobile_phone %></a><br/>
             <%= mail_to(user.email) %>
           </div>

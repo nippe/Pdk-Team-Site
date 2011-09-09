@@ -191,7 +191,7 @@ class ActivitiesController < ApplicationController
 
 # DELETE /activities/1
 # DELETE /activities/1.xml
-  def destroy
+  def delete
     @activity = Activity.find(params[:id])
     @activity.rvsps.delete
     @activity.destroy
