@@ -92,4 +92,17 @@ class WallPostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  # DELETE /wall_posts/1
+  # DELETE /wall_posts/1.xml
+  def delete
+    @wall_post = WallPost.find(params[:id])
+    @wall_post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(wall_posts_url) }
+      format.xml  { head :ok }
+    end
+  end
 end
