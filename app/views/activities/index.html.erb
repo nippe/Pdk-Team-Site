@@ -51,6 +51,8 @@
 %>
 <h1>Aktiviteter</h1>
 
+<%= paginate @activities %>
+
 <table width="100%" class="activites-table">
   <tr>
     <th></th>
@@ -131,6 +133,9 @@
       </tr>
   <% end %>
 </table>
+
+<%= paginate @activities %>
+
 
 <br/>
 

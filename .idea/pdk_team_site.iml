@@ -65,6 +65,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.4, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.10, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v2.1.2, Ruby SDK 1.9.2-p136) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="kaminari (v0.12.4, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.1.pre.5, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activeresource (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />

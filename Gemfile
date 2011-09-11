@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'kaminari'
 gem 'rails', '3.0.9'
 gem 'sqlite3'
 gem 'authlogic'
@@ -8,6 +9,7 @@ gem "acl9"
 gem 'event-calendar', :require => 'event_calendar'
 gem 'tiny_mce'
 gem 'sanitize'
+
 
 group :production do
   #gem 'thin'
