@@ -3,6 +3,7 @@ class WallPost < ActiveRecord::Base
    belongs_to :user
 
 
+
   def display_date
     if self.created_at.today?
       "Idag"

@@ -1,9 +1,9 @@
 <h1>Forum</h1>
 
 <div id="forum-new-post-link">
-    <%= link_to 'New Wall post', new_wall_post_path %>
+    <%= link_to 'Skriv något coolt', new_wall_post_path %>
 </div>
-
+<%= paginate @wall_posts %>
 <br />
 <div id="forum-container">
   <% @wall_posts.each do |wall_post| %>
@@ -21,6 +21,11 @@
       </div>
   <% end %>
 </div>
+
+<div id="forum-new-post-link">
+    <%= link_to 'Skriv något coolt', new_wall_post_path %>
+</div>
+<%= paginate @wall_posts %>
 
 
 
