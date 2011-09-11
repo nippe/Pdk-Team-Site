@@ -9,6 +9,10 @@ gem 'event-calendar', :require => 'event_calendar'
 gem 'tiny_mce'
 gem 'sanitize'
 
+group :production do
+  #gem 'thin'
+end
+
 group :development do
   gem 'rails-footnotes', '>= 3.7'
   #gem 'rails-debug'

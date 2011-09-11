@@ -32,7 +32,7 @@
         <li><a href="/" title="Home"  class="<%= 'active' if request.path.eql?('/') %>">Home</a></li>
         <li><a href="/users" title="Spelare" class="<%= 'active' if request.path.start_with?('/users') %>">Spelare</a></li>
         <li><a href="/activities" title="Aktiviteter"  class="<%= 'active' if request.path.start_with?('/activities') %>">Aktiviteter</a></li>
-        <li><a href="/forum" title="Forum" class="<%= 'active' if request.path.start_with?('/forum') %>">Forum</a></li>
+        <li><a href="/forum" title="Forum" class="<%= 'active' if request.path.start_with?('/forum') or request.path.start_with?('/wall_post') %>">Forum</a></li>
         <li><a href="/calendar" title="Kalender" class="<%= 'active' if request.path.start_with?('/calendar') or request.path.eql?('/events') %>">Kalender</a></li>
       </ul>
 
