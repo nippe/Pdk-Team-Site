@@ -61,8 +61,11 @@
     <th>Ditt svar</th>
     <th>Närvaro</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <% if current_user.has_role? :admin then %>
+        <th></th>
+        <th></th>
+    <% end %>
+
   </tr>
 
   <%
@@ -127,9 +130,13 @@
           </div>
         </td>
 
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %> <%= link_to 'ffoo', activity, :method => :delete %></td>
+        <td><%= link_to 'Mer info...', activity %></td>
+        
+        <% if current_user.has_role? :admin then %>
+            <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+            <td><%= button_to "Ta bort", { :action => "destroy", :id => activity.id }, :method => :delete, :class => "post-delete-button" %></td>
+        <% end %>
+
       </tr>
   <% end %>
 </table>
