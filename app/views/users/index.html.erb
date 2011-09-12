@@ -1,47 +1,9 @@
+<%= javascript_include_tag 'users-index' %>
+
 <h1>Listing users</h1>
 <p id="notice"><%= notice %></p>
 
-<!--<table>-->
-  <!--<tr>-->
-    <!--<th>Username</th>-->
-    <!--<th>E-mail</th>-->
-    <!--<th></th>-->
-    <!--<th></th>-->
-    <!--<th></th>-->
-    <!--<th>Godkännandestatus</th>-->
-    <!--<th>Roller</th>-->
-  <!--</tr>-->
-
-  <% @users.each do |user| %>
-      <!--<tr>-->
-        <!--<td><%= user.login %></td>-->
-        <!--<td><%= mail_to user.email %></td>-->
-        <!--<td><%= link_to 'Visa', user %></td>-->
-        <!--<td><%= link_to 'Ändra', edit_user_path(user) %></td>-->
-        <!--<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>-->
-        <!--<td>-->
-          <% if user.approved? %>
-              <!--Godkänd-->
-          <% else %>
-              <% if current_user.has_role? :admin %>
-                  <!--<%= link_to 'Approve!', approve_user_path(user) %>-->
-              <% else %>
-                  <!--Inte godkänd-->
-              <% end %>
-          <% end %>
-
-        <!--</td>-->
-
-        <!--<td>-->
-          <% user.roles.each { |r| %>
-              <!--<%= r.name %>-->
-          <% } %>
-        <!--</td>-->
-      <!--</tr>-->
-  <% end %>
-<!--</table>-->
-
-
+Visa: [ <a href="#" id="show-all-users-link">Alla</a> ] [ <a href="#" id="show-players-link">Spelare</a> ] [ <a href="#" id="show-guests-link">Gäster</a> ]
 
 <div id="players-container">
   <div id="players-listing-wrapper">
@@ -52,7 +14,7 @@
       <% user_counter = 0 %>
       <% @users.each do |user| %>
 
-          <div class="player-small-box<%= ' palyer-active-background' if user.active? %>">
+          <div class="player-small-box<%= ' palyer-active-background' if user.active? %> <%= ' role-player' if user.has_role?(:player) %> <%= ' role-guest' if user.has_role?(:guest) %>">
             <div align="right" class="player-small-box-right">
                <% if current_user.has_role? :admin then %>
                   <% if !user.approved? then %>
