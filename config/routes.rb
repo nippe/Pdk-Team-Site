@@ -26,9 +26,17 @@ PdkTeamSite::Application.routes.draw do
   resources :wall_posts
   resources :user_sessions
 
+  # < TRAIL - just testing it out 2011-09-13 >
+  resources :debts
+  resources :expenses do
+    resources :debts
+  end
+
   resources :activities do
     resources :rvsps
   end
+  # </ TRAIL - just testing it out 2011-09-13 >
+
 
   resources :users do
     member do

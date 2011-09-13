@@ -19,4 +19,10 @@ REM rails g scaffold forum_post body:text user_id:integer
 
 rails g scaffold wall_posts body:text user_id:integer
 
-rails g scaffold location title:text 
+rails g scaffold location title:text
+
+
+rails generate model expense user_id:int ammount:int paid_in_full:bool
+rails generate model debt expensee_user_id:int guilty_user_id:int sum:int paid:bool payment_approved:bool
+rails generate controller expenses
+

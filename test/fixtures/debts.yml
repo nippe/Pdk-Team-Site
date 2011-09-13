@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  expensee_user_id: 
+  guilty_user_id: 
+  sum: 
+  paid: 
+  payment_approved: 
+
+two:
+  expensee_user_id: 
+  guilty_user_id: 
+  sum: 
+  paid: 
+  payment_approved: 
