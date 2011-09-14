@@ -1,11 +1,11 @@
 class CreateDebts < ActiveRecord::Migration
   def self.up
-    create_table :debts do |t|
-      t.int :expensee_user_id
-      t.int :guilty_user_id
-      t.int :sum
-      t.bool :paid
-      t.bool :payment_approved
+    create_table :debts, :id => false do |t|
+      t.integer :expensee_user_id 
+      t.integer :guilty_user_id
+      t.integer :sum
+      t.boolean :paid
+      t.boolean :payment_approved
 
       t.timestamps
     end
