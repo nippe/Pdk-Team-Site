@@ -62,16 +62,17 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="win32console (v1.3.0, Ruby SDK 1.9.2-p136) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.4, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.10, Ruby SDK 1.9.2-p136) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.4, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v2.1.2, Ruby SDK 1.9.2-p136) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails3-jquery-autocomplete (v0.9.1, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kaminari (v0.12.4, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.1.pre.5, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activeresource (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails-footnotes (v3.7.4, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-mount (v0.6.14, Ruby SDK 1.9.2-p136) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails-footnotes (v3.7.4, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry (v0.9.5, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tiny_mce (v0.1.4, Ruby SDK 1.9.2-p136) [gem]" level="application" />
@@ -99,10 +100,10 @@
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.16, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="slop (v2.1.0, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="abstract (v1.0.0, Ruby SDK 1.9.2-p136) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sanitize (v2.0.3, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.5.0, Ruby SDK 1.9.2-p136) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="arel (v2.0.10, Ruby SDK 1.9.2-p136) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sanitize (v2.0.3, Ruby SDK 1.9.2-p136) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v3.0.9, Ruby SDK 1.9.2-p136) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="arel (v2.0.10, Ruby SDK 1.9.2-p136) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />

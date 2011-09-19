@@ -98,7 +98,7 @@ class ActivitiesController < ApplicationController
       if @activity.save
 
         if !invited_user_ids.nil?
-          add_rvsps_to_activity(invited_user_ids, @activity)
+          @activity.add_rvsps(invited_user_ids)
         end
 
         if is_repeating
@@ -123,7 +123,7 @@ class ActivitiesController < ApplicationController
                                              :correlation_id => correlation_id)
 
               repeat_activity.save
-              add_rvsps_to_activity(invited_user_ids, repeat_activity)
+              @activity.add_rvsps(invited_user_ids)
               safety_to_remove = safety_to_remove.next
             end
 

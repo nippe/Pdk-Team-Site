@@ -33,6 +33,7 @@ PdkTeamSite::Application.routes.draw do
   get 'debts/mine'
   resources :expenses do
     resources :debts
+    get :autocomplete_users_full_name, :on => :collection
   end
 
   resources :activities do

@@ -82,7 +82,7 @@
               <%= activity.start_at.strftime("%H:%M") if !activity.all_day %>
             </strong>
             <%= activity.display_date %>
-            <%= image_tag('indicators/repeat-arrow2.png', :alt => 'Tillhör en serie', :align => "top") if !activity.correlation_id.blank? %>
+            <%= image_tag('indicators/repeat-activity.png', :alt => 'Tillhör en serie', :align => "top") if !activity.correlation_id.blank? %>
           </nobr>
         </td>
 

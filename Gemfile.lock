@@ -52,6 +52,7 @@ GEM
     method_source (0.6.5)
       ruby_parser (>= 2.0.5)
     mime-types (1.16)
+    nifty-generators (0.4.6)
     nokogiri (1.5.0-x86-mingw32)
     polyglot (0.3.2)
     pry (0.9.5-x86-mingw32)
@@ -75,6 +76,8 @@ GEM
       railties (= 3.0.9)
     rails-footnotes (3.7.4)
       rails (>= 3.0.0)
+    rails3-jquery-autocomplete (0.9.1)
+      rails (~> 3.0)
     railties (3.0.9)
       actionpack (= 3.0.9)
       activesupport (= 3.0.9)
@@ -107,9 +110,11 @@ DEPENDENCIES
   event-calendar
   jquery-rails
   kaminari
+  nifty-generators
   pry
   rails (= 3.0.9)
   rails-footnotes (>= 3.7)
+  rails3-jquery-autocomplete
   sanitize
   sqlite3
   tiny_mce

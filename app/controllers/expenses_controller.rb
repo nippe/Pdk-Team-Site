@@ -1,5 +1,7 @@
 class ExpensesController < ApplicationController
 
+  autocomplete :users, :full_name, :full => true
+
 
   def index
     @expenses = Expense.find_all_by_user_id(current_user.id)

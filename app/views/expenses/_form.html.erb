@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'autocomplete-rails.js' %>
+
 <% form_for(@expense) do |f| %>
 
 
@@ -17,7 +19,8 @@
     <div>
       Vilka är skyldiga?
       <br/>
-      <input type="text"/>
+      <!--<input type="text"/>-->
+      <%= f.autocomplete_field :user, :autocomplete_user_full_name %>
       <input type="button" value="Lägg till listan av skyldiga"/>
     </div>
 
