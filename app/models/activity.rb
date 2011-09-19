@@ -62,7 +62,7 @@ class Activity < ActiveRecord::Base
     elsif self.start_at.day == Time.now.tomorrow.day
       "I morgon"
     else
-      self.start_at.strftime("%Y-%m-%d")
+      self.start_at.to_s(:pdk_short_date)
     end
 
   end

@@ -10,7 +10,7 @@ class WallPost < ActiveRecord::Base
     elsif self.created_at.day == Time.now.tomorrow.day
       "I morgon"
     else
-      self.created_at.strftime("%Y-%m-%d")
+      self.created_at.to_s(:pdk_short_date)
     end
 
   end
