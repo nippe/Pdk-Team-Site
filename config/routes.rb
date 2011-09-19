@@ -1,4 +1,6 @@
 PdkTeamSite::Application.routes.draw do
+  get "debts/mine"
+
   get "rvsps/index"
   get "rvsps/attend"
   get "rvsps/maybe"
@@ -27,7 +29,8 @@ PdkTeamSite::Application.routes.draw do
   resources :user_sessions
 
   # < TRAIL - just testing it out 2011-09-13 >
-  resources :debts
+  #resources :debts
+  get 'debts/mine'
   resources :expenses do
     resources :debts
   end

@@ -1,0 +1,12 @@
+
+<% @expenses.each do |expense| %>
+<ul>
+  <li>
+    <%= expense.description %>
+  </li>
+
+</ul>
+
+<% end %>
+
+<%= link_to 'Skapa utlägg', new_expense_path %>

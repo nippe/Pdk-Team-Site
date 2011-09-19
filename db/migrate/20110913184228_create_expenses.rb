@@ -2,8 +2,10 @@ class CreateExpenses < ActiveRecord::Migration
   def self.up
     create_table :expenses do |t|
       t.integer :user_id
-      t.integer :ammount
-      t.boolean :paid_in_full
+      #t.integer :amount
+      t.string :description
+      t.datetime :date
+      t.boolean :paid_in_full, :default => false
 
       t.timestamps
     end
