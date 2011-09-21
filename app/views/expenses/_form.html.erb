@@ -15,12 +15,13 @@
       <%= f.date_select :date %>
     </div>
 
+<%= :autocomplete_user_full_name_expenses_path %>
 
     <div>
       Vilka är skyldiga?
       <br/>
       <!--<input type="text"/>-->
-      <%= f.autocomplete_field :user, :autocomplete_user_full_name %>
+      <%= f.autocomplete_field :user, :autocomplete_user_full_name_expenses %>
       <input type="button" value="Lägg till listan av skyldiga"/>
     </div>
 
