@@ -1,6 +1,5 @@
 class ExpensesController < ApplicationController
 
-  autocomplete :user, :full_name, :full => true
 
 
   def index
