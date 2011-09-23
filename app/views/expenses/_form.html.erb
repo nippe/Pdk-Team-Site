@@ -1,4 +1,5 @@
-<%= javascript_include_tag 'autocomplete-rails.js' %>
+<%= javascript_include_tag 'expenses' %>
+
 
 <% form_for(@expense) do |f| %>
 
@@ -15,14 +16,13 @@
       <%= f.date_select :date %>
     </div>
 
-<%= :autocomplete_user_full_name_expenses_path %>
 
     <div>
       Vilka är skyldiga?
       <br/>
       <!--<input type="text"/>-->
-      <%= f.autocomplete_field :user, :autocomplete_user_full_name_expenses %>
-      <input type="button" value="Lägg till listan av skyldiga"/>
+      <%= select_tag(:debt, options_from_collection_for_select(User.all, :id, :full_name)) %>
+      <input id="add-to-shit-list" type="button" value="Lägg till"/>
     </div>
 
     <div id="the-guilty-ones">
