@@ -12,6 +12,7 @@ $(document).ready(
         function(){
             $('#add-to-shit-list').click(
                     function(){
+                        alert('dsfsdf');
                        //TODO: Add user to debt-list
 
                     }
