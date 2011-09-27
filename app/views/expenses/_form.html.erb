@@ -25,32 +25,18 @@
       <input id="add-to-shit-list" type="button" value="Lägg till"/>
     </div>
 
-    <div id="the-guilty-ones">
-      <div class="guilty-part">
-        <span class="guilty-name">Andreas Höglund</span>
-        <input type="text" style="width: 50px; margin-left: 120px; margin-right: 10px;"/>
-        X
-      </div>
-
-      <div class="guilty-part">
-        <span class="guilty-name">Andreas Höglund</span>
-        <input type="text" style="width: 50px; margin-left: 120px; margin-right: 10px;"/>
-        X
-      </div>
-
-      <div class="guilty-part">
-        <span class="guilty-name">Andreas Höglund</span>
-        <input type="text" style="width: 50px; margin-left: 120px; margin-right: 10px;"/>
-        X
-      </div>
+    <input id="hid-user-ids" type="hidden" value=""/>
+     <a href="javascript:alert(document.getElementById('hid-user-ids').value);">What</a>
 
 
-      <div class="guilty-part">
-        <span class="guilty-name">Andreas Höglund</span>
-        <input type="text" style="width: 50px; margin-left: 120px; margin-right: 10px;"/>
-        X
-      </div>
+     <table id="table-of-guiltys" border="0">
+         <tr>
+             <td width="175"></td>
+             <td width="70"></td>
+             <td width="10"></td>
+         </tr>
 
-    </div>
+     </table>
+
 
 <% end %>
