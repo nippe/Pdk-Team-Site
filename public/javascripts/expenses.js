@@ -24,15 +24,15 @@ $(document).ready(
                     function(){
                         var user_id = document.getElementById('debt').value;
                         var full_name = $('#debt option:selected').text();
-                        if(document.getElementById('hid-user-ids').value.length == 0)
+                        if(document.getElementById('expense_debts_user_ids_').value.length == 0)
                         {
-                            document.getElementById('hid-user-ids').value += user_id;
+                            document.getElementById('expense_debts_user_ids_').value += user_id;
                         }
                         else
                         {
-                            var ids = document.getElementById('hid-user-ids').value.split(',');
+                            var ids = document.getElementById('expense_debts_user_ids_').value.split(',');
                             if(!id_exists_in_array(user_id, ids)){
-                                document.getElementById('hid-user-ids').value += ',' + user_id;
+                                document.getElementById('expense_debts_user_ids_').value += ',' + user_id;
                             }
                             else{
                                 return;
@@ -46,7 +46,7 @@ $(document).ready(
                             + full_name
                             + '</td>'
                             + '\n<td>'
-                            + '<input type=\"text\" style=\"width: 50px; text-align: right;\"/> kr'
+                            + '<input id=\"debpt_part_' + user_id + '\" type=\"text\" style=\"width: 50px; text-align: right;\" class=\"debpt_part\"/> kr'
                             + '</td>'
                             + '\n<td>'
                             + 'X'
@@ -54,12 +54,6 @@ $(document).ready(
                             + '</tr>'
                             + '');
 
-
-
-
-
-
-                       //TODO: Add user to debt-list
 
                     }
             )

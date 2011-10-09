@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'kaminari'
-gem 'rails', '3.0.9'
+gem 'rails', '3.0.10'
 gem 'sqlite3'
 gem 'authlogic'
 gem 'jquery-rails'#, :git => 'git://github.com/pgericson/jquery-rails.git'

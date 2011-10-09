@@ -1,14 +1,12 @@
 class ActivitiesController < ApplicationController
+  respond_to :html, :xml, :json
+  respond_to :rss, :only => :index
   # GET /activities
   # GET /activities.xml
   def index
     @activities = Activity.where("start_at >= ?", Date.today).order("start_at ASC").page(params[:page]).per(15)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml { render :xml => @activities }
-      format.json { render :json => @activities }
-    end
+    respond_with(@activities)
   end
 
   # GET /activities/1
@@ -16,11 +14,7 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml { render :xml => @activity }
-      format.json { render :json => @activity }
-    end
+    respond_with(@activity)
   end
 
 
@@ -31,12 +25,7 @@ class ActivitiesController < ApplicationController
     @activity_types = ActivityType.all
     @users = User.all
 
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml { render :xml => @activity }
-      format.json { render :json => @activity }
-    end
+    respond_with(@activity)
   end
 
 

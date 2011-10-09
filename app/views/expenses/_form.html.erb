@@ -25,7 +25,7 @@
       <input id="add-to-shit-list" type="button" value="Lägg till"/>
     </div>
 
-    <input id="hid-user-ids" type="hidden" value=""/>
+    <input id="expense_debts_user_ids_" name="expense[debts_user_ids][]" type="hidden" value=""/>
      <a href="javascript:alert(document.getElementById('hid-user-ids').value);">What</a>
 
 
@@ -38,5 +38,8 @@
 
      </table>
 
+    <div>
+      <%= f.submit %>
+    </div>
 
 <% end %>
