@@ -51,6 +51,8 @@
 %>
 <h1>Aktiviteter</h1>
 
+<%= :notice %>
+<%= :flash %>
 <%= paginate @activities %>
 
 <table width="100%" class="activites-table">
@@ -133,8 +135,8 @@
         <td><%= link_to 'Mer info...', activity %></td>
         
         <% if current_user.has_role? :admin then %>
-            <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-            <td><%= button_to "Ta bort", { :action => "destroy", :id => activity.id }, :method => :delete, :class => "post-delete-button" %></td>
+            <td><%= link_to 'Edit', edit_activity_path(activity), :notice => 'Cant edit a series' %></td>
+            <td><%= button_to "Ta bort", { :action => "destroy", :id => activity.id }, :method => :delete, :class => "post-delete-button", :confirm => 'Vill du verkligen ta bort denna aktivitet?' %></td>
         <% end %>
 
       </tr>
