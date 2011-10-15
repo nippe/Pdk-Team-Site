@@ -13,6 +13,9 @@
         <li>
           <a href="/calendar" title="Kalender" class="<%= 'active' if request.path.start_with?('/calendar') or request.path.eql?('/events') %>">Kalender</a>
         </li>
+        <li>
+          <a href="/expenses" title="Utlägg" class="<%= 'active' if request.path.start_with?('/expenses')  %>">Utlägg</a>
+        </li>
       </ul>
     </div>
 <% else %>
