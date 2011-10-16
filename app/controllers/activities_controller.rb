@@ -185,6 +185,8 @@ class ActivitiesController < ApplicationController
     @activity.rvsps.delete
     @activity.destroy
 
+    flash[:notice => 'Activity deleted!']
+
     respond_to do |format|
       format.html { redirect_to(activities_url) }
       format.xml { head :ok }

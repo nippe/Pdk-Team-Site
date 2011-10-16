@@ -3,9 +3,10 @@ class CreateDebts < ActiveRecord::Migration
     create_table :debts, :id => false do |t|
       t.integer :expensee_user_id 
       t.integer :guilty_user_id
+      t.integer :expense_id
       t.integer :sum
-      t.boolean :paid
-      t.boolean :payment_approved
+      t.boolean :paid, :default => false
+      t.boolean :payment_approved, :default => false
 
       t.timestamps
     end

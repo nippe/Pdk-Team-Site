@@ -3,6 +3,7 @@
 
 <% form_for(@expense) do |f| %>
 
+    <%= hidden_field_tag(:expense_user_id, current_user.id, :name => 'expense[user_id]') %>
 
     <div id="input-description">
       <%= f.label :description, 'Utlägget gjordes för ...' %>
@@ -21,12 +22,12 @@
       Vilka är skyldiga?
       <br/>
       <!--<input type="text"/>-->
-      <%= select_tag(:debt, options_from_collection_for_select(User.all, :id, :full_name)) %>
+      <%= select_tag(:expense_debtee, options_from_collection_for_select(User.all, :id, :full_name)) %>
       <input id="add-to-shit-list" type="button" value="Lägg till"/>
     </div>
 
-    <input id="expense_debts_user_ids_" name="expense[debts_user_ids][]" type="hidden" value=""/>
-     <a href="javascript:alert(document.getElementById('hid-user-ids').value);">What</a>
+    <input id="expense_debts_user_ids_" name="expense[debts_user_ids]" type="hidden" value=""/>
+     <a href="javascript:alert(document.getElementById('expense_debts_user_ids_').value);">What</a>
 
 
      <table id="table-of-guiltys" border="0">

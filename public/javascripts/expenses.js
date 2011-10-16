@@ -15,6 +15,24 @@ function id_exists_in_array(user_id, ids) {
     return false;
 }
 
+function remove_id_from_value_string(user_id, ids_string) {
+    var ids = ids_string.split(',');
+    var return_string = '';
+    for(var i = 0; i < ids.length; i++){
+        if(ids[i] != user_id){
+            return_string += ids[i] + ',';
+        }
+    }
+    return return_string.substr(0, return_string.length - 1);
+}
+
+function delete_debtee(link_object) {
+    var id_to_delete = link_object.id.split('_')[2];
+    var ids = document.getElementById('expense_debts_user_ids_').value;
+    $('#' + link_object.id).parent().parent().remove();
+    document.getElementById('expense_debts_user_ids_').value = remove_id_from_value_string(id_to_delete, ids);
+}
+
 
 
 $(document).ready(
@@ -22,8 +40,8 @@ $(document).ready(
         function(){
             $('#add-to-shit-list').click(
                     function(){
-                        var user_id = document.getElementById('debt').value;
-                        var full_name = $('#debt option:selected').text();
+                        var user_id = document.getElementById('expense_debtee').value;
+                        var full_name = $('#expense_debtee option:selected').text();
                         if(document.getElementById('expense_debts_user_ids_').value.length == 0)
                         {
                             document.getElementById('expense_debts_user_ids_').value += user_id;
@@ -46,10 +64,12 @@ $(document).ready(
                             + full_name
                             + '</td>'
                             + '\n<td>'
-                            + '<input id=\"debpt_part_' + user_id + '\" type=\"text\" style=\"width: 50px; text-align: right;\" class=\"debpt_part\"/> kr'
+                            + '<input type=\"text\" id=\"debpt_part_' + user_id + '\" '
+                            + '     name=\"debpt_part_' + user_id + '\" value=\"\"'
+                            + '     style=\"width: 50px; text-align: right;\" class=\"debpt_part\"/> kr'
                             + '</td>'
                             + '\n<td>'
-                            + 'X'
+                            + '<a href=\"#\" onclick="delete_debtee(this);" id=\"debt_delete_' + user_id + '\">X</a>'
                             + '</td>'
                             + '</tr>'
                             + '');
