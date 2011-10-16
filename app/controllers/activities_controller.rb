@@ -1,14 +1,12 @@
 class ActivitiesController < ApplicationController
+  respond_to :html, :xml, :json
+  respond_to :rss, :only => :index
   # GET /activities
   # GET /activities.xml
   def index
     @activities = Activity.where("start_at >= ?", Date.today).order("start_at ASC").page(params[:page]).per(15)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml { render :xml => @activities }
-      format.json { render :json => @activities }
-    end
+    respond_with(@activities)
   end
 
   # GET /activities/1
@@ -16,11 +14,7 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml { render :xml => @activity }
-      format.json { render :json => @activity }
-    end
+    respond_with(@activity)
   end
 
 
@@ -31,12 +25,7 @@ class ActivitiesController < ApplicationController
     @activity_types = ActivityType.all
     @users = User.all
 
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml { render :xml => @activity }
-      format.json { render :json => @activity }
-    end
+    respond_with(@activity)
   end
 
 
@@ -98,7 +87,7 @@ class ActivitiesController < ApplicationController
       if @activity.save
 
         if !invited_user_ids.nil?
-          add_rvsps_to_activity(invited_user_ids, @activity)
+          @activity.add_rvsps(invited_user_ids)
         end
 
         if is_repeating
@@ -123,7 +112,7 @@ class ActivitiesController < ApplicationController
                                              :correlation_id => correlation_id)
 
               repeat_activity.save
-              add_rvsps_to_activity(invited_user_ids, repeat_activity)
+              @activity.add_rvsps(invited_user_ids)
               safety_to_remove = safety_to_remove.next
             end
 
@@ -195,6 +184,8 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     @activity.rvsps.delete
     @activity.destroy
+
+    flash[:notice => 'Activity deleted!']
 
     respond_to do |format|
       format.html { redirect_to(activities_url) }

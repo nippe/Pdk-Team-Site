@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'kaminari'
-gem 'rails', '3.0.9'
+gem 'rails', '3.0.10'
 gem 'sqlite3'
 gem 'authlogic'
 gem 'jquery-rails'#, :git => 'git://github.com/pgericson/jquery-rails.git'
@@ -9,7 +9,7 @@ gem "acl9"
 gem 'event-calendar', :require => 'event_calendar'
 gem 'tiny_mce'
 gem 'sanitize'
-
+gem 'rails3-jquery-autocomplete'
 
 group :production do
   #gem 'thin'
@@ -19,6 +19,7 @@ group :development do
   gem 'rails-footnotes', '>= 3.7'
   #gem 'rails-debug'
   gem 'pry'
+  gem 'nifty-generators'
 end
 
 # Use unicorn as the web server

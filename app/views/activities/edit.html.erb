@@ -1,5 +1,11 @@
 <h1>Editing activity</h1>
 
+<p id="flash-message">
+  <% if @activity.correlation_id %>
+      Detta är en repterande aktivitet, du ändrar bara denna enskilda aktivitet. Inte serien!
+  <% end %>
+</p>
+
 <%= render 'form' %>
 
 <%= link_to 'Show', @activity %> |

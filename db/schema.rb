@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110709213227) do
+ActiveRecord::Schema.define(:version => 20110913185427) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -30,11 +31,31 @@ ActiveRecord::Schema.define(:version => 20110709213227) do
     t.string   "image_path"
   end
 
+  create_table "debts", :id => false, :force => true do |t|
+    t.integer  "expensee_user_id"
+    t.integer  "guilty_user_id"
+    t.integer  "expense_id"
+    t.integer  "sum"
+    t.boolean  "paid",             :default => false
+    t.boolean  "payment_approved", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.datetime "start_at"
     t.datetime "end_at"
     t.boolean  "all_day",    :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "expenses", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "description"
+    t.datetime "date"
+    t.boolean  "paid_in_full", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

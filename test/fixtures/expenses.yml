@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 
+  ammount: 
+  paid_in_full: 
+
+two:
+  user_id: 
+  ammount: 
+  paid_in_full: 

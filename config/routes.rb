@@ -1,4 +1,6 @@
 PdkTeamSite::Application.routes.draw do
+  get "debts/mine"
+
   get "rvsps/index"
   get "rvsps/attend"
   get "rvsps/maybe"
@@ -26,9 +28,19 @@ PdkTeamSite::Application.routes.draw do
   resources :wall_posts
   resources :user_sessions
 
+  # < TRAIL - just testing it out 2011-09-13 >
+  #resources :debts
+  get 'debts/mine'
+  resources :expenses do
+    resources :debts
+    get :autocomplete_user_full_name, :on => :collection
+  end
+
   resources :activities do
     resources :rvsps
   end
+  # </ TRAIL - just testing it out 2011-09-13 >
+
 
   resources :users do
     member do

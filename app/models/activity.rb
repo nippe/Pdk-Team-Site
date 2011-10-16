@@ -83,4 +83,14 @@ class Activity < ActiveRecord::Base
     self.rvsps.find_by_user_id(user.id)
   end
 
+
+  def add_rvsps(invited_user_ids)
+    invited_user_ids.each do |user_id|
+      rvsp = self.rvsps.new()
+      rvsp.user_id = user_id
+      rvsp.rvsp_status_id = 4 #TODO: Maybe use enum instead - find out how in Ruby
+      rvsp.save()
+    end
+  end
+
 end
