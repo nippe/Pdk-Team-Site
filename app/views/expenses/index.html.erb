@@ -1,13 +1,49 @@
+<%= javascript_include_tag 'collapsible-regions' %>
+
+<div class="collapsible-container">
+
+  <div id="debts-header" class="collapse-arrow collapsible-sub-header">
+    <h2>Dina skulder</h2>
+  </div>
+  <div class="collapsible-region">
+    <% @debts.each do |debt| %>
+        <ul>
+          <li>
+            <%= debt.sum %> kr
+            <ul>
+              <li>
+                <%= debt.expense.user.full_name %>
+              </li>
+              <li>
+                <%= debt.expense.description %>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+    <% end %>
+  </div>
+</div>
+<br/>
+<br/>
+<br/>
 
 
-<% @expenses.each do |expense| %>
-<ul>
-  <li>
-    <%= expense.description %> [<%= expense.date %>]
-  </li>
+<div class="collapsible-container">
+  <div class="collapse-arrow collapsible-sub-header">
+    <h2>Dina utlägg</h2>
+  </div>
+  <div class="collapsible-region">
+    <% @expenses.each do |expense| %>
+        <ul>
+          <li>
+            <%= expense.description %> [<%= expense.date %>]
+          </li>
+        </ul>
+    <% end %>
 
-</ul>
+  </div>
 
-<% end %>
+</div>
 
-<%= link_to 'Skapa utlägg', new_expense_path %>
+<%= link_to 'Begär in stålar!', new_expense_path %>

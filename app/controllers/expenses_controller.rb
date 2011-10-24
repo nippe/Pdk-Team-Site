@@ -3,7 +3,8 @@ class ExpensesController < ApplicationController
 
 
   def index
-    @expenses = Expense.find_all_by_user_id(current_user.id)
+    @expenses = current_user.expenses
+    @debts = current_user.debts
   end
 
   def new
@@ -34,7 +35,7 @@ class ExpensesController < ApplicationController
 
       user_ids.each do |debtee_id|
         logger.debug 'debetee_id: ' + debtee_id.to_s
-        debt = Debt.new(:expensee_user_id => params[:expense][:user_id], :guilty_user_id => debtee_id)
+        debt = Debt.new(:expensee_user_id => params[:expense][:user_id], :user_id => debtee_id)
         debt.expense = @expense
         debt.sum = params['debpt_part_' + debtee_id.to_s]
         debt.save

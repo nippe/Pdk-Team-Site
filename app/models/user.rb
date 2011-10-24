@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   
   has_many :rvsps
   has_many :expenses
-  has_and_belongs_to_many :debts  # Am I thinking this through correct?
+  #has_and_belongs_to_many :debts  # Am I thinking this through correct?
+  has_many :debts  # Am I thinking this through correct?
 
   validates_uniqueness_of :login
   validates_uniqueness_of :email

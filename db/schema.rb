@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20110913185427) do
 
   create_table "debts", :id => false, :force => true do |t|
     t.integer  "expensee_user_id"
-    t.integer  "guilty_user_id"
+    t.integer  "user_id"
     t.integer  "expense_id"
     t.integer  "sum"
     t.boolean  "paid",             :default => false
