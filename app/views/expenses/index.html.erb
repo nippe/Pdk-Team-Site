@@ -5,25 +5,21 @@
   <div id="debts-header" class="collapse-arrow collapsible-sub-header">
     <h2>Dina skulder</h2>
   </div>
-  <div class="collapsible-region">
-    <% @debts.each do |debt| %>
-        <ul>
-          <li>
-            <%= debt.sum %> kr
-            <ul>
-              <li>
-                <%= debt.expense.user.full_name %>
-              </li>
-              <li>
-                <%= debt.expense.description %>
-              </li>
-            </ul>
-          </li>
 
-        </ul>
-    <% end %>
+  <div class="collapsible-region">
+    <div id="guilt-list">
+      <% @debts.each do |debt| %>
+          <ul>
+            <li>Du är skyldig <%= debt.expense.user.full_name %> <strong><%= debt.sum %> kr</strong> för
+              <em><%= debt.expense.description %> </em></li>
+            <li class="i-have-paid-button"><input type="button" value="Betalt!" class="i-have-paid-button"/></li>
+          </ul>
+      <% end %>
+    </div>
   </div>
 </div>
+
+
 <br/>
 <br/>
 <br/>
@@ -45,5 +41,7 @@
   </div>
 
 </div>
+
+
 
 <%= link_to 'Begär in stålar!', new_expense_path %>
