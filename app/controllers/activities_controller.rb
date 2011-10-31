@@ -1,11 +1,10 @@
 class ActivitiesController < ApplicationController
   respond_to :html, :xml, :json
-  respond_to :rss, :only => :index
+  respond_to :rss, :atom, :only => :index
   # GET /activities
   # GET /activities.xml
   def index
     @activities = Activity.where("start_at >= ?", Date.today).order("start_at ASC").page(params[:page]).per(15)
-
     respond_with(@activities)
   end
 

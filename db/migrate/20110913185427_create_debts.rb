@@ -1,6 +1,6 @@
 class CreateDebts < ActiveRecord::Migration
   def self.up
-    create_table :debts, :id => false do |t|
+    create_table :debts do |t|
       t.integer :expensee_user_id 
       t.integer :user_id
       t.integer :expense_id

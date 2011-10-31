@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20110913185427) do
     t.string   "image_path"
   end
 
-  create_table "debts", :id => false, :force => true do |t|
+  create_table "debts", :force => true do |t|
     t.integer  "expensee_user_id"
     t.integer  "user_id"
     t.integer  "expense_id"

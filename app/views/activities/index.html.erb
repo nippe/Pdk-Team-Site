@@ -2,6 +2,9 @@
 
 <%= javascript_tag "var userId = " + current_user.id.to_s + ";" %>
 
+<%= auto_discovery_link_tag(:atom, activities_path(:atom)) %>
+<%= auto_discovery_link_tag(:rss, activities_path(:rss)) %>
+
 <%
    def color_class(activity)
        if activity.is_user_invited?(current_user) then
@@ -52,7 +55,6 @@
 <h1>Aktiviteter</h1>
 
 <%= notice %>
-<%= flash %>
 <%= paginate @activities %>
 
 <table width="100%" class="activites-table">

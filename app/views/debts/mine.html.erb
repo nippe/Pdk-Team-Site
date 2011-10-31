@@ -1,2 +1,10 @@
 <h1>Debts#mine</h1>
+<ul>
+<% @debts.each do |debt| %>
+   <li>
+     <%= debt.sum %>
+   </li>
+
+<% end %>
+</ul>
 <p>Find me in app/views/debts/mine.html.erb</p>

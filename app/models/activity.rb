@@ -1,7 +1,7 @@
 class Activity < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
-  #require "mathn"
-  
+
+
   belongs_to :activity_type
   has_many :rvsps
   #has_many :users, :through =>  :rvsp_users
@@ -37,7 +37,11 @@ class Activity < ActiveRecord::Base
   
   def name
     if title.nil?
-      activity_type.name
+      if description.nil?
+        activity_type.name
+      else
+        description
+      end
     else
       title
     end

@@ -29,11 +29,11 @@ PdkTeamSite::Application.routes.draw do
   resources :user_sessions
 
   # < TRAIL - just testing it out 2011-09-13 >
-  #resources :debts
+  resources :debts
   get 'debts/mine'
+  match 'debts/:debt_id/paid' => 'debts#paid'
   resources :expenses do
     resources :debts
-    get :autocomplete_user_full_name, :on => :collection
   end
 
   resources :activities do

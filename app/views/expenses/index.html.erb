@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'collapsible-regions' %>
+<%= javascript_include_tag 'collapsible-regions', 'expenses-index' %>
 
 <div class="collapsible-container">
 
@@ -9,10 +9,13 @@
   <div class="collapsible-region">
     <div id="guilt-list">
       <% @debts.each do |debt| %>
-          <ul>
+          <ul class="<%= 'paid' if debt.paid %>">
             <li>Du är skyldig <%= debt.expense.user.full_name %> <strong><%= debt.sum %> kr</strong> för
               <em><%= debt.expense.description %> </em></li>
-            <li class="i-have-paid-button"><input type="button" value="Betalt!" class="i-have-paid-button"/></li>
+            <% if !debt.paid then %>
+                <li><a href="#" id="debt-<%= debt.id %>" class="i-have-paid-button">Jag har betalt ju!</a></li>
+            <% end %>
+
           </ul>
       <% end %>
     </div>
