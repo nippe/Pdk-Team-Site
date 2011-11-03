@@ -9,10 +9,12 @@ gem "acl9"
 gem 'event-calendar', :require => 'event_calendar'
 gem 'tiny_mce'
 gem 'sanitize'
-gem 'rails3-jquery-autocomplete'
+#gem 'rails3-jquery-autocomplete'
 
 group :production do
-  #gem 'thin'
+  gem 'heroku'
+  gem 'thin'
+  gem 'pg'
 end
 
 group :development do

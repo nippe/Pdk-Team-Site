@@ -11,11 +11,14 @@ class DebtsController < ApplicationController
 
 
   def paid
+    logger.debug('Param: #{params[:debt_id]}')
   	debt = Debt.find_by_id(params[:debt_id])
+
+    logger.debug(debt)
 
   	debt.paid = true if debt.user == current_user
 
-  	debt.payment_approved = true if debt.expense.user == current_user
+  	#debt.payment_approved = true if debt.expense.user == current_user
 
   	if debt.save() 
   		respond_with(debt)

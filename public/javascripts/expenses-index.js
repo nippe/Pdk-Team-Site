@@ -19,7 +19,7 @@ $(document).ready(
                     $.ajax(
                         {
                             url: '/debts/debt_id',
-                            type: PUT,
+                            type: POST,
                             success: function() { $(this).parent.addClass('debt-paid'); }
                         }
                     );
