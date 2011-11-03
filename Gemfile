@@ -19,7 +19,6 @@ end
 
 group :development do
   gem 'rails-footnotes', '>= 3.7'
-  #gem 'rails-debug'
   gem 'pry'
   gem 'nifty-generators'
 end
