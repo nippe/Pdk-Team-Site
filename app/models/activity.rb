@@ -37,14 +37,10 @@ class Activity < ActiveRecord::Base
   
   def name
     if title.nil?
-      if description.nil?
         activity_type.name
       else
-        description
+        tile
       end
-    else
-      title
-    end
   end
 
   def is_user_attending?(user)

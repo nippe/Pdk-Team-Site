@@ -58,45 +58,70 @@ class ActivitiesController < ApplicationController
     repeat_interval = ""
     repeat_end_date = Time.now()
 
+    logger.debug("Entering create method, checking for invidted users")
     if params[:activity].has_key?(:rvsps_user_id)
       invited_user_ids = params[:activity][:rvsps_user_id]
       params[:activity].delete(:rvsps_user_id)
+      logger.debug("Found :rvsps_user - #{invited_user_ids}")
     end
 
+    logger.debug("Looking for :repeat_interval")
     if params[:activity].has_key?(:repeat_interval)
       repeat_interval = params[:activity][:repeat_interval]
       params[:activity].delete(:repeat_interval)
+      logger.debug("Found Repeat interval: #{repeat_interval}")
     end
 
+    logger.debug("Looking for :repeat_end_date")
     if params[:activity].has_key?(:repeat_end_date)
+      logger.debug(":repeat_end_date exits")
       if !params[:activity][:repeat_end_date].nil? then
-        repeat_end_date = Time.parse(params[:activity][:repeat_end_date])
+        repeat_end_date = Time.parse(params[:activity][:repeat_end_date]) if !params[:activity][:repeat_end_date].empty?
+        logger.debug("Found repeat_end_date: #{repeat_end_date}")
       end
       params[:activity].delete(:repeat_end_date)
     end
 
+    logger.debug("Looking for :activity_repeat")
     if params[:activity].has_key?(:activity_repeat)
       is_repeating = true
       params[:activity].delete(:activity_repeat)
+      logger.debug("Found activity_repeat: #{is_repeating}")
     end
 
+    logger.debug("Creating new activity from params[]")
     @activity = Activity.new(params[:activity])
 
     respond_to do |format|
+      logger.debug("Saving activity...")
       if @activity.save
 
+        logger.debug("Activity saved")
+
         if !invited_user_ids.nil?
+          logger.debug("Inviting users")
           @activity.add_rvsps(invited_user_ids)
         end
 
+        logger.debug("Check if is repeating")
         if is_repeating
+          logger.debug("Activity is repeating")
+
           safety_to_remove = 0
           correlation_id = @activity.id.to_s
+
+          logger.debug("correlation_id set to #{correlation_id}")
+
           @activity.correlation_id = correlation_id
+          logger.debug("Re-saving root activity with correlation_id #{correlation_id}")
+
           @activity.save
 
           next_date = Time.parse(params[:activity][:start_at]) + 2.hours #TODO: This is an ugly fix because I don't know how to handle time formats correctly. FIX IT!
+          logger.debug("Parsed date for first repeating event to #{next_date}")
+
           next_end_date = Time.parse(params[:activity][:end_at]) + 2.hours
+          logger.debug("Parsed end date for first repeating event to #{next_end_date}")
 
           while next_date <= repeat_end_date and safety_to_remove < 10
 
@@ -111,7 +136,7 @@ class ActivitiesController < ApplicationController
                                              :correlation_id => correlation_id)
 
               repeat_activity.save
-              @activity.add_rvsps(invited_user_ids)
+              repeat_activity.add_rvsps(invited_user_ids)
               safety_to_remove = safety_to_remove.next
             end
 
@@ -180,9 +205,17 @@ class ActivitiesController < ApplicationController
 # DELETE /activities/1
 # DELETE /activities/1.xml
   def destroy
+
+    logger.debug(" -> Entering Destry method")
     @activity = Activity.find(params[:id])
+    logger.debug(" -> found activity #{@activity}, deleting RVSPs")
+
     @activity.rvsps.delete
+    logger.debug(" -> RVSPs deleted, deleting activity")
+
     @activity.destroy
+    logger.debug(" -> Activity deleted")
+
 
     flash[:notice => 'Activity deleted!']
 
