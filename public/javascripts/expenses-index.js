@@ -14,15 +14,29 @@ $(document).ready(
         function(){
             $('.i-have-paid-button').click(
                 function() {
+                    alert('jquery hookup works');
                     var debt_id = $(this).attr('id').split('-')[1];
 
-                    $.ajax(
-                        {
-                            url: '/debts/debt_id',
-                            type: POST,
-                            success: function() { $(this).parent.addClass('debt-paid'); }
+                    var url = '/debts/' + debt_id + '/paid';
+
+                    $.getJSON(
+                        url,
+                        function(json){
+                            alert(json);
+                            //TODO: Highligt and remove link and write "waiting for approval"..
                         }
                     );
+
+
+
+//
+//                    $.ajax(
+//                        {
+//                            url: '/debts/' + debt_id,
+//                            type: POST,
+//                            success: function() { $(this).parent.addClass('debt-paid'); }
+//                        }
+//                    );
 
 
                 }

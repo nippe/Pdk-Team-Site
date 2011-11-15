@@ -62,9 +62,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="heroku (v2.11.0, ruby-1.9.2-p290) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.4, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailer (v3.0.10, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.10, ruby-1.9.2-p290) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.4, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v2.1.2, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kaminari (v0.12.4, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionpack (v3.0.10, ruby-1.9.2-p290) [gem]" level="application" />
@@ -87,9 +87,9 @@
     <orderEntry type="library" scope="PROVIDED" name="thin (v1.2.11, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="abstract (v1.0.0, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.5.0, ruby-1.9.2-p290) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.0.10, ruby-1.9.2-p290) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ruby_parser (v2.3.1, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v2.0.10, ruby-1.9.2-p290) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby_parser (v2.3.1, ruby-1.9.2-p290) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.0.10, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v1.0.16, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="win32console (v1.3.0, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nifty-generators (v0.4.6, ruby-1.9.2-p290) [gem]" level="application" />

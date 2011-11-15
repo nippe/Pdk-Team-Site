@@ -1,5 +1,4 @@
 PdkTeamSite::Application.routes.draw do
-  get "debts/mine"
 
   get "rvsps/index"
   get "rvsps/attend"
@@ -31,6 +30,7 @@ PdkTeamSite::Application.routes.draw do
   # < TRAIL - just testing it out 2011-09-13 >
   resources :debts
   get 'debts/mine'
+
   match 'debts/:debt_id/paid' => 'debts#paid'
   resources :expenses do
     resources :debts
