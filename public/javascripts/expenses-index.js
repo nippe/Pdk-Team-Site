@@ -14,15 +14,14 @@ $(document).ready(
         function(){
             $('.i-have-paid-button').click(
                 function() {
-                    alert('jquery hookup works');
                     var debt_id = $(this).attr('id').split('-')[1];
-
-                    var url = '/debts/' + debt_id + '/paid';
+                    var url = '/debts/' + debt_id + '/paid.json';
 
                     $.getJSON(
                         url,
                         function(json){
-                            alert(json);
+                            alert('Du påstår att du betalat ' + json.debt.sum + ' spänn');
+                            $(this).parent().parent().addClass('debt-paid');
                             //TODO: Highligt and remove link and write "waiting for approval"..
                         }
                     );

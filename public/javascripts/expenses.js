@@ -35,7 +35,12 @@ function delete_debtee(link_object) {
     $('#expense_debtee').append($('<option></option>').val(id_to_delete).html(user_name));
 
     //Remove debtee
-    $('#' + link_object.id).parent().parent().remove();
+    $('#' + link_object.id).parent().parent().toggle('slow',
+        function(){
+             $('#' + link_object.id).parent().parent().remove();
+        }
+    );
+
     document.getElementById('expense_debts_user_ids_').value = remove_id_from_value_string(id_to_delete, ids);
 }
 
@@ -67,7 +72,7 @@ $(document).ready(
 
 
                         $('#table-of-guiltys').append('\n'
-                            + '<tr>'
+                            + '<tr style=\"display: none;\">'
                             + '<td>'
                             + full_name
                             + '</td>'
@@ -81,6 +86,8 @@ $(document).ready(
                             + '</td>'
                             + '</tr>'
                             + '');
+
+                       $('#table-of-guiltys tr').last().toggle('slow');
 
 
                     }
