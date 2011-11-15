@@ -29,6 +29,12 @@ function remove_id_from_value_string(user_id, ids_string) {
 function delete_debtee(link_object) {
     var id_to_delete = link_object.id.split('_')[2];
     var ids = document.getElementById('expense_debts_user_ids_').value;
+
+    //Re-add name to dropdown
+    var user_name = $('#' + link_object.id).parent().parent().children()[0].innerText;
+    $('#expense_debtee').append($('<option></option>').val(id_to_delete).html(user_name));
+
+    //Remove debtee
     $('#' + link_object.id).parent().parent().remove();
     document.getElementById('expense_debts_user_ids_').value = remove_id_from_value_string(id_to_delete, ids);
 }
@@ -42,6 +48,8 @@ $(document).ready(
                     function(){
                         var user_id = document.getElementById('expense_debtee').value;
                         var full_name = $('#expense_debtee option:selected').text();
+                        $('#expense_debtee option:selected').remove();
+
                         if(document.getElementById('expense_debts_user_ids_').value.length == 0)
                         {
                             document.getElementById('expense_debts_user_ids_').value += user_id;

@@ -32,7 +32,7 @@ $(document).ready(
 
         $('#activity_all_day').click(
             function() {
-                if ($(this).prop('checked') == true) {
+                if ($(this).prop('checked') === true) {
                     dateConverter = new AnyTime.Converter({format: formatDateOnly});
                     currentFormat = formatDateOnly;
                 }
