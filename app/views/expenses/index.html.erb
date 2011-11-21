@@ -36,13 +36,21 @@
   </div>
   <div class="collapsible-region">
     <% @expenses.each do |expense| %>
-        <ul>
+        <ul class="debt-summary">
           <li>
-            <%= expense.description %> genomfört: <strong><em><%= expense.date.to_s(:pdk_short_date) %></em></strong>
-            <ul>
+            <strong><%= expense.description %></strong> genomfört: <em><%= expense.date.to_s(:pdk_short_date) %></em> [Skyldiga: <%= expense.debts.count %>]  <%= image_tag 'indicators/delete.png' %>
+            <ul style="display: none;">
               <% expense.debts.each do |debt| %>
                 <li>
-                  <%= debt.user.full_name %>  - <%= debt.sum %>
+                  <strong><%= debt.user.full_name %></strong> är skyldig <strong><%= debt.sum %> kr</strong>
+                  <span class="debt-payment-status">
+                  <% if debt.paid && !debt.payment_approved %>
+                    och <span class="debt-eledgely-paid">påstår</span> sig ha betalt. <span id='debt-approval-<%= debt.id.to_s %>' class="debt-approval-link">Stämmer!</span>
+                  <% elsif debt.paid && debt.payment_approved %>
+                     och har <span class="debt-paid-list">betalt</span>.
+                  <% else %>
+                    och har <span class="debt-not-paid">inte</span> betalt.
+                  <% end %></span>
                 </li>
               <% end %>
             </ul>

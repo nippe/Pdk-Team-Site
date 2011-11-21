@@ -31,7 +31,10 @@ PdkTeamSite::Application.routes.draw do
   resources :debts
   get 'debts/mine'
 
+
   match 'debts/:debt_id/paid' => 'debts#paid'
+  match 'debts/:debt_id/approve_payment' => 'debts#approve_payment'
+
   resources :expenses do
     resources :debts
   end

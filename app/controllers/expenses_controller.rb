@@ -3,8 +3,8 @@ class ExpensesController < ApplicationController
 
 
   def index
-    @expenses = current_user.expenses
-    @debts = current_user.debts
+    @expenses = current_user.expenses.find_all_by_paid_in_full(false)
+    @debts = Debt.find_all_by_user_id_and_payment_approved(current_user.id, false)
   end
 
   def new

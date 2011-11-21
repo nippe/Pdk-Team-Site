@@ -2,6 +2,7 @@ class RvspsController < ApplicationController
   #TODO: Acl9 protect the controller. Verify that it works with json-jQuery stuff to
 
   def index
+    logger.debug('Entering rvsp#index activity id: ' + params[:activity_id])
     @rvsps = Rvsp.find_by_activity_id(params[:activity_id])
   end
 

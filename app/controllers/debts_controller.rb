@@ -5,7 +5,7 @@ class DebtsController < ApplicationController
 
 
   def mine
-    @debts = Debt.find_all_by_user_id(current_user.id)
+    @debts = Debt.find_all_by_user_id_and_payment_approved(current_user.id, false)
     respond_with(@debts)
   end
 
@@ -23,6 +23,24 @@ class DebtsController < ApplicationController
   	if debt.save() 
   		respond_with(debt)
   	end
+
+  end
+
+  def approve_payment
+    logger.debug(' - > Entering approve_payment controller action')
+
+    debt = Debt.find(params[:debt_id])
+
+    if debt.expense.user == current_user
+      debt.payment_approved = true
+      if debt.save
+        debt.expense.paid! if debt.expense.all_debts_approved?
+        respond_with(debt)
+      end
+    else
+      #TODO: Rails exception
+    end
+
 
   end
 
