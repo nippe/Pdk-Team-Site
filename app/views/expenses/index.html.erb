@@ -15,7 +15,7 @@
             <% if debt.paid then %>
                  ... väntar på godkännande
             <% else %>
-                <li><a href="#" id="debt-<%= debt.id %>" class="i-have-paid-button">Jag har betalt ju!</a></li>
+                <li><span id="debt-<%= debt.id %>" class="i-have-paid-button">Jag har betalt ju!</span></li>
             <% end %>
 
           </ul>
@@ -45,11 +45,11 @@
                   <strong><%= debt.user.full_name %></strong> är skyldig <strong><%= debt.sum %> kr</strong>
                   <span class="debt-payment-status">
                   <% if debt.paid && !debt.payment_approved %>
-                    och <span class="debt-eledgely-paid">påstår</span> sig ha betalt. <span id='debt-approval-<%= debt.id.to_s %>' class="debt-approval-link">Stämmer!</span>
+                    och <span class="debt-eledgely-paid">påstår sig ha betalt.</span> <span id='debt-approval-<%= debt.id.to_s %>' class="debt-approval-link">Stämmer!</span>
                   <% elsif debt.paid && debt.payment_approved %>
                      och har <span class="debt-paid-list">betalt</span>.
                   <% else %>
-                    och har <span class="debt-not-paid">inte</span> betalt.
+                    och har <span class="debt-not-paid">inte betalt</span>.
                   <% end %></span>
                 </li>
               <% end %>

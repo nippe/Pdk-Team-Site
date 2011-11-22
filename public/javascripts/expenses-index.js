@@ -14,12 +14,15 @@ $(document).ready(
             function() {
                 var debt_id = $(this).attr('id').split('-')[1];
                 var url = '/debts/' + debt_id + '/paid.json';
+                var currentLink = $(this);
+
+
 
                 $.getJSON(
                     url,
                     function(json) {
-                        alert('Du påstår att du betalat ' + json.debt.sum + ' spänn');
-                        $(this).parent().parent().addClass('debt-paid');
+                        currentLink.parent().parent().addClass('debt-paid');
+                        currentLink.replaceWith('... väntar på godkännande');
                         //TODO: Highligt and remove link and write "waiting for approval"..
                     }
                 );
@@ -41,19 +44,25 @@ $(document).ready(
 );
 
 
+function set_element_to_has_paid(obj) {
+    obj.parent().fadeOut('15000');
+    obj.parent().replaceWith('<span class=\"debt-payment-status\">och har <span class=\"debt-paid-list\">betalt</span>.');
+    obj.parent().toggle('slow');
+}
+
 $(document).ready(
     function() {
         $('.debt-approval-link').click(
             function() {
                 var debt_id = $(this).attr('id').split('-')[2];
                 var url = '/debts/' + debt_id + '/approve_payment';
+                var parentElement = $(this);
+
 
                 $.getJSON(
                     url,
                     function(json) {
-                        alert('Ajax call executed gracefully, now for DOM manipulation');
-                        $(this).parent().parent().toggle('slow');
-
+                         set_element_to_has_paid(parentElement);
                     }
                 );
             }
