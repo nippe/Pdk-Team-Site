@@ -1,67 +1,80 @@
 <%= javascript_include_tag 'collapsible-regions', 'expenses-index' %>
 
-<div class="collapsible-container">
 
-  <div id="debts-header" class="collapse-arrow collapsible-sub-header">
-    <h2>Dina skulder</h2>
-  </div>
-
-  <div class="collapsible-region">
-    <div id="guilt-list">
-      <% @debts.each do |debt| %>
-          <ul class="<%= 'debt-paid' if debt.paid %>">
-            <li>Du är skyldig <%= debt.expense.user.full_name %> <strong><%= debt.sum %> spänn</strong> för
-              <em><%= debt.expense.description %> </em></li>
-            <% if debt.paid then %>
-                 ... väntar på godkännande
-            <% else %>
-                <li><span id="debt-<%= debt.id %>" class="i-have-paid-button">Jag har betalt ju!</span></li>
-            <% end %>
-
-          </ul>
-      <% end %>
+<% if @debts.count > 0  then %>
+    <div class="collapsible-container">
+      <div id="debts-header" class="collapse-arrow collapsible-sub-header">
+        <h2>Dina skulder</h2>
+      </div>
+      <div class="collapsible-region">
+        <div id="guilt-list">
+          <% @debts.each do |debt| %>
+              <ul id="debt-li-<%= debt.id %>" class="<%= 'debt-paid' if debt.paid %>">
+                <li >Du är skyldig <%= debt.expense.user.full_name %> <strong><%= debt.sum %> spänn</strong> för
+                  <em><%= debt.expense.description %> </em></li>
+                <% if debt.paid then %>
+                     ... väntar på godkännande
+                <% else %>
+                    <li><span id="debt-<%= debt.id %>" class="i-have-paid-button">Jag har betalt ju!</span></li>
+                <% end %>
+              </ul>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+<% else %>
+
+    <div id="no-debts" class="green-info">
+      Grattis, du är skuldfri!
+    </div>
+<% end %>
+
+
+
 
 
 <br/>
-<br/>
-<br/>
 
-
-<div class="collapsible-container">
-  <div class="collapse-arrow collapsible-sub-header">
-    <h2>Dina utlägg</h2>
-  </div>
-  <div class="collapsible-region">
-    <% @expenses.each do |expense| %>
-        <ul class="debt-summary">
-          <li>
-            <strong><%= expense.description %></strong> genomfört: <em><%= expense.date.to_s(:pdk_short_date) %></em> [Skyldiga: <%= expense.debts.count %>]  <%= image_tag 'indicators/delete.png' %>
-            <ul style="display: none;">
-              <% expense.debts.each do |debt| %>
-                <li>
-                  <strong><%= debt.user.full_name %></strong> är skyldig <strong><%= debt.sum %> kr</strong>
-                  <span class="debt-payment-status">
-                  <% if debt.paid && !debt.payment_approved %>
-                    och <span class="debt-eledgely-paid">påstår sig ha betalt.</span> <span id='debt-approval-<%= debt.id.to_s %>' class="debt-approval-link">Stämmer!</span>
-                  <% elsif debt.paid && debt.payment_approved %>
-                     och har <span class="debt-paid-list">betalt</span>.
-                  <% else %>
-                    och har <span class="debt-not-paid">inte betalt</span>.
-                  <% end %></span>
-                </li>
-              <% end %>
+<% if @expenses.count > 0 then %>
+    <br/>
+    <br/>
+    <div class="collapsible-container">
+      <div class="collapse-arrow collapsible-sub-header">
+        <h2>Dina utlägg</h2>
+      </div>
+      <div class="collapsible-region">
+        <% @expenses.each do |expense| %>
+            <ul class="debt-summary">
+              <li>
+                <strong><%= expense.description %></strong> genomfört: <em><%= expense.date.to_s(:pdk_short_date) %></em> [Skyldiga: <%= expense.debts.count %>]  <%= image_tag 'indicators/delete.png' %>
+                <ul style="display: none;">
+                  <% expense.debts.each do |debt| %>
+                    <li>
+                      <strong><%= debt.user.full_name %></strong> är skyldig <strong><%= debt.sum %> kr</strong>
+                      <span class="debt-payment-status">
+                      <% if debt.paid && !debt.payment_approved %>
+                        och <span class="debt-eledgely-paid">påstår sig ha betalt.</span> <span id='debt-approval-<%= debt.id.to_s %>' class="debt-approval-link">Stämmer!</span>
+                      <% elsif debt.paid && debt.payment_approved %>
+                         och har <span class="debt-paid-list">betalt</span>.
+                      <% else %>
+                        och har <span class="debt-not-paid">inte betalt</span>.
+                      <% end %></span>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
             </ul>
-          </li>
-        </ul>
-    <% end %>
+        <% end %>
+      </div>
+    </div>
+<% else %>
+    <div id="no-expenses" class="green-info">
+      Du ligger inte ute med några stålar för tillfället!
+    </div>
+<% end %>
 
-  </div>
 
-</div>
-
+       <br/>
 
 
 <%= link_to 'Begär in stålar!', new_expense_path %>

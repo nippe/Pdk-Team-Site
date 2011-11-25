@@ -21,8 +21,15 @@ $(document).ready(
                 $.getJSON(
                     url,
                     function(json) {
-                        currentLink.parent().parent().addClass('debt-paid');
-                        currentLink.replaceWith('... väntar på godkännande');
+
+                        if (json.debt.paid === true) {
+                            currentLink.parent().parent().addClass('debt-paid');
+                            currentLink.replaceWith('... väntar på godkännande');
+                        }
+                        else {
+                            alert('Hej, den gubben gick inte!');
+                        }
+
                         //TODO: Highligt and remove link and write "waiting for approval"..
                     }
                 );
@@ -62,7 +69,11 @@ $(document).ready(
                 $.getJSON(
                     url,
                     function(json) {
-                         set_element_to_has_paid(parentElement);
+                        set_element_to_has_paid(parentElement);
+                        $('#debt-li-' + debt_id).removeClass('debt-paid').addClass('debt-paid-confirmed');
+                        if(json.expense.paid_in_full === true){
+                            parentElement.parent().parent().parent().parent().parent().toggle('slow');
+                        }
                     }
                 );
             }

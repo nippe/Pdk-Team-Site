@@ -35,7 +35,7 @@ class DebtsController < ApplicationController
       debt.payment_approved = true
       if debt.save
         debt.expense.paid! if debt.expense.all_debts_approved?
-        respond_with(debt)
+        respond_with(debt.expense)
       end
     else
       #TODO: Rails exception
