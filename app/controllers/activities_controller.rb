@@ -36,6 +36,8 @@ class ActivitiesController < ApplicationController
   end
 
   def get_next_dates(repeat_interval, current_start_at, current_end_at)
+
+
     case
       when repeat_interval == "weekly"
         next_date = current_start_at + 1.week
@@ -47,8 +49,12 @@ class ActivitiesController < ApplicationController
         next_date = current_start_at + 1.year
         next_end_date = current_end_at + 1.year
     end
+
+    logger.debug(" -> Current date: #{current_start_at}, Next start date: #{next_date}")
+
     return next_date, next_end_date
   end
+
 
   # POST /activities
   # POST /activities.xml
@@ -95,7 +101,6 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       logger.debug("Saving activity...")
       if @activity.save
-
         logger.debug("Activity saved")
 
         if !invited_user_ids.nil?
@@ -107,7 +112,6 @@ class ActivitiesController < ApplicationController
         if is_repeating
           logger.debug("Activity is repeating")
 
-          safety_to_remove = 0
           correlation_id = @activity.id.to_s
 
           logger.debug("correlation_id set to #{correlation_id}")
@@ -117,19 +121,19 @@ class ActivitiesController < ApplicationController
 
           @activity.save
 
-          next_date = Time.parse(params[:activity][:start_at]) + 2.hours #TODO: This is an ugly fix because I don't know how to handle time formats correctly. FIX IT!
-          logger.debug("Parsed date for first repeating event to #{next_date}")
+          next_date = Time.parse(params[:activity][:start_at]) + 1.hours #TODO: This is an ugly fix because I don't know how to handle time formats correctly. FIX IT!
+          logger.debug(" -> Parsed date for first repeating event to #{next_date}")
 
-          next_end_date = Time.parse(params[:activity][:end_at]) + 2.hours
-          logger.debug("Parsed end date for first repeating event to #{next_end_date}")
-
-          while next_date <= repeat_end_date and safety_to_remove < 10
+          next_end_date = Time.parse(params[:activity][:end_at]) + 1.hours
+          logger.debug(" -> Parsed end date for first repeating event to #{next_end_date}")
 
 
+          while next_date <= repeat_end_date
             next_date, next_end_date = get_next_dates(repeat_interval, next_date, next_end_date)
 
             if next_date <= repeat_end_date
-              repeat_activity = Activity.new(:start_at => next_date, :end_at => next_end_date,
+              repeat_activity = Activity.new(:start_at => next_date, 
+                                             :end_at => next_end_date,
                                              :title => params[:activity][:title],
                                              :all_day => params[:activity][:all_day],
                                              :activity_type_id => params[:activity][:activity_type_id],
@@ -137,7 +141,6 @@ class ActivitiesController < ApplicationController
 
               repeat_activity.save
               repeat_activity.add_rvsps(invited_user_ids)
-              safety_to_remove = safety_to_remove.next
             end
 
           end
