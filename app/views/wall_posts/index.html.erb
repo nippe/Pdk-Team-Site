@@ -5,20 +5,13 @@
 </div>
 <%= paginate @wall_posts %>
 <br />
+
+<div id="forum-new-container">
+    <%= text_area :body, :class => 'mceEditor', :style =>"width: 98%;"%>
+</div>
+
 <div id="forum-container">
   <% @wall_posts.each do |wall_post| %>
-      <!--<div class="post-container">-->
-        <!--<div class="post-button-panel">-->
-          <!--<% if wall_post.user == current_user or current_user.has_role? :admin then %>-->
-              <!--<%= button_to "Ta bort", { :action => "destroy", :id => wall_post.id }, :method => :delete, :class => "post-delete-button" %>-->
-          <!--<% end %>-->
-        <!--</div>-->
-        <!--<span class="post-date"><%= wall_post.display_date %>  kl <%= wall_post.created_at.strftime("%H:%M") %> </span>-->
-        <!--sa <span class="post-header"><%= wall_post.user.first_name %></span> ....-->
-
-
-        <!--<p class="forum-post-body"><%= raw(Sanitize.clean(wall_post.body, Sanitize::Config::BASIC)) %></p>-->
-      <!--</div>-->
 
       <span class="post-date"><%= wall_post.display_date %>  kl <%= wall_post.created_at.strftime("%H:%M") %> </span>
         sa <span class="post-header"><%= wall_post.user.first_name %></span> ....

@@ -57,7 +57,7 @@
 <%= notice %>
 <%= paginate @activities %>
 
-<table width="100%" class="activites-table">
+<table cellspacing="0" width="100%" class="activites-table">
   <tr>
     <th></th>
     <th></th>
@@ -73,7 +73,6 @@
   </tr>
 
   <%
-
      @activities.each do |activity| %>
       <tr class="row-for-activity-<%= activity.id.to_s %> <%= cycle 'activity-list-even-row', '' %>">
         <td class="activity-type">
@@ -134,11 +133,11 @@
           </div>
         </td>
 
-        <td><%= link_to 'Mer info...', activity %></td>
+        <td><%= link_to image_tag('indicators/information.png', :border => 0, :alt => 'Detaljerad info', :title => 'Detaljerad info'), activity %></td>
         
         <% if current_user.has_role? :admin then %>
-            <td><%= link_to 'Edit', edit_activity_path(activity), :notice => 'Cant edit a series' %></td>
-            <td><%= button_to "Ta bort", { :action => "destroy", :id => activity.id }, :method => :delete, :class => "post-delete-button", :confirm => 'Vill du verkligen ta bort denna aktivitet?' %></td>
+            <td><%= link_to image_tag('indicators/page_edit.png', :border => 0, :title => 'Ändra aktivtet'), edit_activity_path(activity), :notice => 'Cant edit a series' %></td>
+            <td><%= link_to image_tag('indicators/delete.png', :border => 0), activity, :method => :delete, :action => :destroy %><br />
         <% end %>
 
       </tr>

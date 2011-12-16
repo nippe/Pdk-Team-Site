@@ -16,6 +16,8 @@ class WallPostsController < ApplicationController
 
     #@wall_posts.sort_by {|wall_post| - wall_post.created_at.to_i}
 
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @wall_posts }

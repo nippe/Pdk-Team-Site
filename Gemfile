@@ -5,7 +5,7 @@ gem 'rails', '3.0.10'
 gem 'sqlite3'
 gem 'authlogic'
 gem 'jquery-rails'#, :git => 'git://github.com/pgericson/jquery-rails.git'
-gem "acl9"
+gem 'acl9'
 gem 'event-calendar', :require => 'event_calendar'
 gem 'tiny_mce'
 gem 'sanitize'
