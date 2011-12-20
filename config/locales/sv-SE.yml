@@ -24,3 +24,12 @@ sv:
           short: "%e %b %H:%M"
           activitydate: "%Y-%m-%d"
           activitytime: "%H:%M"
+
+      
+    views:
+      pagination:
+        previous: "&laquo;&laquo;"
+        next: "&raquo;&raquo;"
+        first: ""
+        last: ""
+        truncate: "..."

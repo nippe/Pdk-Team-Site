@@ -60,7 +60,7 @@
 
         <p>Datum: <strong><%= @activity.display_date%></strong></p>
 
-        <p>Varaktighet: <strong><%= ((@activity.end_at - @activity.start_at) / 3600).round(1).to_s.gsub(".", ",") + " h" %></strong></p>
+        <p>Varaktighet: <strong><%= @activity.duration.to_s.gsub(".", ",") %> h</strong></p>
         <p>Plats: <strong>Högdalen</strong></p>
     </div>
 
@@ -129,13 +129,9 @@
                     <h2><%= current_rvsp_status %></h2>
                     <ul>
               <% end %>
-
                   <li class="<%= 'attending-player' if rvsp.rvsp_status_id == 1 %>">
                     <%= rvsp.user.full_name %> - <%= rvsp.rvsp_status.title %>
                   </li>
-
-
-
           <% end %>
         </ul>
     </div>

@@ -148,7 +148,7 @@ class ActivitiesController < ApplicationController
         end
 
 
-        format.html { redirect_to(@activity, :notice => "Activity was successfully created. Antalet inbjudna: #{invited_user_ids.count}") }
+        format.html { redirect_to(activities_path, :notice => "Activity/ies was successfully created. Antalet inbjudna: #{invited_user_ids.count}") }
         format.xml { render :xml => @activity, :status => :created, :location => @activity }
       else
         format.html { render :action => "new" }

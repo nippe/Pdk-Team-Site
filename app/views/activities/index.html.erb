@@ -76,7 +76,7 @@
      @activities.each do |activity| %>
       <tr class="row-for-activity-<%= activity.id.to_s %> <%= cycle 'activity-list-even-row', '' %>">
         <td class="activity-type">
-          <%= image_tag activity.activity_type.image_path, :alt => activity.activity_type.name %>
+          <%= image_tag activity.activity_type.image_path, :alt => activity.name, :title => activity.name %>
         </td>
 
         <td class="activity-time">
@@ -149,4 +149,4 @@
 
 <br/>
 
-<%= link_to 'New Activity', new_activity_path %>
+<%= link_to 'Skapa ny aktivitet', new_activity_path %>

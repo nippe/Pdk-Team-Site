@@ -9,7 +9,6 @@ gem 'acl9'
 gem 'event-calendar', :require => 'event_calendar'
 gem 'tiny_mce'
 gem 'sanitize'
-#gem 'rails3-jquery-autocomplete'
 
 group :production do
   gem 'heroku'
@@ -22,7 +21,6 @@ group :development do
   gem 'pry'
   gem 'nifty-generators'
 end
-#
 
 # Use unicorn as the web server
 # gem 'unicorn'
