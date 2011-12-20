@@ -1,13 +1,14 @@
     <h1>Forum</h1>
 
 <div id="forum-new-post-link">
-    <%= link_to 'Skriv något coolt', new_wall_post_path %>
+    <%= link_to 'Skriv något coolt', new_wall_post_path %> <span id="toggle-new-post">hitme</span>
 </div>
 <%= paginate @wall_posts %>
 <br />
 
 <div id="forum-new-container">
-    <%= text_area :body, :class => 'mceEditor', :style =>"width: 98%;"%>
+    <%= text_area_tag :body, nil, :class => 'mceEditor', :style =>"width: 98%;", :rows => 4%>
+    <br />
 </div>
 
 <div id="forum-container">
@@ -16,7 +17,6 @@
       <span class="post-date"><%= wall_post.display_date %>  kl <%= wall_post.created_at.strftime("%H:%M") %> </span>
         sa <span class="post-header"><%= wall_post.user.first_name %></span> ....
       <blockquote>
-        
         <%= raw(Sanitize.clean(wall_post.body, Sanitize::Config::BASIC)) %>
       </blockquote>
 

@@ -3,20 +3,13 @@ class WallPostsController < ApplicationController
      allow :logged_in, :players
   end
 
-  
   uses_tiny_mce
+
 
   # GET /wall_posts
   # GET /wall_posts.xml
   def index
     @wall_posts = WallPost.order('created_at DESC').page(params[:page]).per(15)
-    #@wall_posts = WallPost.order(:updated_at).reverse.page(params[:page]).per(5)
-    #@wall_posts = WallPost.find(:all, :order => "updated_at DESC")
-    #@wall_posts = WallPost.all
-
-    #@wall_posts.sort_by {|wall_post| - wall_post.created_at.to_i}
-
-
 
     respond_to do |format|
       format.html # index.html.erb

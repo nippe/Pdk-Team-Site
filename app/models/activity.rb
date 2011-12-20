@@ -9,39 +9,35 @@ class Activity < ActiveRecord::Base
   has_event_calendar
 
   def attending
-     rvsps.where("activity_id = ? AND rvsp_status_id = ?", self.id, 1 )
+    rvsps.where(activity_id: id, rvsp_status_id: 1)
   end
 
   def maybe_coming
-    rvsps.where("activity_id = ? AND rvsp_status_id = ?", self.id, 3 )
+    rvsps.where(activity_id: id, rvsp_status_id: 3)
   end
 
   def not_coming
-    rvsps.where("activity_id = ? AND rvsp_status_id = ?", self.id, 2 )
+    rvsps.where(activity_id: id, rvsp_status_id: 2)
   end
 
   def no_answer
-    rvsps.where("activity_id = ? AND rvsp_status_id = ?", self.id, 4 )
+    rvsps.where(activity_id: id, rvsp_status_id: 4)
   end
 
   def all_invitations
-    rvsps.where("activity_id = ?", self.id)
+    rvsps.where(activity_id: id)
   end
 
-  #TODO: Add calculation for duration
+
   def duration
-    1
+   ((end_at - start_at) / 3600).round(1)
   end
 
-  # for event_calendar (TODO: should there be a separate name)
   
   def name
-    if title.nil?
-        activity_type.name
-      else
-        tile
-      end
+    title || activity_type.name
   end
+
 
   def is_user_attending?(user)
     self.rvsps.find_by_user_id(user.id).rvsp_status_id == 1 if is_user_invited?(user)
@@ -64,8 +60,8 @@ class Activity < ActiveRecord::Base
     else
       self.start_at.to_s(:pdk_short_date)
     end
-
   end
+
 
   def user_status(user)
     if is_user_attending?(user)
@@ -78,6 +74,7 @@ class Activity < ActiveRecord::Base
       "har inte svarat"
     end
   end
+
 
   def is_user_invited?(user)
     self.rvsps.find_by_user_id(user.id)
