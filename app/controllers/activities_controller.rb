@@ -121,10 +121,10 @@ class ActivitiesController < ApplicationController
 
           @activity.save
 
-          next_date = Time.parse(params[:activity][:start_at]) + 1.hours #TODO: This is an ugly fix because I don't know how to handle time formats correctly. FIX IT!
+          next_date = Time.parse(params[:activity][:start_at]) #+ 1.hours #TODO: This is an ugly fix because I don't know how to handle time formats correctly. FIX IT!
           logger.debug(" -> Parsed date for first repeating event to #{next_date}")
 
-          next_end_date = Time.parse(params[:activity][:end_at]) + 1.hours
+          next_end_date = Time.parse(params[:activity][:end_at]) #+ 1.hours
           logger.debug(" -> Parsed end date for first repeating event to #{next_end_date}")
 
 
@@ -163,6 +163,8 @@ class ActivitiesController < ApplicationController
 # PUT /activities/1.xml
   def update
     @activity = Activity.find(params[:id])
+    @activity.correlation_id = nil
+    #params[:activity].add_key(:correlation_id, nil)
 
     if params[:activity].has_key?(:rvsps_user_id)
       invited_user_ids = params[:activity][:rvsps_user_id]
