@@ -27,7 +27,6 @@ class Activity < ActiveRecord::Base
     rvsps.where(activity_id => id)
   end
 
-
   def duration
    ((end_at - start_at) / 3600).round(1)
   end
