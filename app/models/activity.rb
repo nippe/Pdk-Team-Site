@@ -8,15 +8,15 @@ class Activity < ActiveRecord::Base
 
 
   def attending
-    rvsps.where(activity_id: id, rvsp_status_id: 1)
+    rvsps.where(activity_id => id, rvsp_status_id => 1)
   end
 
   def maybe_coming
-    rvsps.where(activity_id: id, rvsp_status_id: 3)
+    rvsps.where(activity_id => id, rvsp_status_id => 3)
   end
 
   def not_coming
-    rvsps.where(activity_id: id, rvsp_status_id: 2)
+    rvsps.where(activity_id => id, rvsp_status_id => 2)
   end
 
   def no_answer
