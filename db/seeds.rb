@@ -25,3 +25,8 @@ Role.create(:name => 'guest')
 Activity.delete_all
 Activity.create(:title => 'Fake activity', :start_at => Time.now + 1.month, :all_day => true, :activity_type_id => 1)
 
+User.delete_all
+User.create(:login => 'admin', :password => 'qwerty123', :password_confirmation => 'qwerty123', :approved => true, :active => true, :first_name => 'Team Site', :last_name => 'Admin', :noshow => '')
+User.find_by_login('admin').has_role! :admin
+User.find_by_login('admin').has_role! :player
+

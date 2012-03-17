@@ -1,12 +1,11 @@
 class Activity < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
 
-
   belongs_to :activity_type
   has_many :rvsps
-  #has_many :users, :through =>  :rvsp_users
-
+  
   has_event_calendar
+
 
   def attending
     rvsps.where(activity_id: id, rvsp_status_id: 1)
@@ -71,7 +70,7 @@ class Activity < ActiveRecord::Base
     elsif is_user_not_attending?(user)
       "Kommer inte"
     else
-      "har inte svarat"
+      "Inte svarat"
     end
   end
 
