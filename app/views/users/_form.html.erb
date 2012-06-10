@@ -1,5 +1,18 @@
 <%= javascript_include_tag 'collapsible-regions' %>
 
+<style type="text/css">
+    #user_container {
+        float: left;
+        margin-right: -200px;
+    }
+
+    #user-col-one {
+        padding-left: 200px;
+    }
+
+
+</style>
+
 <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">
@@ -13,58 +26,147 @@
         </div>
     <% end %>
 
-
-
-
     <div id="user_container">
       <div id="user_contact_card">
+        <div id="user-col-image">
+          <%= image_tag 'player-pics/nippe.jpg' %>
+        </div>
+
+        <div id="user-col-one">
+          <div>
+            <div>
+              <%= f.label :first_name %>
+              <br/>
+              <%= f.text_field :first_name %>
+            </div>
+            <div>
+              <%= f.label :last_name %>
+              <br/>
+              <%= f.text_field :last_name %>
+            </div>
+          </div>
+
+          <div id="user-col-two" >
+            <div class="field">
+              <%= f.label :personal_number %>
+              <br/>
+              <%= f.text_field :personal_number %>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+          <%= f.label :active %>
+          <br/>
+          <%= f.check_box :active %>
+        </div>
+        <div class="field">
+          <%= f.label :home_phone %>
+          <br/>
+          <%= f.text_field :home_phone %>
+        </div>
+        <div class="field">
+          <%= f.label :mobile_phone %>
+          <br/>
+          <%= f.text_field :mobile_phone %>
+        </div>
 
 
       </div>
 
-      <div id="user-uvinfo" class="collapsible-container">
-             <div class="collapsible-sub-header collapsible-arrow">
-               Spelarinfromation
-             </div>
+      <!--<div id="user-uvinfo" class="collapsible-container">-->
+      <!--<div class="collapsible-sub-header collapsible-arrow">-->
+      <!--Spelarinfromation-->
+      <!--</div>-->
 
-             <div class="collapsible-region">
-               <div class="field">
-                 <%= f.label :goals %>
-                 <br/>
-                 <%= f.text_area :goals %>
-               </div>
-               <div class="field">
-                 <%= f.label :player_type_id %>
-                 <br/>
-                 <%= f.text_field :player_type_id %>
-               </div>
-             </div>
-           </div>
+      <!--<div class="collapsible-region">-->
+      <!--<div class="field">-->
+      <!--<%= f.label :goals %>-->
+      <!--<br/>-->
+      <!--<%= f.text_area :goals %>-->
+      <!--</div>-->
+      <!--<div class="field">-->
+      <!--<%= f.label :player_type_id %>-->
+      <!--<br/>-->
+      <!--<%= f.text_field :player_type_id %>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
 
 
-      <div id="user_physical_address" class="collapsible-container">
-        <div class="collapsible-sub-header collapsible-arrow">
-          Adressinfo
-        </div>
+      <!--<div id="user_physical_address" class="collapsible-container">-->
+      <!--<div class="collapsible-sub-header collapsible-arrow">-->
+      <!--Adressinfo-->
+      <!--</div>-->
 
-        <div class="collapsible-region">
-          <div class="field">
-            <%= f.label :street_address %>
-            <br/>
-            <%= f.text_field :street_address %>
-          </div>
-          <div class="field">
-            <%= f.label :zip_code %>
-            <br/>
-            <%= f.text_field :zip_code %>
-          </div>
-          <div class="field">
-            <%= f.label :living_area %>
-            <br/>
-            <%= f.text_field :living_area %>
-          </div>
-        </div>
-      </div>
+      <!--<div class="collapsible-region">-->
+      <!--<div class="field">-->
+      <!--<%= f.label :street_address %>-->
+      <!--<br/>-->
+      <!--<%= f.text_field :street_address %>-->
+      <!--</div>-->
+      <!--<div class="field">-->
+      <!--<%= f.label :zip_code %>-->
+      <!--<br/>-->
+      <!--<%= f.text_field :zip_code %>-->
+      <!--</div>-->
+      <!--<div class="field">-->
+      <!--<%= f.label :living_area %>-->
+      <!--<br/>-->
+      <!--<%= f.text_field :living_area %>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+
+
+      <!--<div id="user-site-preferenses" class="collapsible-container">-->
+      <!--<div class="collapsible-sub-header collapsible-arrow">-->
+      <!--<h2>Hemside-inställningar</h2>-->
+      <!--</div>-->
+
+      <!--<div class="collapsible-region">-->
+
+      <!--<div class="field">-->
+      <!--<%= f.label :wants_reminders %>-->
+      <!--<%= f.check_box :wants_reminders %>-->
+      <!--</div>-->
+      <!--<div class="field">-->
+      <!--<%= f.label :reminder_time %>-->
+      <!--<br/>-->
+      <!--<%= f.text_field :reminder_time %>-->
+      <!--</div>-->
+
+      <!--
+      <% if current_user then %>-->
+          <!--
+          <% if current_user.has_role? :admin %>-->
+              <!--<div>-->
+              <!--<%= f.label :approved %>-->
+              <!--<%= f.check_box :approved %>-->
+              <!--</div>-->
+              <!--<div class="field">-->
+              <!--Roles-->
+              <!--
+              <% for role in Role.find(:all) %>-->
+                  <!--<div>-->
+                  <!--<%= check_box_tag "user[role_ids][]", role.id, @user.has_role?(role.name) %>-->
+                  <!--<%= role.name %>-->
+                  <!--</div>-->
+                  <!--
+              <% end %>-->
+              <!--</div>-->
+              <!--
+          <% end %>-->
+          <!--
+      <% end %>-->
+
+
+      <!--</div>-->
+      <!--</div>-->
+
 
     </div>
 
@@ -90,64 +192,6 @@
       <br/>
       <%= f.password_field :password_confirmation %>
     </div>
-    <div class="field">
-      <%= f.label :first_name %>
-      <br/>
-      <%= f.text_field :first_name %>
-    </div>
-    <div class="field">
-      <%= f.label :last_name %>
-      <br/>
-      <%= f.text_field :last_name %>
-    </div>
-    <div class="field">
-      <%= f.label :personal_number %>
-      <br/>
-      <%= f.text_field :personal_number %>
-    </div>
-
-    <div class="field">
-      <%= f.label :active %>
-      <br/>
-      <%= f.check_box :active %>
-    </div>
-    <div class="field">
-      <%= f.label :home_phone %>
-      <br/>
-      <%= f.text_field :home_phone %>
-    </div>
-    <div class="field">
-      <%= f.label :mobile_phone %>
-      <br/>
-      <%= f.text_field :mobile_phone %>
-    </div>
-    <div class="field">
-      <%= f.label :wants_reminders %>
-      <%= f.check_box :wants_reminders %>
-    </div>
-    <div class="field">
-      <%= f.label :reminder_time %>
-      <br/>
-      <%= f.text_field :reminder_time %>
-    </div>
-
-    <% if current_user then %>
-        <% if current_user.has_role? :admin %>
-            <div>
-              <%= f.label :approved %>
-              <%= f.check_box :approved %>
-            </div>
-            <div class="field">
-              Roles
-              <% for role in Role.find(:all) %>
-                <div>
-                   <%= check_box_tag "user[role_ids][]", role.id, @user.has_role?( role.name ) %>
-                   <%= role.name %>
-                </div>
-              <% end %>
-            </div>
-        <% end %>
-    <% end %>
 
     <div style="width: 1px; height: 1px; overflow: hidden;">
       Please leave following field blank:
