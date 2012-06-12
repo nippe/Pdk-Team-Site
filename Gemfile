@@ -9,6 +9,7 @@ gem 'acl9'
 gem 'event-calendar', :require => 'event_calendar'
 gem 'tiny_mce'
 gem 'sanitize'
+gem 'gravtastic'
 
 group :production do
   gem 'heroku'

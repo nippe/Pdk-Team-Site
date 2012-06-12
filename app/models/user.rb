@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include Gravtastic
+  gravtastic
+  
   acts_as_authentic
   acts_as_authorization_subject :association_name => :roles
   

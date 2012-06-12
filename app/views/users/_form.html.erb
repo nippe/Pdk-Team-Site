@@ -29,7 +29,7 @@
     <div id="user_container">
       <div id="user_contact_card">
         <div id="user-col-image">
-          <%= image_tag 'player-pics/nippe.jpg' %>
+          <%= image_tag @user.gravatar_url(:size => 250)  %>
         </div>
 
         <div id="user-col-one">
